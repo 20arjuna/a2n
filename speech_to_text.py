@@ -99,3 +99,4 @@ if __name__ == '__main__':
         transcribe_gcs(args.path)
     else:
         transcribe_file(args.path)
+    #python transcribe_async.py gs://cloud-samples-tests/speech/vr.flac
