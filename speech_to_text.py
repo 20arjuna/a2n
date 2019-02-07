@@ -48,7 +48,7 @@ def transcribe_file(speech_file):
     # [END speech_python_migration_async_request]
 
     print('Waiting for operation to complete...')
-    response = operation.result(timeout=90)
+    response = operation.result(timeout=900)
 
     # Each result is for a consecutive portion of the audio. Iterate through
     # them to get the transcripts for the entire audio file.
@@ -71,13 +71,13 @@ def transcribe_gcs(gcs_uri):
     audio = types.RecognitionAudio(uri=gcs_uri)
     config = types.RecognitionConfig(
         encoding=enums.RecognitionConfig.AudioEncoding.FLAC,
-        sample_rate_hertz=16000,
+        sample_rate_hertz=44100,
         language_code='en-US')
 
     operation = client.long_running_recognize(config, audio)
 
     print('Waiting for operation to complete...')
-    response = operation.result(timeout=90)
+    response = operation.result(timeout=900)
 
     # Each result is for a consecutive portion of the audio. Iterate through
     # them to get the transcripts for the entire audio file.
