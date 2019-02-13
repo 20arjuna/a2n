@@ -32,6 +32,7 @@ def transcribe_file(speech_file):
     from google.cloud.speech import enums
     from google.cloud.speech import types
     client = speech.SpeechClient()
+    text_file = open("text.txt", "w")
 
     # [START speech_python_migration_async_request]
     with io.open(speech_file, 'rb') as audio_file:
@@ -54,8 +55,9 @@ def transcribe_file(speech_file):
     # them to get the transcripts for the entire audio file.
     for result in response.results:
         # The first alternative is the most likely one for this portion.
-        print(u'Transcript: {}'.format(result.alternatives[0].transcript))
-        print('Confidence: {}'.format(result.alternatives[0].confidence))
+        text_file.write(u'Transcript: {}'.format(result.alternatives[0].transcript))
+        text_file.write('Confidence: {}'.format(result.alternatives[0].confidence))
+    text_file.close()
     # [END speech_python_migration_async_response]
 # [END speech_transcribe_async]
 
@@ -67,6 +69,7 @@ def transcribe_gcs(gcs_uri):
     from google.cloud.speech import enums
     from google.cloud.speech import types
     client = speech.SpeechClient()
+    text_file = open("text.txt", "w")
 
     audio = types.RecognitionAudio(uri=gcs_uri)
     config = types.RecognitionConfig(
@@ -83,8 +86,9 @@ def transcribe_gcs(gcs_uri):
     # them to get the transcripts for the entire audio file.
     for result in response.results:
         # The first alternative is the most likely one for this portion.
-        print(u'Transcript: {}'.format(result.alternatives[0].transcript))
-        print('Confidence: {}'.format(result.alternatives[0].confidence))
+        text_file.write(u'Transcript: {}'.format(result.alternatives[0].transcript))
+        text_file.write('Confidence: {}'.format(result.alternatives[0].confidence))
+    text_file.close()
 # [END speech_transcribe_async_gcs]
 
 
