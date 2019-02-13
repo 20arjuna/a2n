@@ -3,7 +3,7 @@ from watson_developer_cloud import NaturalLanguageUnderstandingV1
 from watson_developer_cloud.natural_language_understanding_v1 import Features, KeywordsOptions
 
 file = open("input.txt", "r")
-outputfile = open("output.txt", "w")
+outputfile = open("output.json", "w")
 
 natural_language_understanding = NaturalLanguageUnderstandingV1(
     version='2018-11-16',
