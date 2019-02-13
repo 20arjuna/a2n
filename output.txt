@@ -1,0 +1,260 @@
+{
+  "usage": {
+    "text_characters": 2419, 
+    "features": 1, 
+    "text_units": 1
+  }, 
+  "keywords": [
+    {
+      "relevance": 0.802173, 
+      "text": "Korean electronics company LG", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.760798, 
+      "text": "smart shopping cart", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.620283, 
+      "text": "grocery stores", 
+      "count": 2
+    }, 
+    {
+      "relevance": 0.610763, 
+      "text": "LG's cart", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.609728, 
+      "text": "shopping carts", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.574035, 
+      "text": "electronics leader", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.571558, 
+      "text": "South Korea", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.569469, 
+      "text": "barcode scanners", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.566791, 
+      "text": "robotic carts", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.563696, 
+      "text": "separate facilities", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.552361, 
+      "text": "new partnership", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.549339, 
+      "text": "role of electronics", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.543905, 
+      "text": "robotic systems", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.538478, 
+      "text": "largest supermarket operator", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.53822, 
+      "text": "shopping list", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.534733, 
+      "text": "E-commerce", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.53455, 
+      "text": "appliance companies", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.52757, 
+      "text": "wider LG", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.526871, 
+      "text": "shoppers", 
+      "count": 3
+    }, 
+    {
+      "relevance": 0.526696, 
+      "text": "sorts of capabilities", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.526653, 
+      "text": "new ways", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.525999, 
+      "text": "such systems", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.525561, 
+      "text": "ways", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.523144, 
+      "text": "stage", 
+      "count": 2
+    }, 
+    {
+      "relevance": 0.523085, 
+      "text": "types of carts", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.522913, 
+      "text": "Yonhap News Agency", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.522339, 
+      "text": "E-Mart", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.520373, 
+      "text": "traditional supermarkets", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.520249, 
+      "text": "possible realm of companies", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.519767, 
+      "text": "voice assistants", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.518551, 
+      "text": "smart fridges", 
+      "count": 2
+    }, 
+    {
+      "relevance": 0.516788, 
+      "text": "cart technology", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.516521, 
+      "text": "orders", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.516427, 
+      "text": "supermarkets", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.515061, 
+      "text": "self", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.51431, 
+      "text": "various smart devices", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.51331, 
+      "text": "shopping automation", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.512046, 
+      "text": "Business Insider Intelligence", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.510655, 
+      "text": "Integration", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.50932, 
+      "text": "information", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.509117, 
+      "text": "expenses", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.50905, 
+      "text": "screen", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.508965, 
+      "text": "shopper", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.508948, 
+      "text": "store", 
+      "count": 2
+    }, 
+    {
+      "relevance": 0.508923, 
+      "text": "carts", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.508359, 
+      "text": "users", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.508038, 
+      "text": "instance", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.507753, 
+      "text": "company", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.507611, 
+      "text": "map", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.50745, 
+      "text": "online delivery services", 
+      "count": 1
+    }
+  ], 
+  "language": "en"
+}
