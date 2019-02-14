@@ -1,258 +1,258 @@
 {
   "usage": {
-    "text_characters": 2419, 
+    "text_characters": 10675, 
     "features": 1, 
-    "text_units": 1
+    "text_units": 2
   }, 
   "keywords": [
     {
-      "relevance": 0.802173, 
-      "text": "Korean electronics company LG", 
+      "relevance": 0.61819, 
+      "text": "lower prices", 
       "count": 1
     }, 
     {
-      "relevance": 0.760798, 
-      "text": "smart shopping cart", 
-      "count": 1
-    }, 
-    {
-      "relevance": 0.620283, 
-      "text": "grocery stores", 
-      "count": 2
-    }, 
-    {
-      "relevance": 0.610763, 
-      "text": "LG's cart", 
-      "count": 1
-    }, 
-    {
-      "relevance": 0.609728, 
-      "text": "shopping carts", 
-      "count": 1
-    }, 
-    {
-      "relevance": 0.574035, 
-      "text": "electronics leader", 
-      "count": 1
-    }, 
-    {
-      "relevance": 0.571558, 
-      "text": "South Korea", 
-      "count": 1
-    }, 
-    {
-      "relevance": 0.569469, 
-      "text": "barcode scanners", 
-      "count": 1
-    }, 
-    {
-      "relevance": 0.566791, 
-      "text": "robotic carts", 
-      "count": 1
-    }, 
-    {
-      "relevance": 0.563696, 
-      "text": "separate facilities", 
-      "count": 1
-    }, 
-    {
-      "relevance": 0.552361, 
-      "text": "new partnership", 
-      "count": 1
-    }, 
-    {
-      "relevance": 0.549339, 
-      "text": "role of electronics", 
-      "count": 1
-    }, 
-    {
-      "relevance": 0.543905, 
-      "text": "robotic systems", 
-      "count": 1
-    }, 
-    {
-      "relevance": 0.538478, 
-      "text": "largest supermarket operator", 
-      "count": 1
-    }, 
-    {
-      "relevance": 0.53822, 
-      "text": "shopping list", 
-      "count": 1
-    }, 
-    {
-      "relevance": 0.534733, 
-      "text": "E-commerce", 
-      "count": 1
-    }, 
-    {
-      "relevance": 0.53455, 
-      "text": "appliance companies", 
-      "count": 1
-    }, 
-    {
-      "relevance": 0.52757, 
-      "text": "wider LG", 
-      "count": 1
-    }, 
-    {
-      "relevance": 0.526871, 
-      "text": "shoppers", 
+      "relevance": 0.61537, 
+      "text": "farmers market", 
       "count": 3
     }, 
     {
-      "relevance": 0.526696, 
-      "text": "sorts of capabilities", 
+      "relevance": 0.580894, 
+      "text": "Economist call pricing Market", 
       "count": 1
     }, 
     {
-      "relevance": 0.526653, 
-      "text": "new ways", 
+      "relevance": 0.579207, 
+      "text": "concept of voluntary exchange", 
       "count": 1
     }, 
     {
-      "relevance": 0.525999, 
-      "text": "such systems", 
-      "count": 1
+      "relevance": 0.578322, 
+      "text": "box of strawberries", 
+      "count": 3
     }, 
     {
-      "relevance": 0.525561, 
-      "text": "ways", 
-      "count": 1
-    }, 
-    {
-      "relevance": 0.523144, 
-      "text": "stage", 
+      "relevance": 0.566838, 
+      "text": "demand curve", 
       "count": 2
     }, 
     {
-      "relevance": 0.523085, 
-      "text": "types of carts", 
+      "relevance": 0.552406, 
+      "text": "human organs", 
       "count": 1
     }, 
     {
-      "relevance": 0.522913, 
-      "text": "Yonhap News Agency", 
+      "relevance": 0.547315, 
+      "text": "price", 
+      "count": 15
+    }, 
+    {
+      "relevance": 0.546257, 
+      "text": "incentive produce", 
       "count": 1
     }, 
     {
-      "relevance": 0.522339, 
-      "text": "E-Mart", 
+      "relevance": 0.540576, 
+      "text": "law of supply", 
       "count": 1
     }, 
     {
-      "relevance": 0.520373, 
-      "text": "traditional supermarkets", 
+      "relevance": 0.537013, 
+      "text": "whole lot", 
       "count": 1
     }, 
     {
-      "relevance": 0.520249, 
-      "text": "possible realm of companies", 
-      "count": 1
+      "relevance": 0.536132, 
+      "text": "strawberries", 
+      "count": 19
     }, 
     {
-      "relevance": 0.519767, 
-      "text": "voice assistants", 
-      "count": 1
-    }, 
-    {
-      "relevance": 0.518551, 
-      "text": "smart fridges", 
+      "relevance": 0.53521, 
+      "text": "human kidneys", 
       "count": 2
     }, 
     {
-      "relevance": 0.516788, 
-      "text": "cart technology", 
+      "relevance": 0.532136, 
+      "text": "supply", 
+      "count": 10
+    }, 
+    {
+      "relevance": 0.531871, 
+      "text": "voluntary exchange", 
+      "count": 3
+    }, 
+    {
+      "relevance": 0.53168, 
+      "text": "supply curve", 
       "count": 1
     }, 
     {
-      "relevance": 0.516521, 
-      "text": "orders", 
+      "relevance": 0.530643, 
+      "text": "equilibrium price", 
+      "count": 3
+    }, 
+    {
+      "relevance": 0.530348, 
+      "text": "World Health Organization", 
       "count": 1
     }, 
     {
-      "relevance": 0.516427, 
-      "text": "supermarkets", 
+      "relevance": 0.52978, 
+      "text": "free market", 
       "count": 1
     }, 
     {
-      "relevance": 0.515061, 
-      "text": "self", 
+      "relevance": 0.528583, 
+      "text": "demand", 
+      "count": 10
+    }, 
+    {
+      "relevance": 0.527549, 
+      "text": "eventual result of voluntary exchange of the sellers", 
       "count": 1
     }, 
     {
-      "relevance": 0.51431, 
-      "text": "various smart devices", 
+      "relevance": 0.527429, 
+      "text": "less profit strawberry farmers", 
       "count": 1
     }, 
     {
-      "relevance": 0.51331, 
-      "text": "shopping automation", 
+      "relevance": 0.526882, 
+      "text": "demand curve shifts", 
       "count": 1
     }, 
     {
-      "relevance": 0.512046, 
-      "text": "Business Insider Intelligence", 
-      "count": 1
-    }, 
-    {
-      "relevance": 0.510655, 
-      "text": "Integration", 
-      "count": 1
-    }, 
-    {
-      "relevance": 0.50932, 
-      "text": "information", 
-      "count": 1
-    }, 
-    {
-      "relevance": 0.509117, 
-      "text": "expenses", 
-      "count": 1
-    }, 
-    {
-      "relevance": 0.50905, 
-      "text": "screen", 
-      "count": 1
-    }, 
-    {
-      "relevance": 0.508965, 
-      "text": "shopper", 
-      "count": 1
-    }, 
-    {
-      "relevance": 0.508948, 
-      "text": "store", 
+      "relevance": 0.526567, 
+      "text": "markets", 
       "count": 2
     }, 
     {
-      "relevance": 0.508923, 
-      "text": "carts", 
+      "relevance": 0.526489, 
+      "text": "hard time", 
       "count": 1
     }, 
     {
-      "relevance": 0.508359, 
-      "text": "users", 
+      "relevance": 0.525697, 
+      "text": "world reprise", 
       "count": 1
     }, 
     {
-      "relevance": 0.508038, 
-      "text": "instance", 
+      "relevance": 0.52567, 
+      "text": "fair price", 
       "count": 1
     }, 
     {
-      "relevance": 0.507753, 
-      "text": "company", 
+      "relevance": 0.525489, 
+      "text": "American economic Association member support", 
       "count": 1
     }, 
     {
-      "relevance": 0.507611, 
-      "text": "map", 
+      "relevance": 0.525287, 
+      "text": "United States", 
       "count": 1
     }, 
     {
-      "relevance": 0.50745, 
-      "text": "online delivery services", 
+      "relevance": 0.523676, 
+      "text": "scarce resources", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.523016, 
+      "text": "poor person", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.522887, 
+      "text": "labor market", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.521843, 
+      "text": "price of my box of strawberries", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.520911, 
+      "text": "advantage of people", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.520889, 
+      "text": "Sowa Market", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.520582, 
+      "text": "Whole Foods", 
+      "count": 2
+    }, 
+    {
+      "relevance": 0.519534, 
+      "text": "unfair Advantage", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.519492, 
+      "text": "efficient use", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.518955, 
+      "text": "vulnerable groups", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.518625, 
+      "text": "reasonable person", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.517745, 
+      "text": "equilibrium quantity dollars", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.517713, 
+      "text": "demand curves", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.517416, 
+      "text": "explicable Falls", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.517367, 
+      "text": "course economics", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.516772, 
+      "text": "price of strawberries", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.516443, 
+      "text": "real life", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.516064, 
+      "text": "people", 
+      "count": 8
+    }, 
+    {
+      "relevance": 0.515503, 
+      "text": "buyers", 
+      "count": 6
+    }, 
+    {
+      "relevance": 0.515409, 
+      "text": "external forces", 
+      "count": 1
+    }, 
+    {
+      "relevance": 0.515281, 
+      "text": "chain of production", 
       "count": 1
     }
   ], 

@@ -2,7 +2,7 @@ import json
 from watson_developer_cloud import NaturalLanguageUnderstandingV1
 from watson_developer_cloud.natural_language_understanding_v1 import Features, KeywordsOptions
 
-file = open("input.txt", "r")
+file = open("text.txt", "r")
 outputfile = open("jsonOutput.json", "w")
 keywords = []
 
