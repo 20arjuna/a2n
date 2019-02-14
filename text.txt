@@ -1,52 +1,52 @@
 Transcript: I mr. Clifford and this is Adrian Hill welcome to crash course economics let's start by talking about some of the most people take for granted strawberries right know I was going to say markets come from and who made it and why the answer is simple but it's underrated its market and for most of us farms and factories in stores but mainly it's just market right now
 
-Confidence: 0.9188087582588196
+Confidence: 0.9188079833984375
 
 Transcript: sowa Market is any place where buyers and sellers meet to exchange goods and services the key to Market is the concept of voluntary exchange that is that buyers and sellers willingly decide to make a transaction what's a you go to a farmers market and you buy a box of strawberries for $3 you value the box of strawberries more than the $3 you gave up to get it the seller value of the $3 more than the box of strawberries the transactions a win-win because you thought your strawberries in the farmer got his money you both felt better off that's voluntary exchange the same process happens in the labor market instead of the farmers market you bought your strawberries at your local supermarket cashier voluntarily decided to work their values a 10 bucks an hour he makes there more than he does sitting at home watching The Walking Dead at the same time the owner of the store values of Labor of the cashier more than the $10 an hour she pays him and so it goes on and on all the way up the chain of production from the driver that deliver the strawberries to the farmer that grew the strawberries to the tractor that the farmer purchased the point is that markets are everywhere
 
-Confidence: 0.9770494103431702
+Confidence: 0.9773810505867004
 
 Transcript: and most are based on voluntary exchange of all this that most people take for granted is how efficient the system is competitive markets or not to be pretty great about allocating a disturbing are scarce resources for the most efficient use to produce like too many strawberries then the price will fall establish try to sell them off lower prices means less profit strawberry farmers and those farmers will have him send it to prove something else like lettuce or brussel sprouts to a farmers don't produce enough strawberries Byers obit up the price in the farmers have incentives produce more weeks then drives down the price that's like magic if it's not the information that Marcus generate the guy the distribution of resources is what Economist call pricing Market also incentivize the production of high-quality products if the strawberries are brown and nasty than no one can want to buy them and if the track is a piece of junk the strawberry Farmers going to other Farmers to buy some other tractor ideally the eventual result of voluntary exchange of the sellers can't make themselves better off without producing something to makes buyers better off businesses in particular large corporations are often villainize for being greedy heartless institutions that take advantage of consumers
 
-Confidence: 0.9752711057662964
+Confidence: 0.9751372933387756
 
 Transcript: kids are transparent and buyers are free to choose than business is to have a hard time taking advantage of people obviously greed and deception happen in real life in our situation when consumers don't have a choice but for the most part if you really don't like the policies of practice of a particular company then don't shop there after all in the free market every dollar that is spent signals to producers what should be produced and how it should be pretty but where do prices come from who determines the price of my box of strawberries to answer that we're going to draw get ready for its supply and demand let's go to the runway
 
-Confidence: 0.9560198783874512
+Confidence: 0.9560200572013855
 
 Transcript: there's only one thing you should learn economics it's supply and demand let's use the market for strawberries help us understand this concept up here on the y-axis we have the price of strawberries down here on the x-axis we have the quality of boxes of strawberry let's start by looking at buyers not to respond to a change in price if the price goes up for strawberries and some bars to go buy blueberries or logo on that all bacon diet the point is they're going to buy less strawberry and if the price goes down for strawberries then people going to buy more this is called the law to man or the price goes up people by last my price goes down people buy more on the graph is shown by a downward-sloping demand curve think about sellers like The Farmer in the Farmers Market if the price of strawberry goes up then that farm will make more profit will have an incentive produce more strawberries if the price goes down then he's not the one for the strawberries that's called the law of supply and on the graph is shown by an upward-sloping supply curve now put demand and Supply together if the price is really high at $10 and producers would like to produce a lot of strawberries but consumers won't want to buy them this mismatch is called a surplus at the price goes down to strawberries what's a down to one.
 
-Confidence: 0.9787143468856812
+Confidence: 0.980875551700592
 
 Transcript: Garden spires want to buy a whole lot but producers won't have incentive milk has very little again you a mismatch but this one's called a shortage and there's only one price with a quiet buyers want to buy the exactly equal equality sellers want to sell it's right here were supplied with the man the price is called the equilibrium price and quantity is called the equilibrium quantity dollars and it Whole Foods local art is really growing strawberries the fancy pants are strawberries in pots over the $12 I guess Whole Foods is a whole other world reprise has nothing to do with realistic economics, strawberries and the prices for all sorts of stuff change all the time external forces can shift both the supply and demand curves changing the equilibrium price and quantity example let's assume that this graph shows the demand and supply of strawberries in the summer what happens in the winter will the change in weather affect buyers demand or Producers Supply spoiler alert it's Supply colder temperatures make it harder to grow strawberry
 
-Confidence: 0.9677822589874268
+Confidence: 0.9671612977981567
 
 Transcript: the result is the entire supply curve is going to shift to the left this is because at all possible prices there'd be fewer strawberries produced that's it this crap is just a tool that Economist and everyone else to use to show the result of a change in a market I know it seems complicated at first but they're really only four things that can happen in a market supply can decrease Supply can increase the man can decrease or demand can increase some people might want to talk about a price being fair or right well that all depends on your point of view the buyer always considered a low price to be a very fair price in general Economist don't really like to push opinions about prices voluntary exchange suggest that the price is there for a reason for example assume the demand for strawberries and explicable Falls so the demand curve shifts to the left and the equilibrium price and quantity fall Farmers might go to the government for assistance but most Economist what are there is no reason to bail them out the market spoken strawberries are so over
 
-Confidence: 0.9735698103904724
+Confidence: 0.9735699892044067
 
 Transcript: if the government helps the farmers by giving them a subsidy it would be putting resources toward something that Society doesn't value that would be inefficient luckily every reasonable person on Earth value strawberries so they continue to get produced the downside is the supply and demand model only applies to analyzing strawberries fluctuating prices and because sometimes it explodes gas prices are moving all over the board that's just a man and supply for example 2014 the retail gas price in the United States fell dramatically why demand and Supply the economies of both Europe and China weekend which decrease the demand for gasoline shift in the demand curve to the left at the same time new fracking technology and restore production of oil in Iraq and Libya cost of gasoline to increase their shift to the right the combination drove gas prices down by more than 40% per gallon and that's it now you can tell all your friends you understand supply and demand a big day for you
 
-Confidence: 0.9690001010894775
+Confidence: 0.9693602919578552
 
 Transcript: but sometimes they're not awesome for example we don't want to use the market approach when it comes to firefighters
 
-Confidence: 0.960239589214325
+Confidence: 0.9602394104003906
 
 Transcript:  911 what's your emergency my house on fire how much you try to put it out it'll be $10,000 what's your credit card number
 
-Confidence: 0.7753883600234985
+Confidence: 0.7753884196281433
 
 Transcript:  okay that was obvious but what about the market for human organs after all there's a huge shortage and thousands of people die each year waiting for transplants should there be a competitive market for human kidneys a free market share with his shirt why not if a donor wants $15,000 more than he wants his other kidney why stop it unregulated market for human kidneys versus the moral question is it fair for a poor person who can't afford a kidney to die while rich person lives probably not at all. The World Health Organization is stated payment for organs is likely to take unfair Advantage the poorest and most vulnerable groups undermines altruistic donations and Lisa profiteering and human trafficking in all bad things that being said why do 70% of American economic Association member support some kind of payment for organ donors are willing to donate a kidney
 
-Confidence: 0.9646458029747009
+Confidence: 0.9638362526893616
 
 Transcript:  they're not a match for the patient's Economist generally support creating kidney exchanges where pairs of willing donors are match with strangers that agree to donate to each other's loved ones in both cases the supply of donated kidneys would increase which would alleviate some of the shortage like we said before it free markets are awesome but they can't solve all our problems sometimes they need to be regulated and sometimes they should be avoided so is there you have what for most people is the start and for many of the end of Economics supply and demand Economist and politicians often like to refer to the interaction of supply and demand as lost and we've done that too but be clear it's not an absolute law like the law of gravity as we try to point out your on Crash Course economics about human choices in the consequences even though supply and demand behave in a predictable way that we see in the models we can't lose sight of the fact that both of them are reliant on humans acting as buyers and sellers are actions influence supply and demand in the way that they can't influence gravity no matter how much we might
 
-Confidence: 0.9687651991844177
+Confidence: 0.9702373743057251
 
 Transcript:  After Effects and that's something to keep in mind when you hear us or anybody talkin about economic laws thanks for watching we'll see you next time these nice people you demanded it and they Supply the patron it's a voluntary subscription platform allows you to pay whatever you want monthly how to make crash course free for everyone forever thanks a lot do you have to be at
 
-Confidence: 0.9034421443939209
+Confidence: 0.9034426808357239
 
