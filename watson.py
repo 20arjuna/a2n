@@ -3,6 +3,7 @@ import re
 import operator
 from watson_developer_cloud import NaturalLanguageUnderstandingV1
 from watson_developer_cloud.natural_language_understanding_v1 import Features, KeywordsOptions
+text_file = open("WSA.txt", "w")
 def findKeywords(filename):
     file = open(filename, "r")
     outputfile = open("jsonOutput.json", "w")
@@ -62,7 +63,7 @@ textstring = converttexttoString("text.txt")
 dictionary = createDictionary(textstring,keywordwatsonlist)
 beautifulsorteddictionary = sortByIndex(dictionary)
 finalstring = makestringfromDictionary(beautifulsorteddictionary)
-print(finalstring)
+text_file.write(finalstring)
 
 
 #keyworddata1 = keywordslist[0]
