@@ -37,12 +37,16 @@ def converttexttoString(filename):
     textstr = ''
     for x in lines:
         textstr+= x
+    #print(type(textstr))
     return textstr
 #print(converttexttoString("text.txt"))
 def createDictionary (text, keywords):
     my_dict = {}
-    for i in range(len(text)):
-        my_dict.update({keywords[i], text.index(keywords)})
+    #print(len(text))
+    for i in keywords:
+        #print(i)
+        #print(text.index(i))
+        my_dict.update({i : text.index(i)})
     return my_dict
 
 def sortByIndex(dict):
@@ -51,9 +55,8 @@ def sortByIndex(dict):
 def makestringfromDictionary(sorteddictionary):
     str = ''
     for key in sorteddictionary:
-        str+=key + ' '
+        str+=key[0] + ' '
     return str
-
 keywordwatsonlist = findKeywords("text.txt")
 textstring = converttexttoString("text.txt")
 dictionary = createDictionary(textstring,keywordwatsonlist)
