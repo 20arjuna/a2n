@@ -59,9 +59,9 @@ def transcribe_file(speech_file):
     # them to get the transcripts for the entire audio file.
     for result in response.results:
         # The first alternative is the most likely one for this portion.
-        text_file.write(u'Transcript: {}'.format(result.alternatives[0].transcript))
+        text_file.write(u'{}'.format(result.alternatives[0].transcript))
         text_file.write("\n")
-        text_file.write('Confidence: {}'.format(result.alternatives[0].confidence))
+        #text_file.write('Confidence: {}'.format(result.alternatives[0].confidence))
     text_file.close()
     # [END speech_python_migration_async_response]
 # [END speech_transcribe_async]
@@ -92,12 +92,12 @@ def transcribe_gcs(gcs_uri):
     # them to get the transcripts for the entire audio file.
     for result in response.results:
         # The first alternative is the most likely one for this portion.
-        text_file.write(u'Transcript: {}'.format(result.alternatives[0].transcript))
+        text_file.write(u'{}'.format(result.alternatives[0].transcript))
 
         text_file.write("\n")
         text_file.write("\n")
 
-        text_file.write('Confidence: {}'.format(result.alternatives[0].confidence))
+        #text_file.write('Confidence: {}'.format(result.alternatives[0].confidence))
 
         text_file.write("\n")
         text_file.write("\n")
