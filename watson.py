@@ -1,4 +1,6 @@
 import json
+import re
+import operator
 from watson_developer_cloud import NaturalLanguageUnderstandingV1
 from watson_developer_cloud.natural_language_understanding_v1 import Features, KeywordsOptions
 def findKeywords(filename):
@@ -25,9 +27,34 @@ def findKeywords(filename):
     keywordslist = data['keywords']
     for x in keywordslist:
         keywords.append(x['text'])
-    for i in keywords:
-        print(i)
-findKeywords("text.txt")
+    #for i in keywords:
+        #print(i)
+    return keywords
+print(findKeywords("text.txt"))
+def converttexttoString(filename):
+    with open(filename) as f:
+        lines = f.readlines()
+    textstr = ''
+    for x in lines:
+        textstr+= x
+    return textstr
+print(converttexttoString("text.txt"))
+def createDictionary (text, keywords):
+    my_dict = {}
+    for (i in range len(text)):
+        my_dict.update({keywords[i], text.index(keywords)})
+    return my_dict
+
+def sortByIndex(dict):
+    sorted_dict = sorted(dict.items(), key=operator.itemgetter(1))
+    return sorted_dict
+def makestringfromDictionary(sorteddictionary):
+    str = ''
+    for key in sorteddictionary:
+        str+=key + ' '
+    return str
+
+
 #keyworddata1 = keywordslist[0]
 #print(keyworddata1['text'])
 #newoutputfile = open("output.txt", "r")
