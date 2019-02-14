@@ -3,7 +3,7 @@ from watson_developer_cloud import NaturalLanguageUnderstandingV1
 from watson_developer_cloud.natural_language_understanding_v1 import Features, KeywordsOptions
 
 file = open("input.txt", "r")
-outputfile = open("output.json", "w")
+outputfile = open("jsonOutput.json", "w")
 keywords = []
 
 natural_language_understanding = NaturalLanguageUnderstandingV1(
@@ -16,11 +16,11 @@ response = natural_language_understanding.analyze(
     text = file.read(),
     features=Features(keywords=KeywordsOptions(sentiment=False,emotion=False))).get_result()
 
-print(json.dumps(response, indent=2))
+#print(json.dumps(response, indent=2))
 file.close()
 outputfile.write(json.dumps(response, indent=2))
 outputfile.close()
-with open("output.json", "r") as read_file:
+with open("jsonOutput.json", "r") as read_file:
     data = json.load(read_file)
 keywordslist = data['keywords']
 for x in keywordslist:
