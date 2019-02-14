@@ -30,7 +30,7 @@ def findKeywords(filename):
     #for i in keywords:
         #print(i)
     return keywords
-print(findKeywords("text.txt"))
+#print(findKeywords("text.txt"))
 def converttexttoString(filename):
     with open(filename) as f:
         lines = f.readlines()
@@ -38,10 +38,10 @@ def converttexttoString(filename):
     for x in lines:
         textstr+= x
     return textstr
-print(converttexttoString("text.txt"))
+#print(converttexttoString("text.txt"))
 def createDictionary (text, keywords):
     my_dict = {}
-    for (i in range len(text)):
+    for i in range(len(text)):
         my_dict.update({keywords[i], text.index(keywords)})
     return my_dict
 
@@ -53,6 +53,13 @@ def makestringfromDictionary(sorteddictionary):
     for key in sorteddictionary:
         str+=key + ' '
     return str
+
+keywordwatsonlist = findKeywords("text.txt")
+textstring = converttexttoString("text.txt")
+dictionary = createDictionary(textstring,keywordwatsonlist)
+beautifulsorteddictionary = sortByIndex(dictionary)
+finalstring = makestringfromDictionary(beautifulsorteddictionary)
+print(finalstring)
 
 
 #keyworddata1 = keywordslist[0]
