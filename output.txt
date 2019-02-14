@@ -7,7 +7,7 @@
   "keywords": [
     {
       "relevance": 0.802173,
-      "text": "Korean electronics company LG", 
+      "text": "Korean electronics company LG",
       "count": 1
     },
     {
