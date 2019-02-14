@@ -18,7 +18,8 @@
 batch processing.
 Example usage:
     python transcribe_async.py resources/audio.raw
-    python transcribe_async.py gs://cloud-samples-tests/speech/vr.flac
+    python transcribe_async.py gs://a2n_audio/output.flac
+                               gs://cloud-samples-tests/speech/brooklyn.flac
 """
 
 import argparse
@@ -28,9 +29,11 @@ import io
 # [START speech_transcribe_async]
 def transcribe_file(speech_file):
     """Transcribe the given audio file asynchronously."""
-    from google.cloud import speech
+    #from google.cloud import speech
     from google.cloud.speech import enums
     from google.cloud.speech import types
+    from google.cloud import speech_v1p1beta1 as speech
+
     client = speech.SpeechClient()
     text_file = open("text.txt", "w")
 
@@ -41,8 +44,9 @@ def transcribe_file(speech_file):
     audio = types.RecognitionAudio(content=content)
     config = types.RecognitionConfig(
         encoding=enums.RecognitionConfig.AudioEncoding.LINEAR16,
-        sample_rate_hertz=16000,
-        language_code='en-US')
+        sample_rate_hertz=44100,
+        language_code='en-US',
+        enable_automatic_punctuation=True)
 
     # [START speech_python_migration_async_response]
     operation = client.long_running_recognize(config, audio)
@@ -76,7 +80,8 @@ def transcribe_gcs(gcs_uri):
     config = types.RecognitionConfig(
         encoding=enums.RecognitionConfig.AudioEncoding.FLAC,
         sample_rate_hertz=44100,
-        language_code='en-US')
+        language_code='en-US',
+        enable_automatic_punctuation=True)
 
     operation = client.long_running_recognize(config, audio)
 
