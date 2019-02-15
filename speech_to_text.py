@@ -25,7 +25,6 @@ Example usage:
 import argparse
 import io
 
-
 # [START speech_transcribe_async]
 def transcribe_file(speech_file):
     """Transcribe the given audio file asynchronously."""
