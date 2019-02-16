@@ -3,7 +3,7 @@ import re
 import operator
 from watson_developer_cloud import NaturalLanguageUnderstandingV1
 from watson_developer_cloud.natural_language_understanding_v1 import Features, KeywordsOptions
-text_file = open("WSA.txt", "w")
+
 def findKeywords(filename):
     file = open(filename, "r")
     outputfile = open("jsonOutput.json", "w")
@@ -58,12 +58,20 @@ def makestringfromDictionary(sorteddictionary):
     for key in sorteddictionary:
         str+=key[0] + ' '
     return str
-keywordwatsonlist = findKeywords("text.txt")
-textstring = converttexttoString("text.txt")
-dictionary = createDictionary(textstring,keywordwatsonlist)
-beautifulsorteddictionary = sortByIndex(dictionary)
-finalstring = makestringfromDictionary(beautifulsorteddictionary)
-text_file.write(finalstring)
+
+def makeMainIdea(filename, outputfile):
+    keywordwatsonlist = findKeywords(filename)
+    textstring = converttexttoString(filename)
+    dictionary = createDictionary(textstring,keywordwatsonlist)
+    beautifulsorteddictionary = sortByIndex(dictionary)
+    finalstring = makestringfromDictionary(beautifulsorteddictionary)
+    text_file = open(outputfile, "w")
+    text_file.write(finalstring)
+
+if __name__ == '__main__':
+    makeMainIdea('text.txt', 'WSA.txt')
+
+
 
 
 #keyworddata1 = keywordslist[0]

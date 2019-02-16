@@ -26,17 +26,13 @@ import argparse
 import io
 
 
-# [START speech_transcribe_async]
 def transcribe_file(speech_file):
     """Transcribe the given audio file asynchronously."""
-    #from google.cloud import speech
+    from google.cloud import speech
     from google.cloud.speech import enums
     from google.cloud.speech import types
-    from google.cloud import speech_v1p1beta1 as speech
-
     client = speech.SpeechClient()
-    text_file = open("text.txt", "w")
-
+    print("transcribe")
     # [START speech_python_migration_async_request]
     with io.open(speech_file, 'rb') as audio_file:
         content = audio_file.read()
@@ -45,8 +41,7 @@ def transcribe_file(speech_file):
     config = types.RecognitionConfig(
         encoding=enums.RecognitionConfig.AudioEncoding.LINEAR16,
         sample_rate_hertz=44100,
-        language_code='en-US',
-        enable_automatic_punctuation=True)
+        language_code='en-US')
 
     # [START speech_python_migration_async_response]
     operation = client.long_running_recognize(config, audio)
@@ -59,10 +54,8 @@ def transcribe_file(speech_file):
     # them to get the transcripts for the entire audio file.
     for result in response.results:
         # The first alternative is the most likely one for this portion.
-        text_file.write(u'{}'.format(result.alternatives[0].transcript))
-        text_file.write("\n")
-        #text_file.write('Confidence: {}'.format(result.alternatives[0].confidence))
-    text_file.close()
+        print(u'Transcript: {}'.format(result.alternatives[0].transcript))
+        print('Confidence: {}'.format(result.alternatives[0].confidence))
     # [END speech_python_migration_async_response]
 # [END speech_transcribe_async]
 
@@ -107,6 +100,7 @@ def transcribe_gcs(gcs_uri):
 
 
 if __name__ == '__main__':
+    print("running")
     parser = argparse.ArgumentParser(
         description=__doc__,
         formatter_class=argparse.RawDescriptionHelpFormatter)
