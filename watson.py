@@ -68,13 +68,61 @@ def makeMainIdea(filename, outputfile):
     finalstring = makestringfromDictionary(beautifulsorteddictionary)
     text_file = open(outputfile, "w")
     text_file.write(finalstring)
+def findKeywordsofString(string):
+    outputfile = open("jsonOutput.json", "w")
+    keywords = []
+
+    natural_language_understanding = NaturalLanguageUnderstandingV1(
+        version='2018-11-16',
+        iam_apikey='m620e2y3lML5qG_oRJy9JERrlR0-159j3vJVrtPJkhJg',
+        url='https://gateway-wdc.watsonplatform.net/natural-language-understanding/api'
+        )
+
+    response = natural_language_understanding.analyze(
+        text = string,
+        features=Features(keywords=KeywordsOptions(sentiment=False,emotion=False))).get_result()
+
+    #print(json.dumps(response, indent=2))
+    outputfile.write(json.dumps(response, indent=2))
+    outputfile.close()
+    with open("jsonOutput.json", "r") as read_file:
+        data = json.load(read_file)
+    keywordslist = data['keywords']
+    for x in keywordslist:
+        keywords.append(x['text'])
+    #for i in keywords:
+        #print(i)
+    return keywords
+def wsa(inputstring):
+    keywordwatsonlist = findKeywordsofString(inputstring)
+    dictionary = createDictionary(inputstring,keywordwatsonlist)
+    beautifulsorteddictionary = sortByIndex(dictionary)
+    finalstring = makestringfromDictionary(beautifulsorteddictionary)
+    return finalstring
 
 def splitIntoParagraphs(text):
     return re.split('[\n]', text)
-
+def splitParagraphIntoSentences(paragraph):
+    sentencelist = re.split('[?!.]', paragraph)
+    return sentencelist[:-1]
+def createSummaryMatrix(text):
+    paragraphList = splitIntoParagraphs(text)
+    mat = []
+    for paragraph in paragraphList:
+        sentencesList = splitParagraphIntoSentences(paragraph)
+        wsaList = []
+        for sentence in sentencesList:
+            wsaList.append(wsa(sentence))
+        #print(wsaList)
+        mat.append(wsaList)
+    return mat
 if __name__ == '__main__':
-    makeMainIdea('text.txt', 'WSA.txt')
-    print(splitIntoParagraphs(converttexttoString("text.txt")))
+    print(createSummaryMatrix(converttexttoString("text.txt")))
+    #makeMainIdea('text.txt', 'WSA.txt')
+    #paragraphlist = splitIntoParagraphs(converttexttoString("text.txt"))
+    #print(paragraphlist[1])
+    #print(splitParagraphIntoSentences(paragraphlist[1]))
+
 
 
 
