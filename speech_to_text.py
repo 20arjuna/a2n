@@ -25,7 +25,11 @@ Example usage:
 import argparse
 import io
 
+<<<<<<< HEAD
 
+=======
+# [START speech_transcribe_async]
+>>>>>>> c750fa689c70bda3de6923269c80336c96ad79e1
 def transcribe_file(speech_file):
     """Transcribe the given audio file asynchronously."""
     from google.cloud import speech
@@ -100,7 +104,6 @@ def transcribe_gcs(gcs_uri):
 
 
 if __name__ == '__main__':
-    print("running")
     parser = argparse.ArgumentParser(
         description=__doc__,
         formatter_class=argparse.RawDescriptionHelpFormatter)
