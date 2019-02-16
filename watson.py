@@ -74,7 +74,7 @@ def splitIntoParagraphs(text):
 
 if __name__ == '__main__':
     makeMainIdea('text.txt', 'WSA.txt')
-
+    print(splitIntoParagraphs(converttexttoString("text.txt")))
 
 
 
