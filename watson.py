@@ -112,12 +112,13 @@ def splitIntoParagraphs(text):
 def splitParagraphIntoSentences(paragraph):
     sentencelist = re.split('[?!.]', paragraph)
     return sentencelist[:-1]
-def createSummaryMatrix(text):
-    paragraphList = splitIntoParagraphs(text)
+def createSummaryMatrix(paragraphList):
+    #paragraphList = splitIntoParagraphs(text)
     mat = []
     for paragraph in paragraphList:
         sentencesList = splitParagraphIntoSentences(paragraph)
         wsaList = []
+        sentencesList = preprocess(sentencesList)
         for sentence in sentencesList:
             wsaList.append(wsa(sentence))
         #print(wsaList)
@@ -133,9 +134,9 @@ def preprocess(list):
     for element in list:
         elementlist = element.split(' ')
         if(len(elementlist) < 3):
+            print(element)
             list.remove(element)
     return list
-
 def outputOutline(wsaParagraphList, wsaSentenceMatrix, outputfile):
     text_file = open(outputfile, "w")
     for paragraph in wsaParagraphList:
@@ -146,8 +147,11 @@ def outputOutline(wsaParagraphList, wsaSentenceMatrix, outputfile):
 
 if __name__ == '__main__':
     #print(createSummaryMatrix(converttexttoString("text.txt")))
+    paragraphlist = splitIntoParagraphs(converttexttoString('text.txt'))
+    newparagraphlist = preprocess(paragraphlist)
+    wsaSentenceMatrix = createSummaryMatrix(newparagraphlist)
+    outputOutline(newparagraphlist,wsaSentenceMatrix, 'WSA.txt')
 
-    printMainIdea('text.txt')
     #makeMainIdea('text.txt', 'WSA.txt')
     #paragraphlist = splitIntoParagraphs(converttexttoString("text.txt"))
     #print(paragraphlist[1])
