@@ -123,6 +123,27 @@ def createSummaryMatrix(text):
         #print(wsaList)
         mat.append(wsaList)
     return mat
+def runWSAOnParagraphs(paragraphList):
+    wsaList = []
+    for paragraph in paragraphList:
+        wsaList.append(wsa(paragraph))
+    return wsaList
+
+def preprocess(list):
+    for element in list:
+        elementlist = element.split(' ')
+        if(len(elementlist) < 3):
+            list.remove(element)
+    return list
+
+def outputOutline(wsaParagraphList, wsaSentenceMatrix, outputfile):
+    text_file = open(outputfile, "w")
+    for paragraph in wsaParagraphList:
+        text_file.write("-   "+paragraph)
+        for sentList in wsaSentenceMatrix:
+            for sentence in sentList:
+                text_file.write("\t -" + sentence)
+
 if __name__ == '__main__':
     #print(createSummaryMatrix(converttexttoString("text.txt")))
 
