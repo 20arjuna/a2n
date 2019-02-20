@@ -131,10 +131,10 @@ def runWSAOnParagraphs(paragraphList):
     return wsaList
 
 def preprocess(list):
-    for element in list:
-        elementlist = element.split(' ')
-        if(len(elementlist) < 3):
-            list.remove(element)
+    for i in range (len(list)-1, -1, -1):
+        iList = list[i].split(' ')
+        if(len(iList) <3):
+            list.remove(list[i])
     return list
 
 def outputOutline(wsaParagraphList, wsaSentenceMatrix, outputfile):
