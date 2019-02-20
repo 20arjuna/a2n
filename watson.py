@@ -68,6 +68,13 @@ def makeMainIdea(filename, outputfile):
     finalstring = makestringfromDictionary(beautifulsorteddictionary)
     text_file = open(outputfile, "w")
     text_file.write(finalstring)
+def printMainIdea(filename):
+    keywordwatsonlist = findKeywords(filename)
+    textstring = converttexttoString(filename)
+    dictionary = createDictionary(textstring,keywordwatsonlist)
+    beautifulsorteddictionary = sortByIndex(dictionary)
+    finalstring = makestringfromDictionary(beautifulsorteddictionary)
+    print(finalstring)
 def findKeywordsofString(string):
     outputfile = open("jsonOutput.json", "w")
     keywords = []
@@ -117,7 +124,9 @@ def createSummaryMatrix(text):
         mat.append(wsaList)
     return mat
 if __name__ == '__main__':
-    print(createSummaryMatrix(converttexttoString("text.txt")))
+    #print(createSummaryMatrix(converttexttoString("text.txt")))
+
+    printMainIdea('text.txt')
     #makeMainIdea('text.txt', 'WSA.txt')
     #paragraphlist = splitIntoParagraphs(converttexttoString("text.txt"))
     #print(paragraphlist[1])

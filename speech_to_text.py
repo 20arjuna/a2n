@@ -66,7 +66,7 @@ def transcribe_gcs(gcs_uri):
     from google.cloud.speech import enums
     from google.cloud.speech import types
     client = speech.SpeechClient()
-    text_file = open("text.txt", "w")
+    text_file = open("wordcloud.txt", "w")
 
     audio = types.RecognitionAudio(uri=gcs_uri)
     config = types.RecognitionConfig(
