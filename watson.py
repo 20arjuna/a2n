@@ -134,9 +134,9 @@ def preprocess(list):
     for element in list:
         elementlist = element.split(' ')
         if(len(elementlist) < 3):
-            print(element)
             list.remove(element)
     return list
+
 def outputOutline(wsaParagraphList, wsaSentenceMatrix, outputfile):
     text_file = open(outputfile, "w")
     for paragraph in wsaParagraphList:
@@ -149,6 +149,8 @@ if __name__ == '__main__':
     #print(createSummaryMatrix(converttexttoString("text.txt")))
     paragraphlist = splitIntoParagraphs(converttexttoString('text.txt'))
     newparagraphlist = preprocess(paragraphlist)
+    print('newparagraphlist')
+    print(newparagraphlist)
     wsaSentenceMatrix = createSummaryMatrix(newparagraphlist)
     outputOutline(newparagraphlist,wsaSentenceMatrix, 'WSA.txt')
 
