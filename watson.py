@@ -57,12 +57,12 @@ def createRelavantKeywordsList(dict, keywordslist):
     keywords =[]
     threshold = 0.60
     for i in range(len(keywordslist)):
-        print(keywordslist[i])
-        print(dict.get(keywordslist[i]))
+        #print(keywordslist[i])
+        #print(dict.get(keywordslist[i]))
         if(dict.get(keywordslist[i]) > threshold):
             keywords.append(keywordslist[i])
-    print(keywordslist)
-    print(keywords)
+    #print(keywordslist)
+    #print(keywords)
     if(len(keywords)==0) and (len(keywordslist)>0):
         keywords.append(keywordslist[0])
     return keywords
