@@ -30,7 +30,8 @@ paragraph = "Return a slice object representing the set of indices specified by 
 list = ["hi mom momn", " That's it"]
 string = " That's it"
 split =string.split(' ')
-print()
-print(list)
-print(split)
-print(preprocess(list))
+#print()
+#print(list)
+#print(split)
+#print(preprocess(list))
+print(ord('A'))
