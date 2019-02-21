@@ -27,11 +27,14 @@ def findKeywords(filename):
     with open("jsonOutput.json", "r") as read_file:
         data = json.load(read_file)
     keywordslist = data['keywords']
-    for x in keywordslist:
+    my_dict = {}
+    for i in range((len(keywordslist))):
+        x = keywordslist[i]
         keywords.append(x['text'])
+        my_dict.update({x['text']:x['relevance']})
     #for i in keywords:
         #print(i)
-    return keywords
+    return createRelavantKeywordsList(my_dict, keywords)
 #print(findKeywords("text.txt"))
 def converttexttoString(filename):
     with open(filename) as f:
@@ -50,6 +53,19 @@ def createDictionary (text, keywords):
         #print(text.index(i))
         my_dict.update({i : text.index(i)})
     return my_dict
+def createRelavantKeywordsList(dict, keywordslist):
+    keywords =[]
+    threshold = 0.60
+    for i in range(len(keywordslist)):
+        print(keywordslist[i])
+        print(dict.get(keywordslist[i]))
+        if(dict.get(keywordslist[i]) > threshold):
+            keywords.append(keywordslist[i])
+    print(keywordslist)
+    print(keywords)
+    if(len(keywords)==0) and (len(keywordslist)>0):
+        keywords.append(keywordslist[0])
+    return keywords
 
 def sortByIndex(dict):
     sorted_dict = sorted(dict.items(), key=operator.itemgetter(1))
@@ -95,11 +111,14 @@ def findKeywordsofString(string):
     with open("jsonOutput.json", "r") as read_file:
         data = json.load(read_file)
     keywordslist = data['keywords']
-    for x in keywordslist:
+    my_dict = {}
+    for i in range((len(keywordslist))):
+        x = keywordslist[i]
         keywords.append(x['text'])
+        my_dict.update({x['text']:x['relevance']})
     #for i in keywords:
         #print(i)
-    return keywords
+    return createRelavantKeywordsList(my_dict, keywords)
 def wsa(inputstring):
     keywordwatsonlist = findKeywordsofString(inputstring)
     dictionary = createDictionary(inputstring,keywordwatsonlist)
@@ -117,8 +136,16 @@ def createSummaryMatrix(paragraphList):
     mat = []
     for paragraph in paragraphList:
         sentencesList = splitParagraphIntoSentences(paragraph)
+        #print()
+        #print("sentencesbefore")
+        #print()
+        #print(sentencesList)
         wsaList = []
         sentencesList = preprocess(sentencesList)
+        #print()
+        #print("sentencesafter")
+        #print()
+        #print(sentencesList)
         for sentence in sentencesList:
             wsaList.append(wsa(sentence))
         #print(wsaList)
@@ -133,25 +160,44 @@ def runWSAOnParagraphs(paragraphList):
 def preprocess(list):
     for i in range (len(list)-1, -1, -1):
         iList = list[i].split(' ')
+        if '' in iList:
+            iList.remove('')
         if(len(iList) <3):
             list.remove(list[i])
     return list
 
 def outputOutline(wsaParagraphList, wsaSentenceMatrix, outputfile):
     text_file = open(outputfile, "w")
-    for paragraph in wsaParagraphList:
-        text_file.write("-   "+paragraph)
-        for sentList in wsaSentenceMatrix:
-            for sentence in sentList:
-                text_file.write("\t -" + sentence)
+    for i in range(len(wsaParagraphList)):
+        paragraph = wsaParagraphList[i]
+        plist = paragraph.split(' ')
+        if(len(plist) > 10):
+            paragraphstring = ''
+            for i in range(0,10):
+                paragraphstring+=(' ' + plist[i])
+            text_file.write("\n-"+paragraphstring)
+        else:
+            text_file.write("\n-" + paragraph)
+        sentList = wsaSentenceMatrix[i]
+        for sentence in sentList:
+            if(sentence != ''):
+                wordlist = sentence.split(' ')
+                if(len(wordlist) > 10):
+                    sentencestring = ''
+                    for i in range(0,10):
+                        sentencestring+=(' ' + wordlist[i])
+                    text_file.write("\n \t -" + sentencestring)
+                else:
+                    text_file.write("\n \t -" + sentence)
+
 
 if __name__ == '__main__':
     #print(createSummaryMatrix(converttexttoString("text.txt")))
     paragraphlist = splitIntoParagraphs(converttexttoString('text.txt'))
     newparagraphlist = preprocess(paragraphlist)
-    print('newparagraphlist')
-    print(newparagraphlist)
     wsaSentenceMatrix = createSummaryMatrix(newparagraphlist)
+    #print(wsaSentenceMatrix)
+    newparagraphlist = runWSAOnParagraphs(newparagraphlist)
     outputOutline(newparagraphlist,wsaSentenceMatrix, 'WSA.txt')
 
     #makeMainIdea('text.txt', 'WSA.txt')
