@@ -16,10 +16,12 @@ def findKeywords(filename):
         url='https://gateway-wdc.watsonplatform.net/natural-language-understanding/api'
         )
 
-    response = natural_language_understanding.analyze(
-        text = file.read(),
+    try:
+        response = natural_language_understanding.analyze(
+        text = string,
         features=Features(keywords=KeywordsOptions(sentiment=False,emotion=False))).get_result()
-
+    except:
+        return []
     #print(json.dumps(response, indent=2))
     file.close()
     outputfile.write(json.dumps(response, indent=2))
@@ -61,10 +63,12 @@ def createRelavantKeywordsList(dict, keywordslist):
         #print(dict.get(keywordslist[i]))
         if(dict.get(keywordslist[i]) > threshold):
             keywords.append(keywordslist[i])
-    #print(keywordslist)
-    #print(keywords)
+    print(keywordslist)
+    print(keywords)
     if(len(keywords)==0) and (len(keywordslist)>0):
         keywords.append(keywordslist[0])
+        print("there are not keywords that fit the relevance parameter.")
+        print(keywords)
     return keywords
 
 def sortByIndex(dict):
@@ -100,10 +104,13 @@ def findKeywordsofString(string):
         iam_apikey='m620e2y3lML5qG_oRJy9JERrlR0-159j3vJVrtPJkhJg',
         url='https://gateway-wdc.watsonplatform.net/natural-language-understanding/api'
         )
-
-    response = natural_language_understanding.analyze(
+    try:
+        response = natural_language_understanding.analyze(
         text = string,
         features=Features(keywords=KeywordsOptions(sentiment=False,emotion=False))).get_result()
+    except:
+        return []
+
 
     #print(json.dumps(response, indent=2))
     outputfile.write(json.dumps(response, indent=2))
@@ -120,6 +127,7 @@ def findKeywordsofString(string):
         #print(i)
     return createRelavantKeywordsList(my_dict, keywords)
 def wsa(inputstring):
+    #print("WSA input" +inputstring)
     keywordwatsonlist = findKeywordsofString(inputstring)
     dictionary = createDictionary(inputstring,keywordwatsonlist)
     beautifulsorteddictionary = sortByIndex(dictionary)

@@ -1,65 +1,9 @@
 {
   "usage": {
     "text_units": 1,
-    "text_characters": 385,
+    "text_characters": 13,
     "features": 1
   },
   "language": "en",
-  "keywords": [
-    {
-      "text": "voluntary subscription platform",
-      "relevance": 0.952898,
-      "count": 1
-    },
-    {
-      "text": "next time",
-      "relevance": 0.713471,
-      "count": 1
-    },
-    {
-      "text": "crash course",
-      "relevance": 0.68814,
-      "count": 1
-    },
-    {
-      "text": "Effects",
-      "relevance": 0.609896,
-      "count": 1
-    },
-    {
-      "text": "nice people",
-      "relevance": 0.577026,
-      "count": 1
-    },
-    {
-      "text": "Thanks",
-      "relevance": 0.555833,
-      "count": 2
-    },
-    {
-      "text": "mind",
-      "relevance": 0.547361,
-      "count": 1
-    },
-    {
-      "text": "talkin",
-      "relevance": 0.530491,
-      "count": 1
-    },
-    {
-      "text": "patron",
-      "relevance": 0.520754,
-      "count": 1
-    },
-    {
-      "text": "lot",
-      "relevance": 0.520754,
-      "count": 1
-    },
-    {
-      "text": "economic laws",
-      "relevance": 0.450111,
-      "count": 1
-    }
-  ]
+  "keywords": []
 }
