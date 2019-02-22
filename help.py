@@ -295,7 +295,7 @@ def upload_file():
    image = wordcloud.to_image()
 
    #image.show()
-   image.save('/Users/20arjuna/Desktop/GitHub_Repos/GithubPages/20arjuna.github.io/cloud.png', 'PNG')
+   image.save('/Users/20arjuna/Desktop/A2N/cloud.png', 'PNG')
 
    ##### Notes ########
    #wordcloud.txt is the inputfile for watson that has the output of speechtotext
