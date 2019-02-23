@@ -1,10 +1,15 @@
-from flask import Flask
+#from google.cloud.storage import storage
+from flask import Flask,render_template, Response, request, redirect, url_for, send_file
+
+#test
+
 app = Flask(__name__)
+#from google.cloud import resumable_media
 
 
-@app.route('/')
-def hello():
-    return "Hello World!"
 
-if __name__ == '__main__':
+
+
+
+if __name__ == "__main__":
     app.run()
