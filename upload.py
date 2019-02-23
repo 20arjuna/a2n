@@ -303,6 +303,7 @@ def upload_file():
        createNotes('wordcloud.txt', 'notes.txt')
        return send_file('cloud.png')
    else:
+       print('get running')
        return ('error')
 if __name__ == "__main__":
     app.run()
