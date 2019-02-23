@@ -302,6 +302,7 @@ def upload_file():
        #wordcloud.txt is the inputfile for watson that has the output of speechtotext
        createNotes('wordcloud.txt', 'notes.txt')
        return send_file('cloud.png')
-
+   else:
+       return ('error')
 if __name__ == "__main__":
     app.run()
