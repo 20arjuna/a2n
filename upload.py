@@ -215,7 +215,7 @@ def outputOutline(wsaParagraphList, wsaSentenceMatrix, outputfile):
         ascii_outer+=1
 
 
-@app.route("/")
+@app.route("/", methods=['GET'])
 def hello():
     return render_template('wordcloud.html')
 
