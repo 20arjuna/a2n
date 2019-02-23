@@ -233,7 +233,7 @@ def createNotes(inputFile, outputFile):
     outputOutline(newparagraphlist,wsaSentenceMatrix, outputFile)
 
 
-@app.route("/")
+@app.route("/", methods=['POST','GET'])
 def hello():
     return render_template('wordcloud.html')
 
@@ -302,6 +302,7 @@ def upload_file():
        #wordcloud.txt is the inputfile for watson that has the output of speechtotext
        createNotes('wordcloud.txt', 'notes.txt')
        return send_file('cloud.png')
+    if
 
 if __name__ == "__main__":
     app.run()
