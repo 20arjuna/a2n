@@ -278,7 +278,7 @@ def upload_file():
    image = wordcloud.to_image()
 
    #image.show()
-   image.save('/Users/20arjuna/Desktop/GitHub_Repos/GithubPages/20arjuna.github.io/cloud.png', 'PNG')
+   image.save('/Users/20arjuna/Desktop/A2N/cloud.png', 'PNG')
 
    return send_file('cloud.png')
 
