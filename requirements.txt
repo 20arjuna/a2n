@@ -12,7 +12,7 @@ googleapis-common-protos==1.5.6
 gunicorn==19.9.0
 
 lib==3.0.0
-
+grpcio==1.13.0rc3
 SpeechRecognition==3.8.1
 watson-developer-cloud==2.8.0
 
