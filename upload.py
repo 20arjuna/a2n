@@ -220,7 +220,7 @@ def hello():
 
 @app.route('/uploaderlocal', methods=['POST'])
 def upload_file():
-    oauth2.init_app(app)
+    #oauth2.init_app(app)
 
     f = request.files['gcloudfile']
 
