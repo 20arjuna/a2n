@@ -222,10 +222,9 @@ def hello():
 
 @app.route('/uploaderlocal', methods=['POST'])
 def upload_file():
-
     oauth2.init_app(app,scopes=['email', 'profile'],authorize_callback=_request_user_info)
 
-   f = request.files['gcloudfile']
+    f = request.files['gcloudfile']
 
 
   # print(f.filename)
