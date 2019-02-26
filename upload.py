@@ -19,8 +19,6 @@ from oauth2client.contrib.flask_util import UserOAuth2
 
 app = Flask(__name__)
 #from google.cloud import resumable_media
-oauth2 = UserOAuth2()
-
 def findKeywords(filename):
     file = open(filename, "r")
     outputfile = open("jsonOutput.json", "w")
