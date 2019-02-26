@@ -14,11 +14,12 @@ import operator
 import re
 from watson_developer_cloud import NaturalLanguageUnderstandingV1
 from watson_developer_cloud.natural_language_understanding_v1 import Features, KeywordsOptions
+from oauth2client.contrib.flask_util import UserOAuth2
 
 
 app = Flask(__name__)
 #from google.cloud import resumable_media
-
+oauth2 = UserOAuth2()
 
 def findKeywords(filename):
     file = open(filename, "r")
@@ -221,6 +222,12 @@ def hello():
 
 @app.route('/uploaderlocal', methods=['POST'])
 def upload_file():
+
+    oauth2.init_app(
+        app,
+        scopes=['email', 'profile'],
+        authorize_callback=_request_user_info)
+
    f = request.files['gcloudfile']
 
 
