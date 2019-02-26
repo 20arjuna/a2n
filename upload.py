@@ -226,15 +226,15 @@ def upload_file():
 
   # print(f.filename)
    #print(secure_filename(f.filename))
-   f.save(f.filename)
-   fString = str(f)
-   fString = fString.split("'")
+   #f.save(f.filename)
+   #fString = str(f.filename)
+   #fString = fString.split("'")
    storage_client = storage.Client.from_service_account_json(
         'A2N-Official-bd3ee1c6cc61.json')
    bucket = storage_client.get_bucket('a2n_audio')
    blob = bucket.blob('input')
-   print(fString[1])
-   blob.upload_from_filename(fString[1])
+   #print(fString[1])
+   blob.upload_from_file(f)
 
    ##### Converting Speech to text ##########
    client = speech.SpeechClient()
@@ -284,5 +284,4 @@ def upload_file():
    return send_file('cloud.png')
 
 if __name__ == "__main__":
-
     app.run()
