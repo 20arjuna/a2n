@@ -10,7 +10,7 @@ google-cloud-storage==1.14.0
 google-resumable-media==0.3.2
 googleapis-common-protos==1.5.6
 gunicorn==19.9.0
-
+matplotlib==2.2.2
 lib==3.0.0
 grpcio==1.13.0rc3
 SpeechRecognition==3.8.1
