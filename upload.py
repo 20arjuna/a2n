@@ -215,7 +215,7 @@ def outputOutline(wsaParagraphList, wsaSentenceMatrix, outputfile):
         ascii_outer+=1
 
 
-@app.route("/", methods=['GET'])
+@app.route("/")
 def hello():
     return render_template('wordcloud.html')
 
@@ -233,6 +233,7 @@ def upload_file():
         'A2N-Official-bd3ee1c6cc61.json')
    bucket = storage_client.get_bucket('a2n_audio')
    blob = bucket.blob('input')
+   print(fString[1])
    blob.upload_from_filename(fString[1])
 
    ##### Converting Speech to text ##########
@@ -283,5 +284,5 @@ def upload_file():
    return send_file('cloud.png')
 
 if __name__ == "__main__":
-    
+
     app.run()
