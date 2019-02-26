@@ -223,12 +223,6 @@ def upload_file():
     #oauth2.init_app(app)
     # Explicitly use service account credentials by specifying the private key
     # file.
-    storage_client = storage.Client.from_service_account_json(
-        'A2N-Official-bd3ee1c6cc61.json')
-
-    # Make an authenticated API request
-    buckets = list(storage_client.list_buckets())
-    print(buckets)
     f = request.files['gcloudfile']
 
 
