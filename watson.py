@@ -206,16 +206,17 @@ def outputOutline(wsaParagraphList, wsaSentenceMatrix, outputfile):
                 ascii_inner-=1
             ascii_inner+=1
         ascii_outer+=1
-
-
-if __name__ == '__main__':
-    #print(createSummaryMatrix(converttexttoString("text.txt")))
-    paragraphlist = splitIntoParagraphs(converttexttoString('text.txt'))
+def finaloutputoutline(inputfile, outputfile):
+    paragraphlist = splitIntoParagraphs(converttexttoString(inputfile))
     newparagraphlist = preprocess(paragraphlist)
     wsaSentenceMatrix = createSummaryMatrix(newparagraphlist)
     #print(wsaSentenceMatrix)
     newparagraphlist = runWSAOnParagraphs(newparagraphlist)
-    outputOutline(newparagraphlist,wsaSentenceMatrix, 'WSA.txt')
+    outputOutline(newparagraphlist,wsaSentenceMatrix, outputfile)
+
+if __name__ == '__main__':
+    #print(createSummaryMatrix(converttexttoString("text.txt")))
+    finaloutputoutline('text.txt', 'WSA.txt')
 
     #makeMainIdea('text.txt', 'WSA.txt')
     #paragraphlist = splitIntoParagraphs(converttexttoString("text.txt"))

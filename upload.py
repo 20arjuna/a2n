@@ -270,11 +270,11 @@ def upload_file():
 
         #text_file.write('Confidence: {}'.format(result.alternatives[0].confidence))
 
+
+    text_file.close()
     print('starting outline')
     finaloutputoutline('wordcloud.txt', 'notes.txt')
     print('finished outline')
-    text_file.close()
-
     print('starting wordcloud')
     ############## Wordcloud time #############
     # get data directory (using getcwd() is needed to support running example in generated IPython notebook)
