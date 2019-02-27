@@ -212,7 +212,13 @@ def outputOutline(wsaParagraphList, wsaSentenceMatrix, outputfile):
                 ascii_inner-=1
             ascii_inner+=1
         ascii_outer+=1
-
+def finaloutputoutline(inputfile, outputfile):
+    paragraphlist = splitIntoParagraphs(converttexttoString(inputfile))
+    newparagraphlist = preprocess(paragraphlist)
+    wsaSentenceMatrix = createSummaryMatrix(newparagraphlist)
+    #print(wsaSentenceMatrix)
+    newparagraphlist = runWSAOnParagraphs(newparagraphlist)
+    outputOutline(newparagraphlist,wsaSentenceMatrix, outputfile)
 
 @app.route("/")
 def hello():
