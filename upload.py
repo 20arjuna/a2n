@@ -263,6 +263,7 @@ def upload_file():
     # Each result is for a consecutive portion of the audio. Iterate through
     # them to get the transcripts for the entire audio file.
     for result in response.results:
+        print("in for loop")
         # The first alternative is the most likely one for this portion.
         text_file.write(u'{}'.format(result.alternatives[0].transcript))
 
