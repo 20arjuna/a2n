@@ -291,7 +291,7 @@ def upload_file():
     #image.show()
     image.save('cloud.png', 'PNG')
 
-    return send_file('wordcloud.txt')
+    return send_file('notes.txt')
 
 if __name__ == "__main__":
     app.run()
