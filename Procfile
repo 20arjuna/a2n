@@ -1,1 +1,1 @@
-web: gunicorn upload:app --preload --workers 1 --timeout 90
+web: gunicorn upload:app --preload --workers 1 --timeout 120
