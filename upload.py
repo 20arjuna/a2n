@@ -14,7 +14,8 @@ import operator
 import re
 from watson_developer_cloud import NaturalLanguageUnderstandingV1
 from watson_developer_cloud.natural_language_understanding_v1 import Features, KeywordsOptions
-
+import matplotlib
+matplotlib.use('Agg')
 
 app = Flask(__name__)
 #from google.cloud import resumable_media
