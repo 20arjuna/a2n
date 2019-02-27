@@ -230,7 +230,7 @@ def upload_file():
     # Explicitly use service account credentials by specifying the private key
     # file.
     f = request.files['gcloudfile']
-
+    print('uploading to google cloud servers')
 
   # print(f.filename)
    #print(secure_filename(f.filename))
@@ -270,7 +270,9 @@ def upload_file():
 
         #text_file.write('Confidence: {}'.format(result.alternatives[0].confidence))
 
-
+    print('starting outline')
+    finaloutputoutline('wordcloud.txt', 'notes.txt')
+    print('finished outline')
     text_file.close()
 
     print('starting wordcloud')
@@ -289,7 +291,7 @@ def upload_file():
     #image.show()
     image.save('cloud.png', 'PNG')
 
-    return send_file('cloud.png')
+    return send_file('notes.txt')
 
 if __name__ == "__main__":
     app.run()
