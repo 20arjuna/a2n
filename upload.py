@@ -259,7 +259,7 @@ def upload_file():
 
     print('Waiting for operation to complete...')
     response = operation.result(timeout=9000)
-
+    print('after operation')
     # Each result is for a consecutive portion of the audio. Iterate through
     # them to get the transcripts for the entire audio file.
     for result in response.results:
