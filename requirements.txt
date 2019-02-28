@@ -17,3 +17,5 @@ SpeechRecognition==3.8.1
 watson-developer-cloud==2.8.0
 wordcloud==1.5.0
 Werkzeug==0.14.1
+docutils==0.14
+docx==0.2.4
