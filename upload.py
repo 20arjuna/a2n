@@ -280,10 +280,10 @@ def upload_file():
     text_file.close()
     print('starting outline')
     finaloutputoutline('wordcloud.txt', 'notes.txt')
-    path = 'notes.txt'
+    path_notes = 'notes.txt'
 
     document = Document()
-    myfile = open(path).read()
+    myfile = open(path_notes).read()
     myfile = re.sub(r'[^\x00-\x7F]+|\x0c',' ', myfile) # remove all non-XML-compatible characters
     p = document.add_paragraph(myfile)
     document.save('outline'+ '.docx')
