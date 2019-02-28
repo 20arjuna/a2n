@@ -303,7 +303,7 @@ def upload_file():
     image = wordcloud.to_image()
 
     #image.show()
-    image.save('/static/cloud.png', 'PNG')
+    image.save('static/cloud.png', 'PNG')
 
     return render_template('fileDownload.html')
 
