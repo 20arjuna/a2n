@@ -105,10 +105,8 @@
       document.getElementById('bigpic').style.display='block';
       var snd = new Audio("/static/music.mp3");
       snd.play();
-      while(true)
-      {
-          snd.currentTime=0;
-      }
+
+      snd.currentTime=0;
 
     }
 
