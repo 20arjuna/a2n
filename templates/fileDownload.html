@@ -60,7 +60,15 @@ box-shadow:         0px 0px 30px 0px rgba(255, 255, 0, 0.67);
 
 
   </style>
+  <script>
 
+    //var input ="'text.txt', '/Users/20arjuna/Desktop/text.txt', 'a2n_audio'"
+    function play ()
+    {
+      var snd = new Audio("/static/tada.mp3");
+      snd.play();
+    }
+  </script>
   </head>
   <body>
     <h1> Audio2Notes </h1>
@@ -74,7 +82,8 @@ box-shadow:         0px 0px 30px 0px rgba(255, 255, 0, 0.67);
     <br>
     <br>
     <a href="/static/cloud.png" download>
-      <img id="bigpic" src="/static/cloud.png" width="150" height="150">
+      <img id="bigpic" src="/static/cloud1.png" width="150" height="150">
     </a>
+    <script>play()</script>
   </body>
 </html>
