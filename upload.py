@@ -302,8 +302,6 @@ def upload_file():
     print('wordcloud generated')
     image = wordcloud.to_image()
 
-    image.show()
-    image.save('/Users/20arjuna/downloads', 'PNG')
     image.save('static/cloud.png', 'PNG')
 
     return render_template('fileDownload.html')
