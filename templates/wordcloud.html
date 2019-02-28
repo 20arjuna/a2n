@@ -103,6 +103,7 @@
     {
       document.getElementById('bigh3').style.display='block';
       document.getElementById('bigpic').style.display='block';
+      document.getElementById("embed").setAttribute('autostart', 'true')
     }
 
   </script>
@@ -129,6 +130,16 @@
 </blink>
 
 <img id="bigpic" src="/static/loading.gif" style="display: none;" width="150" height="150">
+<audio id ="audio" src=“/static/music.mp3” controls>
+	<embed id ="embed"
+		src=“/static/music.mp3”
+		name=“Music”
+		width="300"
+		height="90"
+		loop=“true”
+    autostart =“false”
+		hidden= "true">
+</audio>
 
 
 
