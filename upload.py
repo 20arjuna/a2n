@@ -286,7 +286,7 @@ def upload_file():
     myfile = open(path_notes).read()
     myfile = re.sub(r'[^\x00-\x7F]+|\x0c',' ', myfile) # remove all non-XML-compatible characters
     p = document.add_paragraph(myfile)
-    document.save('outline'+ '.docx')
+    document.save('static/outline'+ '.docx')
 
     print('finished outline')
     print('starting wordcloud')
