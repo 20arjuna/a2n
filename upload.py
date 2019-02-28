@@ -235,9 +235,9 @@ def upload_file():
     #oauth2.init_app(app)
     # Explicitly use service account credentials by specifying the private key
     # file.
-    f = request.files['gcloudfile']
+   f = request.files['gcloudfile']
 
-    print('uploading to google cloud servers')
+   print('uploading to google cloud servers')
 
 
    f.save(f.filename)
