@@ -30,10 +30,12 @@ def findKeywords(filename):
         url='https://gateway-wdc.watsonplatform.net/natural-language-understanding/api'
         )
 
-    response = natural_language_understanding.analyze(
-        text = file.read(),
+    try:
+        response = natural_language_understanding.analyze(
+        text = string,
         features=Features(keywords=KeywordsOptions(sentiment=False,emotion=False))).get_result()
-
+    except:
+        return []
     #print(json.dumps(response, indent=2))
     file.close()
     outputfile.write(json.dumps(response, indent=2))
@@ -49,7 +51,6 @@ def findKeywords(filename):
     #for i in keywords:
         #print(i)
     return createRelavantKeywordsList(my_dict, keywords)
-#print(findKeywords("text.txt"))
 def converttexttoString(filename):
     with open(filename) as f:
         lines = f.readlines()
@@ -114,10 +115,13 @@ def findKeywordsofString(string):
         iam_apikey='m620e2y3lML5qG_oRJy9JERrlR0-159j3vJVrtPJkhJg',
         url='https://gateway-wdc.watsonplatform.net/natural-language-understanding/api'
         )
-
-    response = natural_language_understanding.analyze(
+    try:
+        response = natural_language_understanding.analyze(
         text = string,
         features=Features(keywords=KeywordsOptions(sentiment=False,emotion=False))).get_result()
+    except:
+        return []
+
 
     #print(json.dumps(response, indent=2))
     outputfile.write(json.dumps(response, indent=2))
