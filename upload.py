@@ -296,7 +296,7 @@ def upload_file():
     #image.show()
     image.save('cloud.png', 'PNG')
 
-    return send_file('notes.txt')
+    return render_template('fileDownload.html')
 
 if __name__ == "__main__":
     app.run()
