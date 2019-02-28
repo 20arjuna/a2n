@@ -17,6 +17,7 @@ from watson_developer_cloud.natural_language_understanding_v1 import Features, K
 import matplotlib
 from docx import Document
 matplotlib.use('Agg')
+import subprocess
 
 app = Flask(__name__)
 #from google.cloud import resumable_media
@@ -235,19 +236,20 @@ def upload_file():
     # Explicitly use service account credentials by specifying the private key
     # file.
     f = request.files['gcloudfile']
+
     print('uploading to google cloud servers')
 
-  # print(f.filename)
-   #print(secure_filename(f.filename))
-   #f.save(f.filename)
-   #fString = str(f.filename)
-   #fString = fString.split("'")
+
+   f.save(f.filename)
+   fString = str(f.filename)
+   fString = fString.split("'")
+   subprocess.call(['sox', fString[1], '-r', '16k', 'flacified.flac', 'remix', '1,2'])
     storage_client = storage.Client.from_service_account_json(
          'A2N-Official-bd3ee1c6cc61.json')
     bucket = storage_client.get_bucket('a2n_audio')
     blob = bucket.blob('input')
     #print(fString[1])
-    blob.upload_from_file(f)
+    blob.upload_from_file('flacified.flac')
 
     ##### Converting Speech to text ##########
     client = speech.SpeechClient()

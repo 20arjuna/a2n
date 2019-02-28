@@ -8,139 +8,139 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <style>
-    body {background-color: black;}
-    h1
-    {
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-    }
-    h3
-    {
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-    }
-    h4
-    {
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-    }
-    a
-    {
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-    }
-    code
-    {
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-      background-color: black;
-    }
-    form
-    {
-      margin: 0 auto;
-      color: white;
+  body {background-color: black;}
+  h1
+  {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  h3
+  {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  h4
+  {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  a
+  {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  code
+  {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color: black;
+  }
+  form
+  {
+    margin: 0 auto;
+    color: white;
 
-      width:100px;
-    }
-      img {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
+    width:100px;
+  }
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 
-    }
+  }
 
   </style>
   <script>
-    var audioFormat = "";
-    //var input ="'text.txt', '/Users/20arjuna/Desktop/text.txt', 'a2n_audio'"
-    function setMP3 ()
-    {
-      audioFormat = ".mp3";
-      document.getElementById("format").setAttribute('accept', audioFormat)
+  var audioFormat = "";
+  //var input ="'text.txt', '/Users/20arjuna/Desktop/text.txt', 'a2n_audio'"
+  function setMP3 ()
+  {
+    audioFormat = ".mp3";
+    document.getElementById("format").setAttribute('accept', audioFormat)
 
-    }
-    function setWAV ()
-    {
-      audioFormat = ".wav";
-      document.getElementById("format").setAttribute('accept', audioFormat)
+  }
+  function setWAV ()
+  {
+    audioFormat = ".wav";
+    document.getElementById("format").setAttribute('accept', audioFormat)
 
-    }
-    function setFLAC ()
-    {
-      audioFormat = ".flac";
-      document.getElementById("format").setAttribute('accept', audioFormat)
+  }
+  function setFLAC ()
+  {
+    audioFormat = ".flac";
+    document.getElementById("format").setAttribute('accept', audioFormat)
 
-    }
-    function reset()
+  }
+  function reset()
+  {
+    audioFormat = "";
+  }
+  function validateInput()
+  {
+    console.log('validating!!!!');
+    if(audioFormat === "")
     {
-      audioFormat = "";
+      alert("Select a file type!");
+      event.preventDefault();
     }
-    function validateInput()
-    {
-      console.log('validating!!!!');
-      if(audioFormat === "")
-      {
-        alert("Select a file type!");
-        event.preventDefault();
-      }
-    }
-    function loading()
-    {
-      document.getElementById('bigh3').style.display='block';
-      document.getElementById('bigpic').style.display='block';
-      var snd = new Audio("/static/music.mp3");
-      snd.play();
+  }
+  function loading()
+  {
+    document.getElementById('bigh3').style.display='block';
+    document.getElementById('bigpic').style.display='block';
+    var snd = new Audio("/static/music.mp3");
+    snd.play();
 
-      snd.currentTime=0;
+    snd.currentTime=0;
 
-    }
+  }
 
   </script>
 </head>
 
 <body>
-<div class="container">
-  <h1>Audio2Notes</h2>
-  <h3>Select the audio format you want to convert to notes.</h3>
-  <a href="https://audio.online-convert.com/convert-to-flac" target="_blank">Only upload .flac files (Click for Link)</a>
-  <h4> Enter the following command in terminal. Replace FILENAME with your file.</h4>
-  <code>ffmpeg -i FILENAME.flac -ac 1 FILENAME_new.flac</code>
-  <h1></h1>
-  <h3>Now upload your file.</h3>
-  <h1></h1>
-  <form id="myForm" action ="/uploaderlocal" method ="POST" enctype="multipart/form-data">
-    <input id ="format" name ='gcloudfile' type="file" style="width:200px" accept=".flac">
-    <h1></h1>
-    <input type="Submit" style="background-color:white; color:black;"
-    value="Convert!" onclick="loading()">
-  </form>
-<blink>
-  <h3 id ="bigh3" style="display:none;" class="center">Loading... </h3>
-</blink>
+  <div class="container">
+    <h1>Audio2Notes</h2>
+      <div class="btn-group btn-group-justified">
+        <a href="#" class="btn btn-primary" onclick="setMP3()">.mp3</a>
+        <a href="#" class="btn btn-primary" onclick="setWAV()">.wav</a>
+        <a href="#" class="btn btn-primary" onclick="setFLAC()">.flac</a>
+        <a href="#" class="btn btn-primary" onclick="reset()">reset</a>
+      </div>
+      <h1></h1>
+      <form id="myForm" action ="/uploaderlocal" method ="POST" enctype="multipart/form-data">
+        <input id ="format" name ='gcloudfile' type="file" style="width:200px" accept=".flac">
+        <h1></h1>
+        <input type="Submit" style="background-color:white; color:black;"
+        value="Convert!" onclick="loading()">
+      </form>
+      <blink>
+        <h3 id ="bigh3" style="display:none;" class="center">Loading... </h3>
+      </blink>
 
-<img id="bigpic" src="/static/loading.gif" style="display: none;" width="150" height="150">
-
-
+      <img id="bigpic" src="/static/loading.gif" style="display: none;" width="150" height="150">
 
 
 
 
-</div>
 
-</body>
-</html>
+
+    </div>
+
+  </body>
+  </html>
