@@ -15,6 +15,7 @@ import re
 from watson_developer_cloud import NaturalLanguageUnderstandingV1
 from watson_developer_cloud.natural_language_understanding_v1 import Features, KeywordsOptions
 import matplotlib
+from docx import Document
 matplotlib.use('Agg')
 
 app = Flask(__name__)
@@ -279,6 +280,14 @@ def upload_file():
     text_file.close()
     print('starting outline')
     finaloutputoutline('wordcloud.txt', 'notes.txt')
+    path = 'notes.txt'
+
+    document = Document()
+    myfile = open(path).read()
+    myfile = re.sub(r'[^\x00-\x7F]+|\x0c',' ', myfile) # remove all non-XML-compatible characters
+    p = document.add_paragraph(myfile)
+    document.save('outline'+ '.docx')
+
     print('finished outline')
     print('starting wordcloud')
     ############## Wordcloud time #############
