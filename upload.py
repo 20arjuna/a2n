@@ -292,7 +292,7 @@ def upload_file():
     print('starting wordcloud')
     ############## Wordcloud time #############
     # get data directory (using getcwd() is needed to support running example in generated IPython notebook)
-    d = os.getcwd()
+    d =  path.dirname(__file__) if "__file__" in locals() else os.getcwd()
 
     # Read the whole text.
     text = open(path.join(d, 'wordcloud.txt')).read()
@@ -302,7 +302,8 @@ def upload_file():
     print('wordcloud generated')
     image = wordcloud.to_image()
 
-    #image.show()
+    image.show()
+    image.save('/Users/20arjuna/downloads', 'PNG')
     image.save('static/cloud.png', 'PNG')
 
     return render_template('fileDownload.html')
