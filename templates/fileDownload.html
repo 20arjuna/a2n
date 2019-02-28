@@ -53,98 +53,89 @@ img:last-of-type:hover{
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
- -webkit-box-shadow: 0px 0px 30px 0px rgba(232, 0, 0, 0.67);
--moz-box-shadow:    0px 0px 30px 0px rgba(232, 0, 0, 0.67);
-box-shadow:         0px 0px 30px 0px rgba(232, 0, 0, 0.67);
+ -webkit-box-shadow: 0px 0px 30px 0px rgba(255, 255, 0, 0.67);
+-moz-box-shadow:    0px 0px 30px 0px rgba(255, 255, 0, 0.67);
+box-shadow:         0px 0px 30px 0px rgba(255, 255, 0, 0.67);
 }
-$yellow: #ffd300;
-$blue: #17d3ff;
-$pink: #ff4e91;
-
-$duration: 1000;
-
-@function randomNum($min, $max) {
-  $rand: random();
-  $randomNum: $min + floor($rand * (($max - $min) + 1));
-
-  @return $randomNum;
+body {
+  padding: 0;
+  margin: 0;
+  background: rgb(51, 51, 51);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
-.icon {
-  font-size: 32px;
-  font-weight: bold;
-  letter-spacing: 32px;
-  position: relative;
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.sound.min.js"></script>
+  <script>
+    let confettiColor = [], confetti = [];
+
+function setup() {
+  createCanvas(windowWidth*0.95,windowHeight*0.95);
+	confettiColor = [color('#00aeef'), color('#ec008c'), color('#72c8b6')];
+  for (let i = 0; i < 100; i++) {
+    confetti[i] = new Confetti(random(0, width), random(-height, 0), random(-1, 1));
+  }
 }
 
-.confetti {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-}
+function draw() {
+  background(51);
 
-.confetti-piece {
-  position: absolute;
-  width: 8px;
-  height: 16px;
-  background: $yellow;
-  top: 0;
-  opacity: 0;
+	for (let i = 0; i < confetti.length / 2; i++) {
+    confetti[i].confettiDisplay();
 
-  @for $i from 1 through 13 {
-    &:nth-child(#{$i}) {
-      left: $i * 7%;
-      transform: rotate(#{randomNum(-80, 80)}deg);
-      animation: makeItRain $duration * 1ms infinite ease-out;
-      animation-delay: #{randomNum(0, $duration * .5)}ms;
-      animation-duration: #{randomNum($duration * .7, $duration * 1.2)}ms
+    if (confetti[i].y > height) {
+      confetti[i] = new Confetti(random(0, width), random(-height, 0), random(-1, 1));
     }
   }
 
-  &:nth-child(odd) {
-    background: $blue;
-  }
+  for (let i = int(confetti.length / 2); i < confetti.length; i++) {
+    confetti[i].confettiDisplay();
 
-  &:nth-child(even) {
-    z-index: 1;
-  }
-
-  &:nth-child(4n) {
-    width: 5px;
-    height: 12px;
-    animation-duration: $duration * 2ms;
-  }
-
-  &:nth-child(3n) {
-    width: 3px;
-    height: 10px;
-    animation-duration: $duration * 2.5ms;
-    animation-delay: $duration * 1ms;
-  }
-
-  &:nth-child(4n-7) {
-    background: $pink;
+    if (confetti[i].y > height) {
+      confetti[i] = new Confetti(random(0, width), random(-height, 0), random(-1, 1));
+    }
   }
 }
 
-@keyframes makeItRain {
-  from {
-    opacity: 0;
+class Confetti {
+  constructor(_x, _y, _s) {
+    this.x = _x;
+    this.y = _y;
+    this.speed = _s;
+    this.time = random(0, 100);
+    this.color = random(confettiColor);
+    this.amp = random(2, 30);
+    this.phase = random(0.5, 2);
+    this.size = random(width / 25, height / 50);
   }
 
-  50% {
-    opacity: 1;
-  }
+  confettiDisplay() {
+    fill(this.color);
+    // blendMode(SCREEN);
+    noStroke();
+    push();
+    translate(this.x, this.y);
+    translate(this.amp * sin(this.time * this.phase), this.speed * cos(2 * this.time * this.phase));
+    rotate(this.time);
+    rectMode(CENTER);
+    scale(cos(this.time / 4), sin(this.time / 4));
+    rect(0, 0, this.size, this.size / 2);
+    pop();
 
-  to {
-    transform: translateY(200px);
+    this.time = this.time + 0.1;
+
+    this.speed += 1 / 200;
+
+    this.y += this.speed;
   }
 }
-    </style>
+  </script>
   </head>
   <body>
     <h1> Audio2Notes </h1>
@@ -160,21 +151,5 @@ $duration: 1000;
     <a href="/static/cloud.png" download>
       <img id="bigpic" src="/static/cloud.png">
     </a>
-    <div class="confetti">
-  <div class="confetti-piece"></div>
-  <div class="confetti-piece"></div>
-  <div class="confetti-piece"></div>
-  <div class="confetti-piece"></div>
-  <div class="confetti-piece"></div>
-  <div class="confetti-piece"></div>
-  <div class="confetti-piece"></div>
-  <div class="confetti-piece"></div>
-  <div class="confetti-piece"></div>
-  <div class="confetti-piece"></div>
-  <div class="confetti-piece"></div>
-  <div class="confetti-piece"></div>
-  <div class="confetti-piece"></div>
-
-</div>
   </body>
 </html>
