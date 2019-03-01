@@ -243,7 +243,7 @@ def upload_file():
    f.save(f.filename)
    fString = str(f.filename)
    fString = fString.split("'")
-   print(fString[1])
+   print(fString)
    subprocess.call(['sox', fString[1], '-r', '16k', 'flacified.flac', 'remix', '1,2'])
    storage_client = storage.Client.from_service_account_json(
          'A2N-Official-bd3ee1c6cc61.json')
