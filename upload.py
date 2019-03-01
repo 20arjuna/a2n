@@ -246,67 +246,67 @@ def upload_file():
    subprocess.call(['sox', fString[1], '-r', '16k', 'flacified.flac', 'remix', '1,2'])
    storage_client = storage.Client.from_service_account_json(
          'A2N-Official-bd3ee1c6cc61.json')
-    bucket = storage_client.get_bucket('a2n_audio')
-    blob = bucket.blob('input')
+   bucket = storage_client.get_bucket('a2n_audio')
+   blob = bucket.blob('input')
     #print(fString[1])
-    blob.upload_from_file('flacified.flac')
+   blob.upload_from_file('flacified.flac')
 
     ##### Converting Speech to text ##########
-    client = speech.SpeechClient()
-    text_file = open("wordcloud.txt", "w")
+   client = speech.SpeechClient()
+   text_file = open("wordcloud.txt", "w")
 
-    audio = types.RecognitionAudio(uri='gs://a2n_audio/input')
-    config = types.RecognitionConfig(
-        encoding=enums.RecognitionConfig.AudioEncoding.FLAC,
-        sample_rate_hertz=44100,
-        language_code='en-US',
-        enable_automatic_punctuation=True)
+   audio = types.RecognitionAudio(uri='gs://a2n_audio/input')
+   config = types.RecognitionConfig(
+   encoding=enums.RecognitionConfig.AudioEncoding.FLAC,
+   sample_rate_hertz=44100,
+   language_code='en-US',
+   enable_automatic_punctuation=True)
 
-    operation = client.long_running_recognize(config, audio)
+   operation = client.long_running_recognize(config, audio)
 
-    print('Waiting for operation to complete...')
-    response = operation.result(timeout=9000)
-    print('after operation')
-    # Each result is for a consecutive portion of the audio. Iterate through
-    # them to get the transcripts for the entire audio file.
-    for result in response.results:
-        print("in for loop")
-        # The first alternative is the most likely one for this portion.
-        text_file.write(u'{}'.format(result.alternatives[0].transcript))
+   print('Waiting for operation to complete...')
+   response = operation.result(timeout=9000)
+   print('after operation')
+   # Each result is for a consecutive portion of the audio. Iterate through
+   # them to get the transcripts for the entire audio file.
+   for result in response.results:
+       print("in for loop")
+       # The first alternative is the most likely one for this portion.
+       text_file.write(u'{}'.format(result.alternatives[0].transcript))
 
-        text_file.write("\n")
+       text_file.write("\n")
 
-        #text_file.write('Confidence: {}'.format(result.alternatives[0].confidence))
+       #text_file.write('Confidence: {}'.format(result.alternatives[0].confidence))
 
 
-    text_file.close()
-    print('starting outline')
-    finaloutputoutline('wordcloud.txt', 'notes.txt')
-    path_notes = 'notes.txt'
+       text_file.close()
+       print('starting outline')
+       finaloutputoutline('wordcloud.txt', 'notes.txt')
+       path_notes = 'notes.txt'
 
-    document = Document()
-    myfile = open(path_notes).read()
-    myfile = re.sub(r'[^\x00-\x7F]+|\x0c',' ', myfile) # remove all non-XML-compatible characters
-    p = document.add_paragraph(myfile)
-    document.save('static/outline'+ '.docx')
+       document = Document()
+       myfile = open(path_notes).read()
+       myfile = re.sub(r'[^\x00-\x7F]+|\x0c',' ', myfile) # remove all non-XML-compatible characters
+       p = document.add_paragraph(myfile)
+       document.save('static/outline'+ '.docx')
 
-    print('finished outline')
-    print('starting wordcloud')
-    ############## Wordcloud time #############
-    # get data directory (using getcwd() is needed to support running example in generated IPython notebook)
-    d =  path.dirname(__file__) if "__file__" in locals() else os.getcwd()
+       print('finished outline')
+       print('starting wordcloud')
+       ############## Wordcloud time #############
+       # get data directory (using getcwd() is needed to support running example in generated IPython notebook)
+       d =  path.dirname(__file__) if "__file__" in locals() else os.getcwd()
 
-    # Read the whole text.
-    text = open(path.join(d, 'wordcloud.txt')).read()
+       # Read the whole text.
+       text = open(path.join(d, 'wordcloud.txt')).read()
 
-    # Generate a word cloud image
-    wordcloud = WordCloud().generate(text)
-    print('wordcloud generated')
-    image = wordcloud.to_image()
+       # Generate a word cloud image
+       wordcloud = WordCloud().generate(text)
+       print('wordcloud generated')
+       image = wordcloud.to_image()
 
-    image.save('static/cloud.png', 'PNG')
+       image.save('static/cloud.png', 'PNG')
 
-    return render_template('fileDownload.html')
+       return render_template('fileDownload.html')
 
 if __name__ == "__main__":
     app.run()
