@@ -111,7 +111,6 @@ def printMainIdea(filename):
 def findKeywordsofString(string):
     outputfile = open("jsonOutput.json", "w")
     keywords = []
-
     natural_language_understanding = NaturalLanguageUnderstandingV1(
         version='2018-11-16',
         iam_apikey='m620e2y3lML5qG_oRJy9JERrlR0-159j3vJVrtPJkhJg',

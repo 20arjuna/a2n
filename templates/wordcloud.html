@@ -63,6 +63,12 @@
     margin-right: auto;
 
   }
+  .footer{
+       position: fixed;
+       text-align: center;
+       bottom: 20px;
+       width: 100%;
+   }
 
   </style>
   <script>
@@ -117,12 +123,14 @@
 <body>
   <div class="container">
     <h1>Audio2Notes</h2>
+      <h4>Choose your file upload type</h4>
       <div class="btn-group btn-group-justified">
         <a href="#" class="btn btn-primary" onclick="setMP3()">.mp3</a>
         <a href="#" class="btn btn-primary" onclick="setWAV()">.wav</a>
         <a href="#" class="btn btn-primary" onclick="setFLAC()">.flac</a>
         <a href="#" class="btn btn-primary" onclick="reset()">reset</a>
       </div>
+      <h4>Now upload your file</h4>
       <h1></h1>
       <form id="myForm" action ="/uploaderlocal" method ="POST" enctype="multipart/form-data">
         <input id ="format" name ='gcloudfile' type="file" style="width:200px" accept=".flac" onclick="validateInput()">
@@ -142,6 +150,7 @@
 
 
     </div>
-
+    <h4 class="footer" style="color: white; position: fixed;
+    bottom: 20px;">Created in Nichols Hall, CA</h4>
   </body>
   </html>
