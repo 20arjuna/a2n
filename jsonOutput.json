@@ -1,35 +1,9 @@
 {
   "usage": {
     "text_units": 1,
-    "text_characters": 138,
+    "text_characters": 40,
     "features": 1
   },
   "language": "en",
-  "keywords": [
-    {
-      "text": "Star Game",
-      "relevance": 0.964061,
-      "count": 1
-    },
-    {
-      "text": "last night",
-      "relevance": 0.88832,
-      "count": 1
-    },
-    {
-      "text": "NBA",
-      "relevance": 0.626122,
-      "count": 1
-    },
-    {
-      "text": "biggest plays",
-      "relevance": 0.522988,
-      "count": 1
-    },
-    {
-      "text": "Steph Curry's assist",
-      "relevance": 0.341075,
-      "count": 1
-    }
-  ]
+  "keywords": []
 }
