@@ -243,7 +243,7 @@ def upload_file():
    f.save(f.filename)
    fString = str(f.filename)
    fString = fString.split("'")
-   subprocess.call([fString[0], '-r', '44100', 'flacified.flac', 'remix', '1,2'])
+   subprocess.call(['sox', fString[0], '-r', '44100', 'flacified.flac', 'remix', '1,2'])
    print('sox is a go!')
    storage_client = storage.Client.from_service_account_json(
          'A2N-Official-bd3ee1c6cc61.json')
