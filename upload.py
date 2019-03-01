@@ -281,34 +281,34 @@ def upload_file():
        #text_file.write('Confidence: {}'.format(result.alternatives[0].confidence))
 
 
-    text_file.close()
-    print('starting outline')
-    finaloutputoutline('wordcloud.txt', 'notes.txt')
-    path_notes = 'notes.txt'
+   text_file.close()
+   print('starting outline')
+   finaloutputoutline('wordcloud.txt', 'notes.txt')
+   path_notes = 'notes.txt'
 
-    document = Document()
-    myfile = open(path_notes).read()
-    myfile = re.sub(r'[^\x00-\x7F]+|\x0c',' ', myfile) # remove all non-XML-compatible characters
-    p = document.add_paragraph(myfile)
-    document.save('static/outline'+ '.docx')
+   document = Document()
+   myfile = open(path_notes).read()
+   myfile = re.sub(r'[^\x00-\x7F]+|\x0c',' ', myfile) # remove all non-XML-compatible characters
+   p = document.add_paragraph(myfile)
+   document.save('static/outline'+ '.docx')
 
-    print('finished outline')
-    print('starting wordcloud')
+   print('finished outline')
+   print('starting wordcloud')
        ############## Wordcloud time #############
        # get data directory (using getcwd() is needed to support running example in generated IPython notebook)
-    d =  path.dirname(__file__) if "__file__" in locals() else os.getcwd()
+   d =  path.dirname(__file__) if "__file__" in locals() else os.getcwd()
 
        # Read the whole text.
-    text = open(path.join(d, 'wordcloud.txt')).read()
+   text = open(path.join(d, 'wordcloud.txt')).read()
 
        # Generate a word cloud image
-    wordcloud = WordCloud().generate(text)
-    print('wordcloud generated')
-    image = wordcloud.to_image()
+   wordcloud = WordCloud().generate(text)
+   print('wordcloud generated')
+   image = wordcloud.to_image()
 
-    image.save('static/cloud.png', 'PNG')
+   image.save('static/cloud.png', 'PNG')
 
-    return render_template('fileDownload.html')
+   return render_template('fileDownload.html')
 
 if __name__ == "__main__":
     app.run()
