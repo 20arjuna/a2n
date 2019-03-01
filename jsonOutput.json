@@ -1,9 +1,20 @@
 {
   "usage": {
     "text_units": 1,
-    "text_characters": 38,
+    "text_characters": 26,
     "features": 1
   },
   "language": "en",
-  "keywords": []
+  "keywords": [
+    {
+      "text": "life",
+      "relevance": 0.765931,
+      "count": 1
+    },
+    {
+      "text": "Testing",
+      "relevance": 0.725093,
+      "count": 1
+    }
+  ]
 }

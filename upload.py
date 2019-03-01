@@ -243,14 +243,14 @@ def upload_file():
    f.save(f.filename)
    fString = str(f.filename)
    fString = fString.split("'")
-   print(fString)
-   subprocess.call(['sox', fString[1], '-r', '16k', 'flacified.flac', 'remix', '1,2'])
+   subprocess.call(['sox', fString[0], '-r', '44100', 'flacified.flac', 'remix', '1,2'])
+   print('sox is a go!')
    storage_client = storage.Client.from_service_account_json(
          'A2N-Official-bd3ee1c6cc61.json')
    bucket = storage_client.get_bucket('a2n_audio')
    blob = bucket.blob('input')
     #print(fString[1])
-   blob.upload_from_file('flacified.flac')
+   blob.upload_from_filename('flacified.flac')
 
     ##### Converting Speech to text ##########
    client = speech.SpeechClient()
