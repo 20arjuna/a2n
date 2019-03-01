@@ -244,7 +244,7 @@ def upload_file():
    fString = str(f.filename)
    fString = fString.split("'")
    subprocess.call(['sox', fString[1], '-r', '16k', 'flacified.flac', 'remix', '1,2'])
-    storage_client = storage.Client.from_service_account_json(
+   storage_client = storage.Client.from_service_account_json(
          'A2N-Official-bd3ee1c6cc61.json')
     bucket = storage_client.get_bucket('a2n_audio')
     blob = bucket.blob('input')
