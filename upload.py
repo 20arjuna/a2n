@@ -257,7 +257,7 @@ def upload_file():
    f.save(f.filename)
    fString = str(f.filename)
    fString = fString.split("'")
-   ff = ffmpy.FFmpeg(inputs={fString[0]: None},    outputs={'': '-ac 1 flacified.flac'} )
+   ff = ffmpy.FFmpeg(inputs={fString[0]: None},    outputs={'flacy.flac': '-ac 1 flacified.flac'} )
    ff.run()
    print('sox is a go!')
    os.remove(fString[0])
