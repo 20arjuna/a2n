@@ -18,9 +18,13 @@ import matplotlib
 from docx import Document
 matplotlib.use('Agg')
 import subprocess
+from flask.ext.rqify import init_rqify
+from flask.ext.rq import job
 
 app = Flask(__name__)
+init_rqify(app)
 #from google.cloud import resumable_media
+@job
 def findKeywords(filename):
     file = open(filename, "r")
     outputfile = open("jsonOutput.json", "w")
@@ -53,6 +57,7 @@ def findKeywords(filename):
     #for i in keywords:
         #print(i)
     return createRelavantKeywordsList(my_dict, keywords)
+@job
 def converttexttoString(filename):
     with open(filename) as f:
         lines = f.readlines()
@@ -62,6 +67,7 @@ def converttexttoString(filename):
     #print(type(textstr))
     return textstr
 #print(converttexttoString("text.txt"))
+@job
 def createDictionary (text, keywords):
     my_dict = {}
     #print(len(text))
@@ -70,6 +76,7 @@ def createDictionary (text, keywords):
         #print(text.index(i))
         my_dict.update({i : text.index(i)})
     return my_dict
+@job
 def createRelavantKeywordsList(dict, keywordslist):
     keywords =[]
     threshold = 0.60
@@ -83,16 +90,17 @@ def createRelavantKeywordsList(dict, keywordslist):
     if(len(keywords)==0) and (len(keywordslist)>0):
         keywords.append(keywordslist[0])
     return keywords
-
+@job
 def sortByIndex(dict):
     sorted_dict = sorted(dict.items(), key=operator.itemgetter(1))
     return sorted_dict
+@job
 def makestringfromDictionary(sorteddictionary):
     str = ''
     for key in sorteddictionary:
         str+=key[0] + ' '
     return str
-
+@job
 def makeMainIdea(filename, outputfile):
     keywordwatsonlist = findKeywords(filename)
     textstring = converttexttoString(filename)
@@ -101,6 +109,7 @@ def makeMainIdea(filename, outputfile):
     finalstring = makestringfromDictionary(beautifulsorteddictionary)
     text_file = open(outputfile, "w")
     text_file.write(finalstring)
+@job
 def printMainIdea(filename):
     keywordwatsonlist = findKeywords(filename)
     textstring = converttexttoString(filename)
@@ -108,6 +117,7 @@ def printMainIdea(filename):
     beautifulsorteddictionary = sortByIndex(dictionary)
     finalstring = makestringfromDictionary(beautifulsorteddictionary)
     print(finalstring)
+@job
 def findKeywordsofString(string):
     outputfile = open("jsonOutput.json", "w")
     keywords = []
@@ -138,18 +148,21 @@ def findKeywordsofString(string):
     #for i in keywords:
         #print(i)
     return createRelavantKeywordsList(my_dict, keywords)
+@job
 def wsa(inputstring):
     keywordwatsonlist = findKeywordsofString(inputstring)
     dictionary = createDictionary(inputstring,keywordwatsonlist)
     beautifulsorteddictionary = sortByIndex(dictionary)
     finalstring = makestringfromDictionary(beautifulsorteddictionary)
     return finalstring
-
+@job
 def splitIntoParagraphs(text):
     return re.split('[\n]', text)
+@job
 def splitParagraphIntoSentences(paragraph):
     sentencelist = re.split('[?!.]', paragraph)
     return sentencelist[:-1]
+@job
 def createSummaryMatrix(paragraphList):
     #paragraphList = splitIntoParagraphs(text)
     mat = []
@@ -170,12 +183,13 @@ def createSummaryMatrix(paragraphList):
         #print(wsaList)
         mat.append(wsaList)
     return mat
+@job
 def runWSAOnParagraphs(paragraphList):
     wsaList = []
     for paragraph in paragraphList:
         wsaList.append(wsa(paragraph))
     return wsaList
-
+@job
 def preprocess(list):
     for i in range (len(list)-1, -1, -1):
         iList = list[i].split(' ')
@@ -184,7 +198,7 @@ def preprocess(list):
         if(len(iList) <3):
             list.remove(list[i])
     return list
-
+@job
 def outputOutline(wsaParagraphList, wsaSentenceMatrix, outputfile):
     ascii_outer = 65
     text_file = open(outputfile, "w")
@@ -217,6 +231,7 @@ def outputOutline(wsaParagraphList, wsaSentenceMatrix, outputfile):
                 ascii_inner-=1
             ascii_inner+=1
         ascii_outer+=1
+@job
 def finaloutputoutline(inputfile, outputfile):
     paragraphlist = splitIntoParagraphs(converttexttoString(inputfile))
     newparagraphlist = preprocess(paragraphlist)
@@ -226,10 +241,12 @@ def finaloutputoutline(inputfile, outputfile):
     outputOutline(newparagraphlist,wsaSentenceMatrix, outputfile)
 
 @app.route("/")
+@job
 def hello():
     return render_template('wordcloud.html')
 
 @app.route('/uploaderlocal', methods=['POST'])
+@job
 def upload_file():
     #oauth2.init_app(app)
     # Explicitly use service account credentials by specifying the private key
