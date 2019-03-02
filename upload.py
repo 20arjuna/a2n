@@ -18,6 +18,7 @@ import matplotlib
 from docx import Document
 matplotlib.use('Agg')
 import ffmpy
+import ffmpeg
 
 app = Flask(__name__)
 
