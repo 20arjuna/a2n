@@ -17,7 +17,7 @@ from watson_developer_cloud.natural_language_understanding_v1 import Features, K
 import matplotlib
 from docx import Document
 matplotlib.use('Agg')
-impor ffmpy
+import ffmpy
 from ffmpy import FFmpeg
 
 app = Flask(__name__)
