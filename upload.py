@@ -17,7 +17,7 @@ from watson_developer_cloud.natural_language_understanding_v1 import Features, K
 import matplotlib
 from docx import Document
 matplotlib.use('Agg')
-import subprocess
+import ffmpy
 
 app = Flask(__name__)
 
@@ -257,7 +257,8 @@ def upload_file():
    f.save(f.filename)
    fString = str(f.filename)
    fString = fString.split("'")
-   subprocess.call(['sox', fString[0], '-r', '44100', 'flacified.flac', 'remix', '1,2'])
+   ff = ffmpy.FFmpeg(inputs={fString[0]: None},    outputs={'flacy.flac': '-ac 1 flacified.flac'} )
+   ff.run()
    print('sox is a go!')
    os.remove(fString[0])
    storage_client = storage.Client.from_service_account_json(
