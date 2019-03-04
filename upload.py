@@ -273,8 +273,8 @@ def upload_file():
    result =q1.enqueue_call(func=utils.convert_to_outline, args=())
    result=q1.enqueue_call(func=utils.create_wordcloud, args=())
 
-
-   return render_template('fileDownload.html')
+   if result.is_finished:
+       return render_template('fileDownload.html')
 
 if __name__ == "__main__":
     app.run()
