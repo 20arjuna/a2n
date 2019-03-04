@@ -274,7 +274,7 @@ def upload_file():
    result=q1.enqueue_call(func=utils.create_wordcloud, args=())
 
    while (result.is_finished != True):
-       print('working')
+       #fadsljkfa;lsf;jk
    return render_template('fileDownload.html')
 
 if __name__ == "__main__":
