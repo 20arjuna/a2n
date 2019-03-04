@@ -266,10 +266,10 @@ def upload_file():
 
 
 
-   utils.upload_file()
-   utils.speech_to_text()
-   utils.convert_to_outline()
-   utils.create_wordcloud()
+   result = q.enqueue(upload_file())
+   result = q.enqueue(utils.speech_to_text())
+   result =q.enqueue(utils.convert_to_outline())
+   result=q.enqueue(utils.create_wordcloud())
 
 
    return render_template('fileDownload.html')
