@@ -275,6 +275,8 @@ def upload_file():
 
    if result.is_finished:
        return render_template('fileDownload.html')
+   else:
+       return "keep working"
 
 if __name__ == "__main__":
     app.run()
