@@ -268,7 +268,7 @@ def upload_file():
    os.remove(fString[0])
 
 
-
+   num = 5
    result = q1.enqueue(utils.upload_to_google(num), 5)
    result = q1.enqueue(utils.speech_to_text(num), 5)
    result3 =q1.enqueue(utils.convert_to_outline(num), 5)
