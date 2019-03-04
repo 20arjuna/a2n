@@ -269,8 +269,8 @@ def upload_file():
 
    result = q1.enqueue_call(func=utils.upload_to_google, args=(), result_ttl=5000)
    result = q1.enqueue_call(func=utils.speech_to_text, args=(), result_ttl=5000)
-   result =q1.enqueue_call(utils.convert_to_outline, args=(), result_ttl=5000)
-   result=q1.enqueue(utils.create_wordcloud, args=(), result_ttl=5000)
+   result =q1.enqueue_call(func=utils.convert_to_outline, args=(), result_ttl=5000)
+   result=q1.enqueue(func=utils.create_wordcloud, args=(), result_ttl=5000)
 
 
    return render_template('fileDownload.html')
