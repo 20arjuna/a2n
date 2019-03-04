@@ -22,6 +22,7 @@ from rq import Queue
 from worker import conn
 import utils
 import time
+import sox
 app = Flask(__name__)
 
 #from google.cloud import resumable_media
@@ -262,7 +263,7 @@ def upload_file():
    f.save(f.filename)
    fString = str(f.filename)
    fString = fString.split("'")
-   subprocess.call(['sox', fString[0], '-r', '44100', 'flacified.flac', 'remix', '1,2'])
+   subprocess.call(['sox', fString[0], '-r', '44100', 'flacified.flac', 'remix', '1,2'], shell=True)
    print('able to take from file' + fString[0])
    print('sox is a go!')
 
