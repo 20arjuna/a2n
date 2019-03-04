@@ -252,10 +252,7 @@ def upload_file():
     #oauth2.init_app(app)
     # Explicitly use service account credentials by specifying the private key
     # file.
-   q1 = Queue(connection=conn)
-   q2 = Queue(connection=conn)
-   q3 = Queue(connection=conn)
-   q4 = Queue(connection=conn)
+   q1 = Queue(connection=conn, default_connection=3600)
    f = request.files['gcloudfile']
 
    print('uploading to google cloud servers')
