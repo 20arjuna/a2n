@@ -25,6 +25,7 @@ def upload_to_google():
     blob = bucket.blob('input')
      #print(fString[1])
     blob.upload_from_filename('flacified.flac')
+    return "uploaded!"
 
 def speech_to_text():
     client = speech.SpeechClient()
