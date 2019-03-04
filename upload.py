@@ -264,7 +264,6 @@ def upload_file():
    fString = fString.split("'")
    subprocess.call(['sox', fString[0], '-r', '44100', 'flacified.flac', 'remix', '1,2'], shell=True)
    print('sox is a go!')
-   os.remove(fString[0])
 
    # extra argument: result_ttl=5000
    result = q1.enqueue_call(func=utils.upload_to_google, args=(), timeout='1h')
