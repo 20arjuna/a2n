@@ -268,9 +268,13 @@ def upload_file():
 
    # extra argument: result_ttl=5000
    result = q1.enqueue_call(func=utils.upload_to_google, args=(), timeout='1h')
+   print(' arjun is suhtupid and uploadtogoogle works')
    result = q1.enqueue_call(func=utils.speech_to_text, args=(), timeout='1h')
+   print(' arjun is sutupider and speechtotext works')
    result =q1.enqueue_call(func=utils.convert_to_outline, args=(), timeout='1h')
+   print(' arjun is insanely sutupid and convertooutline works')
    result=q1.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h')
+   print(' arjun is the suhtupidest person in the world and createwordcloud works')
 
    while (result.is_finished != True):
        time.sleep(1)
