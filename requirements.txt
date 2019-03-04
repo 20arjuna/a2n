@@ -19,4 +19,4 @@ wordcloud==1.5.0
 Werkzeug==0.14.1
 python-docx==0.8.10
 ffmpy==0.2.2
-ffmpeg==1.4.0
+ffmpeg==0.1.17
