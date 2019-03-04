@@ -18,5 +18,4 @@ watson-developer-cloud==2.8.0
 wordcloud==1.5.0
 Werkzeug==0.14.1
 python-docx==0.8.10
-ffmpy==0.2.2
-ffmpeg==1.4
+sox==1.3.7

@@ -17,8 +17,7 @@ from watson_developer_cloud.natural_language_understanding_v1 import Features, K
 import matplotlib
 from docx import Document
 matplotlib.use('Agg')
-import ffmpy
-import ffmpeg
+import subprocess
 app = Flask(__name__)
 
 #from google.cloud import resumable_media
@@ -257,7 +256,7 @@ def upload_file():
    f.save(f.filename)
    fString = str(f.filename)
    fString = fString.split("'")
-   ff = ffmpy.FFmpeg(inputs={fString[0]: None},    outputs={'flacy.flac': '-ac 1 flacified.flac'} )
+   subprocess.call(['sox', fString[0], '-r', '44100', 'flacified.flac', 'remix', '1,2'])
    ff.run()
    print('sox is a go!')
    os.remove(fString[0])
