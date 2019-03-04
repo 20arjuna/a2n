@@ -269,8 +269,8 @@ def upload_file():
 
 
 
-   result = q1.enqueue(utils.upload_to_google())
-   result2 = q2.enqueue(utils.speech_to_text())
+   result = q1.enqueue(utils.upload_to_google(), 5)
+   result = q1.enqueue(utils.speech_to_text(), 5)
    result3 =q3.enqueue(utils.convert_to_outline())
    result4=q4.enqueue(utils.create_wordcloud())
 

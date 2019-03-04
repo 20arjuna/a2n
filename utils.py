@@ -18,16 +18,16 @@ from docx import Document
 matplotlib.use('Agg')
 import subprocess
 
-def upload_to_google():
+def upload_to_google(num):
     storage_client = storage.Client.from_service_account_json(
           'A2N-Official-bd3ee1c6cc61.json')
     bucket = storage_client.get_bucket('a2n_audio')
     blob = bucket.blob('input')
      #print(fString[1])
     blob.upload_from_filename('flacified.flac')
-    return "uploaded!"
+    return num
 
-def speech_to_text():
+def speech_to_text(num):
     client = speech.SpeechClient()
     text_file = open("wordcloud.txt", "w")
 
@@ -52,6 +52,7 @@ def speech_to_text():
 
         text_file.write("\n")
     text_file.close()
+    return num
 
 def convert_to_outline():
     finaloutputoutline('wordcloud.txt', 'notes.txt')
