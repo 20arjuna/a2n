@@ -18,8 +18,7 @@ import matplotlib
 from docx import Document
 matplotlib.use('Agg')
 import ffmpy
-from ffmpy import FFmpeg
-
+import ffmpeg
 app = Flask(__name__)
 
 #from google.cloud import resumable_media
