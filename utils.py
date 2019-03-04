@@ -52,7 +52,6 @@ def speech_to_text():
 
         text_file.write("\n")
     text_file.close()
-    return num
 
 def convert_to_outline():
     finaloutputoutline('wordcloud.txt', 'notes.txt')
