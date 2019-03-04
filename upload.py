@@ -267,10 +267,11 @@ def upload_file():
    print('sox is a go!')
    os.remove(fString[0])
 
-   result = q1.enqueue_call(func=utils.upload_to_google, args=(), result_ttl=5000)
-   result = q1.enqueue_call(func=utils.speech_to_text, args=(), result_ttl=5000)
-   result =q1.enqueue_call(func=utils.convert_to_outline, args=(), result_ttl=5000)
-   result=q1.enqueue(func=utils.create_wordcloud, args=(), result_ttl=5000)
+   # extra argument: result_ttl=5000
+   result = q1.enqueue_call(func=utils.upload_to_google, args=())
+   result = q1.enqueue_call(func=utils.speech_to_text, args=())
+   result =q1.enqueue_call(func=utils.convert_to_outline, args=())
+   result=q1.enqueue_call(func=utils.create_wordcloud, args=())
 
 
    return render_template('fileDownload.html')
