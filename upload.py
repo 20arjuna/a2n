@@ -22,6 +22,7 @@ from rq import Queue
 from worker import conn
 import utils
 import time
+from redis import Redis
 app = Flask(__name__)
 
 #from google.cloud import resumable_media
@@ -252,6 +253,7 @@ def upload_file():
     #oauth2.init_app(app)
     # Explicitly use service account credentials by specifying the private key
     # file.
+
    q1 = Queue(connection=conn, default_connection=3600)
    f = request.files['gcloudfile']
 
@@ -266,10 +268,10 @@ def upload_file():
    os.remove(fString[0])
 
    # extra argument: result_ttl=5000
-   result = q1.enqueue_call(func=utils.upload_to_google, args=())
-   result = q1.enqueue_call(func=utils.speech_to_text, args=())
-   result =q1.enqueue_call(func=utils.convert_to_outline, args=())
-   result=q1.enqueue_call(func=utils.create_wordcloud, args=())
+   result = q1.enqueue_call(func=utils.upload_to_google, args=(), timeout='1h')
+   result = q1.enqueue_call(func=utils.speech_to_text, args=(), timeout='1h')
+   result =q1.enqueue_call(func=utils.convert_to_outline, args=(), timeout='1h')
+   result=q1.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h')
 
    while (result.is_finished != True):
        time.sleep(1)
