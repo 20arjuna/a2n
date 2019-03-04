@@ -1,4 +1,3 @@
-#from google.cloud.storage import storage
 from flask import Flask,render_template, Response, request, redirect, url_for, send_file
 from werkzeug import secure_filename
 from google.cloud import speech
@@ -18,12 +17,66 @@ import matplotlib
 from docx import Document
 matplotlib.use('Agg')
 import subprocess
-from rq import Queue
-from worker import conn
-import utils
-app = Flask(__name__)
 
-#from google.cloud import resumable_media
+def upload_file():
+    storage_client = storage.Client.from_service_account_json(
+          'A2N-Official-bd3ee1c6cc61.json')
+    bucket = storage_client.get_bucket('a2n_audio')
+    blob = bucket.blob('input')
+     #print(fString[1])
+    blob.upload_from_filename('flacified.flac')
+
+def speech_to_text():
+    client = speech.SpeechClient()
+    text_file = open("wordcloud.txt", "w")
+
+    audio = types.RecognitionAudio(uri='gs://a2n_audio/input')
+    config = types.RecognitionConfig(
+    encoding=enums.RecognitionConfig.AudioEncoding.FLAC,
+    sample_rate_hertz=44100,
+    language_code='en-US',
+    enable_automatic_punctuation=True)
+
+    operation = client.long_running_recognize(config, audio)
+
+    print('Waiting for operation to complete...')
+    response = operation.result(timeout=9000)
+    print('after operation')
+    # Each result is for a consecutive portion of the audio. Iterate through
+    # them to get the transcripts for the entire audio file.
+    for result in response.results:
+        print("in for loop")
+        # The first alternative is the most likely one for this portion.
+        text_file.write(u'{}'.format(result.alternatives[0].transcript))
+
+        text_file.write("\n")
+    text_file.close()
+
+def convert_to_outline():
+    finaloutputoutline('wordcloud.txt', 'notes.txt')
+    path_notes = 'notes.txt'
+    document = Document()
+    myfile = open(path_notes).read()
+    myfile = re.sub(r'[^\x00-\x7F]+|\x0c',' ', myfile) # remove all non-XML-compatible characters
+    p = document.add_paragraph(myfile)
+    document.save('static/outline'+ '.docx')
+
+def create_wordcloud():
+     d =  path.dirname(__file__) if "__file__" in locals() else os.getcwd()
+
+         # Read the whole text.
+     text = open(path.join(d, 'wordcloud.txt')).read()
+
+         # Generate a word cloud image
+     wordcloud = WordCloud().generate(text)
+     print('wordcloud generated')
+     image = wordcloud.to_image()
+
+     image.save('static/cloud.png', 'PNG')
+
+##### Watson Helper Methods #######
+
+
 
 def findKeywords(filename):
     file = open(filename, "r")
@@ -239,40 +292,3 @@ def finaloutputoutline(inputfile, outputfile):
     #print(wsaSentenceMatrix)
     newparagraphlist = runWSAOnParagraphs(newparagraphlist)
     outputOutline(newparagraphlist,wsaSentenceMatrix, outputfile)
-
-@app.route("/")
-
-def hello():
-    return render_template('wordcloud.html')
-
-@app.route('/uploaderlocal', methods=['POST'])
-
-def upload_file():
-    #oauth2.init_app(app)
-    # Explicitly use service account credentials by specifying the private key
-    # file.
-   q = Queue(connection=conn)
-   f = request.files['gcloudfile']
-
-   print('uploading to google cloud servers')
-
-
-   f.save(f.filename)
-   fString = str(f.filename)
-   fString = fString.split("'")
-   subprocess.call(['sox', fString[0], '-r', '44100', 'flacified.flac', 'remix', '1,2'], shell=True)
-   print('sox is a go!')
-   os.remove(fString[0])
-
-
-
-   utils.upload_file()
-   utils.speech_to_text()
-   utils.convert_to_outline()
-   utils.create_wordcloud()
-
-
-   return render_template('fileDownload.html')
-
-if __name__ == "__main__":
-    app.run()
