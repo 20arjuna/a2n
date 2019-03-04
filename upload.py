@@ -270,9 +270,9 @@ def upload_file():
 
 
    result = q1.enqueue(upload_file())
-   result = q2.enqueue(utils.speech_to_text())
-   result =q3.enqueue(utils.convert_to_outline())
-   result=q4.enqueue(utils.create_wordcloud())
+   result2 = q2.enqueue(utils.speech_to_text())
+   result3 =q3.enqueue(utils.convert_to_outline())
+   result4=q4.enqueue(utils.create_wordcloud())
 
 
    return render_template('fileDownload.html')
