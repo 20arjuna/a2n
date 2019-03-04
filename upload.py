@@ -280,7 +280,7 @@ def upload_file():
    while (result.is_finished != True):
        time.sleep(1)
    return render_template('fileDownload.html')'''
-   return send_file('flacified.flac')
+   return render_template('fileDownload.html')
 
 if __name__ == "__main__":
     app.run()
