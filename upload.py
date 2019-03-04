@@ -251,7 +251,10 @@ def upload_file():
     #oauth2.init_app(app)
     # Explicitly use service account credentials by specifying the private key
     # file.
-   q = Queue(connection=conn)
+   q1 = Queue(connection=conn)
+   q2 = Queue(connection=conn)
+   q3 = Queue(connection=conn)
+   q4 = Queue(connection=conn)
    f = request.files['gcloudfile']
 
    print('uploading to google cloud servers')
@@ -266,10 +269,10 @@ def upload_file():
 
 
 
-   result = q.enqueue(upload_file())
-   result = q.enqueue(utils.speech_to_text())
-   result =q.enqueue(utils.convert_to_outline())
-   result=q.enqueue(utils.create_wordcloud())
+   result = q1.enqueue(upload_file())
+   result = q2.enqueue(utils.speech_to_text())
+   result =q3.enqueue(utils.convert_to_outline())
+   result=q4.enqueue(utils.create_wordcloud())
 
 
    return render_template('fileDownload.html')
