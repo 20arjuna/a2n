@@ -256,7 +256,7 @@ def upload_file():
    f.save(f.filename)
    fString = str(f.filename)
    fString = fString.split("'")
-   subprocess.call(['A2N/sox', fString[0], '-r', '44100', 'flacified.flac', 'remix', '1,2'])
+   subprocess.call(['sox', fString[0], '-r', '44100', 'flacified.flac', 'remix', '1,2'])
    ff.run()
    print('sox is a go!')
    os.remove(fString[0])
