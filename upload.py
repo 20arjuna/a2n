@@ -268,7 +268,7 @@ def upload_file():
    print('sox is a go!')
 
    # extra argument: result_ttl=5000
-   '''result = q1.enqueue_call(func=utils.upload_to_google, args=(), timeout='1h')
+   result = q1.enqueue_call(func=utils.upload_to_google, args=(), timeout='1h')
    print(' arjun is suhtupid and uploadtogoogle works')
    result = q1.enqueue_call(func=utils.speech_to_text, args=(), timeout='1h')
    print(' arjun is sutupider and speechtotext works')
@@ -279,7 +279,7 @@ def upload_file():
 
    while (result.is_finished != True):
        time.sleep(1)
-   return render_template('fileDownload.html')'''
+   return render_template('fileDownload.html')
    return render_template('fileDownload.html')
 
 if __name__ == "__main__":
