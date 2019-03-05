@@ -263,10 +263,10 @@ def upload_file():
    f.save(f.filename)
    fString = str(f.filename)
    fString = fString.split("'")
-   stat = os.stat(fString[0])
+   stat = os.stat('flacified.flac')
    print(stat.st_mtime)
    subprocess.call(['sox', fString[0], '-r', '44100', 'flacified.flac', 'remix', '1,2'], shell=True)
-   stat.st_mtime
+   print(stat.st_mtime)
    print('able to take from file' + fString[0])
    print('sox is a go!')
 
