@@ -22,7 +22,7 @@ from rq import Queue
 from worker import conn
 import utils
 import time
-import sox
+#import sox
 from ffmpy import FFmpeg
 import ffmpy
 import ffmpeg
@@ -261,7 +261,7 @@ def upload_file():
 
    print('uploading to google cloud servers')
 
-  # f.save(f.filename)
+   f.save(f.filename)
    fString = str(f.filename)
    fString = fString.split("'")
    stat = os.stat('flacified.flac')
@@ -282,6 +282,7 @@ def upload_file():
    print(stat.st_mtime)
    print('able to take from file' + fString[0])
    print('sox is a go!')
+   os.remove(fString[0])
 
    # extra argument: result_ttl=5000
    result = q1.enqueue_call(func=utils.upload_to_google, args=(), timeout='1h')
