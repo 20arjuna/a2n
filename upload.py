@@ -260,12 +260,15 @@ def upload_file():
    print('uploading to google cloud servers')
 
 
-   f.save(f.filename)
+  # f.save(f.filename)
    fString = str(f.filename)
    fString = fString.split("'")
    stat = os.stat('flacified.flac')
    print(stat.st_mtime)
-   subprocess.check_output(['sox', fString[0], '-r', '44100', 'flacified.flac', 'remix', '1,2'], shell=True)
+   try:
+       output = subprocess.check_output(['sox', fString[0], '-r', '44100', 'flacified.flac', 'remix', '1,2'], shell=True)
+   except:
+       print(output)
    #subprocess.Popen('ffmpeg -i '+fString[0] + ' -ac 1 flacified.flac')
    print(stat.st_mtime)
    print('able to take from file' + fString[0])
