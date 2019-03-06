@@ -265,7 +265,7 @@ def upload_file():
    fString = fString.split("'")
    stat = os.stat('flacified.flac')
    print(stat.st_mtime)
-   subprocess.call(['sox', fString[0], '-r', '44100', 'flacified.flac', 'remix', '1,2'], shell=True)
+   subprocess.check_output(['sox', fString[0], '-r', '44100', 'flacified.flac', 'remix', '1,2'], shell=True)
    #subprocess.Popen('ffmpeg -i '+fString[0] + ' -ac 1 flacified.flac')
    print(stat.st_mtime)
    print('able to take from file' + fString[0])
