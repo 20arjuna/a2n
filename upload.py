@@ -269,7 +269,7 @@ def upload_file():
    #output = subprocess.call(['sox', fString[0], '-r', '44100', 'flacified.flac', 'remix', '1,2'], shell=True)
    ff = FFmpeg(
         inputs = {fString[0]: None},
-        outputs = {'flacified.flac':none}
+        outputs = {'flacified.flac': ['-ac 1']}
    )
    ff.run()
    #subprocess.Popen('ffmpeg -i '+fString[0] + ' -ac 1 flacified.flac')
