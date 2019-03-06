@@ -26,6 +26,7 @@ import sox
 from ffmpy import FFmpeg
 import ffmpy
 import ffmpeg
+from pydub import AudioSegment
 app = Flask(__name__)
 
 #from google.cloud import resumable_media
@@ -265,14 +266,19 @@ def upload_file():
    fString = fString.split("'")
    stat = os.stat('flacified.flac')
    print(stat.st_mtime)
+
    #output = subprocess.call(['sox', fString[0], '-r', '44100', 'flacified.flac', 'remix', '1,2'], shell=True)
-   ff = FFmpeg(
-        #executable = '/ffmpeg-20190304-db33283-macos64-static/bin/ffmpeg',
-        inputs = {fString[0]: None},
-        outputs = {'flacified.flac': ['-ac 1']}
-   )
-   ff.run()
+   # ff = FFmpeg(
+   #      #executable = '/ffmpeg-20190304-db33283-macos64-static/bin/ffmpeg',
+   #      inputs = {fString[0]: None},
+   #      outputs = {'flacified.flac': ['-ac 1']}
+   # )
+   # ff.run()
    #subprocess.Popen('ffmpeg -i '+fString[0] + ' -ac 1 flacified.flac')
+   filepath = fString[0]
+   formatType = filepath[filepath.index('.')+1:]
+   output = AudioSegment.from_file(fString[0], formatType)
+   output.export('flacified.flac', format="flac", parameters=["-ac", "1"])
    print(stat.st_mtime)
    print('able to take from file' + fString[0])
    print('sox is a go!')
