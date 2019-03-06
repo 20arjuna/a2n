@@ -276,7 +276,7 @@ def upload_file():
    # )
    # ff.run()
    #subprocess.Popen('ffmpeg -i '+fString[0] + ' -ac 1 flacified.flac')
-   filepath = fString[0]
+   filepath = "/" + fString[0]
    formatType = filepath[filepath.index('.')+1:]
    output = AudioSegment.from_file(fString[0], formatType)
    output.export('flacified.flac', format="flac", parameters=["-ac", "1"])
