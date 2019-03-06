@@ -269,6 +269,7 @@ def upload_file():
    print(stat.st_mtime)
    #output = subprocess.call(['sox', fString[0], '-r', '44100', 'flacified.flac', 'remix', '1,2'], shell=True)
    ff = FFmpeg(
+        executable = '/Users/20arjuna/Downloads/ffmpeg-20190304-db33283-macos64-static/bin/ffmpeg.exe',
         inputs = {fString[0]: None},
         outputs = {'flacified.flac': ['-ac 1']}
    )
