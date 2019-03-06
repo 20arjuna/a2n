@@ -25,3 +25,4 @@ rq==0.13.0
 ffmpeg==1.4
 ffmpeg-python==0.1.17
 ffmpy==0.2.2
+pydub==0.23.1
