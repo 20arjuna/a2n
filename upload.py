@@ -251,7 +251,6 @@ def hello():
     return render_template('wordcloud.html')
 
 @app.route('/uploaderlocal', methods=['POST'])
-
 def upload_file():
     #oauth2.init_app(app)
     # Explicitly use service account credentials by specifying the private key
