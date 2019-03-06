@@ -23,6 +23,7 @@ from worker import conn
 import utils
 import time
 import sox
+from ffmpy import FFmpeg
 app = Flask(__name__)
 
 #from google.cloud import resumable_media
@@ -265,8 +266,12 @@ def upload_file():
    fString = fString.split("'")
    stat = os.stat('flacified.flac')
    print(stat.st_mtime)
-   output = subprocess.call(['sox', fString[0], '-r', '44100', 'flacified.flac', 'remix', '1,2'], shell=True)
-
+   #output = subprocess.call(['sox', fString[0], '-r', '44100', 'flacified.flac', 'remix', '1,2'], shell=True)
+   ff = FFmpeg(
+        inputs = {fString[0]: None},
+        outputs = {'flacified.flac':none}
+   )
+   ff.run()
    #subprocess.Popen('ffmpeg -i '+fString[0] + ' -ac 1 flacified.flac')
    print(stat.st_mtime)
    print('able to take from file' + fString[0])
