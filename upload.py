@@ -262,7 +262,6 @@ def upload_file():
 
    print('uploading to google cloud servers')
 
-
   # f.save(f.filename)
    fString = str(f.filename)
    fString = fString.split("'")
