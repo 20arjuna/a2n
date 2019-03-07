@@ -284,20 +284,20 @@ def upload_file():
     os.remove(fString[0])
 
    # extra argument: result_ttl=5000
-    result = q1.enqueue_call(func=utils.upload_to_google, args=(), timeout='1h')
-    print(result.get_id())
-    result = q1.enqueue_call(func=utils.speech_to_text, args=(), timeout='1h')
-    print(result.get_id())
-    result =q1.enqueue_call(func=utils.convert_to_outline, args=(), timeout='1h')
-    print(result.get_id())
-    result=q1.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h')
-    print(result.get_id())
+    q1.enqueue_call(func=utils.upload_to_google, args=(), timeout='1h')
+    #print(result.get_id())
+    q1.enqueue_call(func=utils.speech_to_text, args=(), timeout='1h')
+    #print(result.get_id())
+    q1.enqueue_call(func=utils.convert_to_outline, args=(), timeout='1h')
+    #print(result.get_id())
+    q1.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h')
+    #print(result.get_id())
 
     #while (result.is_finished != True):
         #time.sleep(1)
     #return render_template('fileDownload.html')
-    while(len(q1)>0):
-        time.sleep(1)
+    # while(len(q1)>0):
+    #     time.sleep(1)
     return render_template('fileDownload.html')
 
 if __name__ == "__main__":
