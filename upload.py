@@ -258,16 +258,16 @@ def upload_file():
     #oauth2.init_app(app)
     # Explicitly use service account credentials by specifying the private key
     # file.
-   q1 = Queue(connection=conn, default_connection=3600)
-   f = request.files['gcloudfile']
+    q1 = Queue(connection=conn, default_connection=3600)
+    f = request.files['gcloudfile']
 
-   print('uploading to google cloud servers')
+    print('uploading to google cloud servers')
 
-   f.save(f.filename)
-   fString = str(f.filename)
-   fString = fString.split("'")
-   stat = os.stat('flacified.flac')
-   print(stat.st_mtime)
+    f.save(f.filename)
+    fString = str(f.filename)
+    fString = fString.split("'")
+    stat = os.stat('flacified.flac')
+    print(stat.st_mtime)
 
    #output = subprocess.call(['sox', fString[0], '-r', '44100', 'flacified.flac', 'remix', '1,2'], shell=True)
    # ff = FFmpeg(
@@ -277,29 +277,29 @@ def upload_file():
    # )
    # ff.run()
    #subprocess.Popen('ffmpeg -i '+fString[0] + ' -ac 1 flacified.flac')
-   filepath = fString[0]
-   formatType = filepath[filepath.index('.')+1:]
-   output = AudioSegment.from_file(fString[0], formatType)
-   output.export('flacified.flac', format="flac", parameters=["-ac", "1"])
-   print(stat.st_mtime)
-   print('able to take from file' + fString[0])
-   print('sox is a go!')
-   os.remove(fString[0])
+    filepath = fString[0]
+    formatType = filepath[filepath.index('.')+1:]
+    output = AudioSegment.from_file(fString[0], formatType)
+    output.export('flacified.flac', format="flac", parameters=["-ac", "1"])
+    print(stat.st_mtime)
+    print('able to take from file' + fString[0])
+    print('sox is a go!')
+    os.remove(fString[0])
 
    # extra argument: result_ttl=5000
-   result = q1.enqueue_call(func=utils.upload_to_google, args=(), timeout='1h')
-   print(' arjun is suhtupid and uploadtogoogle works')
-   result = q1.enqueue_call(func=utils.speech_to_text, args=(), timeout='1h')
-   print(' arjun is sutupider and speechtotext works')
-   result =q1.enqueue_call(func=utils.convert_to_outline, args=(), timeout='1h')
-   print(' arjun is insanely sutupid and convertooutline works')
-   result=q1.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h')
-   print(' arjun is the suhtupidest person in the world and createwordcloud works')
+    result = q1.enqueue_call(func=utils.upload_to_google, args=(), timeout='1h')
+    print(' arjun is suhtupid and uploadtogoogle works')
+    result = q1.enqueue_call(func=utils.speech_to_text, args=(), timeout='1h')
+    print(' arjun is sutupider and speechtotext works')
+    result =q1.enqueue_call(func=utils.convert_to_outline, args=(), timeout='1h')
+    print(' arjun is insanely sutupid and convertooutline works')
+    result=q1.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h')
+    print(' arjun is the suhtupidest person in the world and createwordcloud works')
 
-   while (result.is_finished != True):
+    while (result.is_finished != True):
        time.sleep(1)
-   return render_template('fileDownload.html')
-   return render_template('fileDownload.html')
+    return render_template('fileDownload.html')
+    return render_template('fileDownload.html')
 
 if __name__ == "__main__":
     app.run()
