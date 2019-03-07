@@ -266,8 +266,6 @@ def upload_file():
     f.save(f.filename)
     fString = str(f.filename)
     fString = fString.split("'")
-    stat = os.stat('flacified.flac')
-    print(stat.st_mtime)
 
    #output = subprocess.call(['sox', fString[0], '-r', '44100', 'flacified.flac', 'remix', '1,2'], shell=True)
    # ff = FFmpeg(
@@ -281,7 +279,6 @@ def upload_file():
     formatType = filepath[filepath.index('.')+1:]
     output = AudioSegment.from_file(fString[0], formatType)
     output.export('flacified.flac', format="flac", parameters=["-ac", "1"])
-    print(stat.st_mtime)
     print('able to take from file' + fString[0])
     print('sox is a go!')
     os.remove(fString[0])
@@ -297,7 +294,7 @@ def upload_file():
     print(' arjun is the suhtupidest person in the world and createwordcloud works')
 
     #while (result.is_finished != True):
-     #  time.sleep(1)
+        #time.sleep(1)
     #return render_template('fileDownload.html')
     return render_template('fileDownload.html')
 
