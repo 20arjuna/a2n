@@ -296,6 +296,8 @@ def upload_file():
     #while (result.is_finished != True):
         #time.sleep(1)
     #return render_template('fileDownload.html')
+    while(len(q1)>0):
+        time.sleep(1)
     return render_template('fileDownload.html')
 
 if __name__ == "__main__":
