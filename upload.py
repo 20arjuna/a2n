@@ -23,6 +23,7 @@ from rq import Queue
 from worker import conn
 import utils
 import time
+from rq.job import Job
 #import sox
 #from ffmpy import FFmpeg
 #import ffmpy
