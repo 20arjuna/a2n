@@ -29,6 +29,7 @@ import time
 import ffmpeg
 from pydub import AudioSegment
 app = Flask(__name__)
+q = Queue(connection=conn)
 
 #from google.cloud import resumable_media
 
@@ -258,7 +259,7 @@ def upload_file():
     #oauth2.init_app(app)
     # Explicitly use service account credentials by specifying the private key
     # file.
-    q1 = Queue(connection=conn, default_connection=3600)
+
     f = request.files['gcloudfile']
 
     print('uploading to google cloud servers')
@@ -284,19 +285,18 @@ def upload_file():
     os.remove(fString[0])
 
    # # extra argument: result_ttl=5000
-   #  q1.enqueue_call(func=utils.upload_to_google, args=(), timeout='1h')
-    q1.enqueue(utils.upload_to_google)
+    job1 = q.enqueue_call(func=utils.upload_to_google, args=(), timeout='1h')
+    print(job1.get_id())
    #  #print(result.get_id())
-   #  q1.enqueue_call(func=utils.speech_to_text, args=(), timeout='1h')
-    q1.enqueue(utils.speech_to_text)
+    job2 = q.enqueue_call(func=utils.speech_to_text, args=(), timeout='1h')
+    print(job2.get_id())
    #  #print(result.get_id())
-   #  q1.enqueue_call(func=utils.convert_to_outline, args=(), timeout='1h')
-    q1.enqueue(utils.convert_to_outline)
+    job3 = q.enqueue_call(func=utils.convert_to_outline, args=(), timeout='1h')
+    print(job3.get_id())
    #  #print(result.get_id())
-   #  q1.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h')
-    q1.enqueue(utils.create_wordcloud)
+    job4 = q.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h')
     #print(result.get_id())
-
+    print(job4.get_id())
     #while (result.is_finished != True):
         #time.sleep(1)
     #return render_template('fileDownload.html')
