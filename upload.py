@@ -283,14 +283,18 @@ def upload_file():
     print('sox is a go!')
     os.remove(fString[0])
 
-   # extra argument: result_ttl=5000
-    q1.enqueue_call(func=utils.upload_to_google, args=(), timeout='1h')
-    #print(result.get_id())
-    q1.enqueue_call(func=utils.speech_to_text, args=(), timeout='1h')
-    #print(result.get_id())
-    q1.enqueue_call(func=utils.convert_to_outline, args=(), timeout='1h')
-    #print(result.get_id())
-    q1.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h')
+   # # extra argument: result_ttl=5000
+   #  q1.enqueue_call(func=utils.upload_to_google, args=(), timeout='1h')
+    q1.enqueue(utils.upload_to_google)
+   #  #print(result.get_id())
+   #  q1.enqueue_call(func=utils.speech_to_text, args=(), timeout='1h')
+    q1.enqueue(utils.speech_to_text)
+   #  #print(result.get_id())
+   #  q1.enqueue_call(func=utils.convert_to_outline, args=(), timeout='1h')
+    q1.enqueue(utils.convert_to_outline)
+   #  #print(result.get_id())
+   #  q1.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h')
+    q1.enqueue(utils.create_wordcloud)
     #print(result.get_id())
 
     #while (result.is_finished != True):
