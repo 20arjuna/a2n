@@ -288,20 +288,20 @@ def upload_file():
    # # extra argument: result_ttl=5000
     job1 = q.enqueue_call(func=utils.upload_to_google, args=(), timeout='1h')
     print(job1.get_id())
-    get_results(job1.get_id())
+    #get_results(job1.get_id())
    #  #print(result.get_id())
     job2 = q.enqueue_call(func=utils.speech_to_text, args=(), timeout='1h')
     print(job2.get_id())
-    get_results(job2.get_id())
+    #get_results(job2.get_id())
    #  #print(result.get_id())
     job3 = q.enqueue_call(func=utils.convert_to_outline, args=(), timeout='1h')
     print(job3.get_id())
-    get_results(job3.get_id())
+    #get_results(job3.get_id())
    #  #print(result.get_id())
     job4 = q.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h')
     #print(result.get_id())
     print(job4.get_id())
-    get_results(job4.get_id())
+    #get_results(job4.get_id())
     #while (result.is_finished != True):
         #time.sleep(1)
     #return render_template('fileDownload.html')
@@ -312,8 +312,9 @@ def get_results(job_key):
 
     job = Job.fetch(job_key, connection=conn)
 
-    while(job.is_finished == False):
-        time.sleep(1)
+    if(job.is_finished == False):
+        job = Job.fetch(job_key, connection=conn)
+    print(" finished")
     return
 if __name__ == "__main__":
     app.run()
