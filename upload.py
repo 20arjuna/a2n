@@ -312,9 +312,8 @@ def get_results(job_key):
 
     job = Job.fetch(job_key, connection=conn)
 
-    if job.is_finished:
-        return
-    else:
-        return(get_results(job_key))
+    while(job.is_finished == False):
+        time.sleep(1)
+    return
 if __name__ == "__main__":
     app.run()
