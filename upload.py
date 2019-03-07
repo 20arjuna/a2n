@@ -292,6 +292,7 @@ def upload_file():
     blob = bucket.blob('input')
      #print(fString[1])
     blob.upload_from_filename('flacified.flac')
+    print('uploaded')
    # extra argument: result_ttl=5000
     # result = q1.enqueue_call(func=utils.upload_to_google, args=(), timeout='1h')
     # print(' arjun is suhtupid and uploadtogoogle works')
@@ -302,8 +303,8 @@ def upload_file():
     # result=q1.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h')
     # print(' arjun is the suhtupidest person in the world and createwordcloud works')
 
-    while (result.is_finished != True):
-       time.sleep(1)
+    #while (result.is_finished != True):
+     #  time.sleep(1)
     #return render_template('fileDownload.html')
     return render_template('fileDownload.html')
 
