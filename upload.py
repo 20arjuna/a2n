@@ -310,6 +310,12 @@ def upload_file():
     job4 = q.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h')
     while(job1.status == 'queued'):
         time.sleep(1)
+    while(job2.status=='queued'):
+        time.sleep(1)
+    while(job3.status=='queued'):
+        time.sleep(1)
+    while(job4.status=='queued'):
+        time.sleep(1)
     #print(result.get_id())
     #print(job4.get_id())
     #get_results(job4.get_id())
