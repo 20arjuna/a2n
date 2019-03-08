@@ -18,7 +18,7 @@ import matplotlib
 from docx import Document
 matplotlib.use('Agg')
 
-#import subprocess
+import subprocess
 from rq import Queue
 from worker import conn
 import utils
@@ -33,7 +33,7 @@ app = Flask(__name__)
 q = Queue(connection=conn)
 
 #from google.cloud import resumable_media
-
+methodlist = ['uploadtogoogle.py', 'speechtotext.py', 'converttooutline.py', 'createwordcloud.py']
 def findKeywords(filename):
     file = open(filename, "r")
     outputfile = open("jsonOutput.json", "w")
@@ -284,14 +284,16 @@ def upload_file():
     print('able to take from file' + fString[0])
     print('sox is a go!')
     os.remove(fString[0])
-    utils.upload_to_google()
-    print('uploaded to google')
-    utils.speech_to_text()
-    print('speech to text successful')
-    utils.convert_to_outline()
-    print('made the outline')
-    utils.create_wordcloud()
-    print('finished! made the wordcloud')
+    for i in range(4):
+        subprocess.call("python3 "+ methodlist[i], shell=True)
+    # utils.upload_to_google()
+    # print('uploaded to google')
+    # utils.speech_to_text()
+    # print('speech to text successful')
+    # utils.convert_to_outline()
+    # print('made the outline')
+    # utils.create_wordcloud()
+    # print('finished! made the wordcloud')
    # # extra argument: result_ttl=5000
     #job1 = q.enqueue_call(func=utils.upload_to_google, args=(), timeout='1h')
     #print(job1.get_id())
