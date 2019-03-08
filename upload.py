@@ -310,7 +310,7 @@ def upload_file():
    #  #print(result.get_id())
     job4 = q.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h')
     print('Job 1 status before' + job1.status)
-    while(job1.status == 'queued'):
+    while(job1.status == 'queued' or job1.status == 'started'):
         time.sleep(1)
     print('Job 1 status after' + job1.status)
     print('Job 2 status before' + job2.status)
