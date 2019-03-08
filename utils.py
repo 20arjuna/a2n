@@ -19,6 +19,7 @@ matplotlib.use('Agg')
 import subprocess
 
 def upload_to_google():
+    print('uploading to google')
     storage_client = storage.Client.from_service_account_json(
           'A2N-Official-bd3ee1c6cc61.json')
     bucket = storage_client.get_bucket('a2n_audio')
