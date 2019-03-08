@@ -1,29 +1,109 @@
 {
   "usage": {
     "text_units": 1,
-    "text_characters": 148,
+    "text_characters": 584,
     "features": 1
   },
   "language": "en",
   "keywords": [
     {
-      "text": "Twitter Instagram",
-      "relevance": 0.795759,
+      "text": "play George Kittle",
+      "relevance": 0.790056,
       "count": 1
     },
     {
-      "text": "shit",
-      "relevance": 0.684015,
+      "text": "kills career",
+      "relevance": 0.641287,
       "count": 1
     },
     {
-      "text": "NFL",
-      "relevance": 0.641009,
+      "text": "massive second season",
+      "relevance": 0.59887,
       "count": 1
     },
     {
-      "text": "Brandon Perna",
-      "relevance": 0.60436,
+      "text": "football Gods",
+      "relevance": 0.598011,
+      "count": 1
+    },
+    {
+      "text": "Panda Express",
+      "relevance": 0.591283,
+      "count": 1
+    },
+    {
+      "text": "49er",
+      "relevance": 0.563898,
+      "count": 1
+    },
+    {
+      "text": "player",
+      "relevance": 0.546529,
+      "count": 1
+    },
+    {
+      "text": "direction",
+      "relevance": 0.54077,
+      "count": 1
+    },
+    {
+      "text": "thing",
+      "relevance": 0.537598,
+      "count": 1
+    },
+    {
+      "text": "record",
+      "relevance": 0.535277,
+      "count": 1
+    },
+    {
+      "text": "guy",
+      "relevance": 0.533683,
+      "count": 1
+    },
+    {
+      "text": "hope",
+      "relevance": 0.531728,
+      "count": 1
+    },
+    {
+      "text": "lot",
+      "relevance": 0.529171,
+      "count": 1
+    },
+    {
+      "text": "cap",
+      "relevance": 0.526382,
+      "count": 1
+    },
+    {
+      "text": "records",
+      "relevance": 0.51766,
+      "count": 1
+    },
+    {
+      "text": "story",
+      "relevance": 0.508115,
+      "count": 1
+    },
+    {
+      "text": "NFL history books",
+      "relevance": 0.491007,
+      "count": 1
+    },
+    {
+      "text": "newest Superstar",
+      "relevance": 0.467498,
+      "count": 1
+    },
+    {
+      "text": "bet",
+      "relevance": 0.449332,
+      "count": 1
+    },
+    {
+      "text": "leaves",
+      "relevance": 0.416398,
       "count": 1
     }
   ]
