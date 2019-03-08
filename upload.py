@@ -32,6 +32,7 @@ from pydub import AudioSegment
 app = Flask(__name__)
 q = Queue(connection=conn)
 
+
 #from google.cloud import resumable_media
 methodlist = ['uploadtogoogle.py', 'speechtotext.py', 'converttooutline.py', 'createwordcloud.py']
 def findKeywords(filename):
@@ -308,10 +309,14 @@ def upload_file():
     #get_results(job3.get_id())
    #  #print(result.get_id())
     job4 = q.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h')
+    print('Job 1 status before' + job1.status)
     while(job1.status == 'queued'):
         time.sleep(1)
+    print('Job 1 status after' + job1.status)
+    print('Job 2 status before' + job2.status)
     while(job2.status=='queued'):
         time.sleep(1)
+    print('Job 2 status after' + job2.status)
     while(job3.status=='queued'):
         time.sleep(1)
     while(job4.status=='queued'):
