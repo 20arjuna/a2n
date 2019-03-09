@@ -18,15 +18,15 @@ from docx import Document
 matplotlib.use('Agg')
 import subprocess
 
-
+q = Queue(connection=conn)
 def flacify():
-    print('starting python code')
-    
+    print('flacifying LOL')
+
     #oauth2.init_app(app)
     # Explicitly use service account credentials by specifying the private key
     # file.
 
-    f = request.files['gcloudfile']
+
 
     #print('uploading to google cloud servers')
 

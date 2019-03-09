@@ -258,6 +258,7 @@ def hello():
 @app.route('/uploaderlocal', methods=['POST'])
 def upload_file():
     q = Queue(connection=conn)
+    f = request.files['gcloudfile']
     #for i in range(4):
         #subprocess.call("python3 "+ methodlist[i], shell=True)
     # utils.upload_to_google()
