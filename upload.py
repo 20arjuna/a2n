@@ -271,7 +271,7 @@ def upload_file():
     # print('finished! made the wordcloud')
    # # extra argument: result_ttl=5000
 
-    job0 = q.enqueue_call(func=utils.flacify, args=(), timeout='1h')
+    job0 = q.enqueue_call(func=utils.flacify, args=(f), timeout='1h')
     print('Job 0 status before ' + job0.status)
     while(job0.status != 'finished'):
         time.sleep(1)

@@ -18,7 +18,7 @@ from docx import Document
 matplotlib.use('Agg')
 import subprocess
 
-def flacify():
+def flacify(f):
     print('flacifying LOL')
 
     #oauth2.init_app(app)
