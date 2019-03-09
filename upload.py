@@ -265,7 +265,7 @@ def upload_file():
 
     f = request.files['gcloudfile']
 
-    print('uploading to google cloud servers')
+    #print('uploading to google cloud servers')
 
     f.save(f.filename)
     fString = str(f.filename)

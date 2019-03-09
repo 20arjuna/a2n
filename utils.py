@@ -43,7 +43,7 @@ def speech_to_text():
     operation = client.long_running_recognize(config, audio)
 
     print('Waiting for operation to complete...')
-    response = operation.result(timeout=9000)
+    response = operation.result(timeout=30)
     print('after operation')
     # Each result is for a consecutive portion of the audio. Iterate through
     # them to get the transcripts for the entire audio file.
