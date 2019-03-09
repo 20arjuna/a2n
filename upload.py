@@ -258,10 +258,18 @@ def hello():
 @app.route('/uploaderlocal', methods=['POST'])
 def upload_file():
     q = Queue(connection=conn)
+    print('flacifying LOL')
     f = request.files['gcloudfile']
     f.save(f.filename)
     fString = str(f.filename)
     fString = fString.split("'")
+    filepath = fString[0]
+    formatType = filepath[filepath.index('.')+1:]
+    output = AudioSegment.from_file(fString[0], formatType)
+    output.export('flacified.flac', format="flac", parameters=["-ac", "1"])
+    print('able to take from file' + fString[0])
+    print('sox is a go!')
+    os.remove(fString[0])
     #for i in range(4):
         #subprocess.call("python3 "+ methodlist[i], shell=True)
     # utils.upload_to_google()
@@ -273,13 +281,6 @@ def upload_file():
     # utils.create_wordcloud()
     # print('finished! made the wordcloud')
    # # extra argument: result_ttl=5000
-
-    job0 = q.enqueue_call(func=utils.flacify, args=(fString), timeout='1h')
-    print('Job 0 status before ' + job0.status)
-    while(job0.status != 'finished'):
-        time.sleep(1)
-    print('Job 0 status after ' + job0.status)
-
     job1 = q.enqueue_call(func=utils.upload_to_google, args=(), timeout='1h')
     print('Job 1 status before ' + job1.status)
     while(job1.status != 'finished'):
