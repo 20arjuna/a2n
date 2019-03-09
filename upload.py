@@ -258,10 +258,7 @@ def hello():
 @app.route('/uploaderlocal', methods=['POST'])
 def upload_file():
     print('starting python code')
-    q1 = Queue(connection=conn)
-    q2 = Queue(connection=conn)
-    q3 = Queue(connection=conn)
-    q4 = Queue(connection=conn)
+    q = Queue(connection=conn)
     #oauth2.init_app(app)
     # Explicitly use service account credentials by specifying the private key
     # file.
@@ -300,7 +297,7 @@ def upload_file():
     # utils.create_wordcloud()
     # print('finished! made the wordcloud')
    # # extra argument: result_ttl=5000
-    job1 = q1.enqueue_call(func=utils.upload_to_google, args=(), timeout='1h')
+    job1 = q.enqueue_call(func=utils.upload_to_google, args=(), timeout='1h')
     print('Job 1 status before ' + job1.status)
     while(job1.status != 'finished'):
         time.sleep(1)
@@ -308,7 +305,7 @@ def upload_file():
     #print(job1.get_id())
     #get_results(job1.get_id())
    #  #print(result.get_id())
-    job2 = q2.enqueue_call(func=utils.speech_to_text, args=(), timeout='1h')
+    job2 = q.enqueue_call(func=utils.speech_to_text, args=(), timeout='1h')
     print('Job 2 status before ' + job2.status)
     while(job2.status != 'finished'):
         time.sleep(1)
@@ -316,7 +313,7 @@ def upload_file():
     #print(job2.get_id())
     #get_results(job2.get_id())
    #  #print(result.get_id())
-    job3 = q3.enqueue_call(func=utils.convert_to_outline, args=(), timeout='1h')
+    job3 = q.enqueue_call(func=utils.convert_to_outline, args=(), timeout='1h')
     print('Job 3 status before ' + job3.status)
     while(job3.status != 'finished'):
         time.sleep(1)
@@ -324,7 +321,7 @@ def upload_file():
     #print(job3.get_id())
     #get_results(job3.get_id())
    #  #print(result.get_id())
-    job4 = q4.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h')
+    job4 = q.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h')
     print('Job 4 status before ' + job4.status)
     while(job4.status != 'finished'):
         time.sleep(1)
