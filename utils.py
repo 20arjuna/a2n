@@ -18,7 +18,6 @@ from docx import Document
 matplotlib.use('Agg')
 import subprocess
 
-q = Queue(connection=conn)
 def flacify():
     print('flacifying LOL')
 
