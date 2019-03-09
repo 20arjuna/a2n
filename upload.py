@@ -259,6 +259,9 @@ def hello():
 def upload_file():
     q = Queue(connection=conn)
     f = request.files['gcloudfile']
+    f.save(f.filename)
+    fString = str(f.filename)
+    fString = fString.split("'")
     #for i in range(4):
         #subprocess.call("python3 "+ methodlist[i], shell=True)
     # utils.upload_to_google()
@@ -271,7 +274,7 @@ def upload_file():
     # print('finished! made the wordcloud')
    # # extra argument: result_ttl=5000
 
-    job0 = q.enqueue_call(func=utils.flacify, args=(f), timeout='1h')
+    job0 = q.enqueue_call(func=utils.flacify, args=(fString), timeout='1h')
     print('Job 0 status before ' + job0.status)
     while(job0.status != 'finished'):
         time.sleep(1)

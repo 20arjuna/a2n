@@ -18,7 +18,7 @@ from docx import Document
 matplotlib.use('Agg')
 import subprocess
 
-def flacify(f):
+def flacify(fString):
     print('flacifying LOL')
 
     #oauth2.init_app(app)
@@ -29,9 +29,7 @@ def flacify(f):
 
     #print('uploading to google cloud servers')
 
-    f.save(f.filename)
-    fString = str(f.filename)
-    fString = fString.split("'")
+
 
    #output = subprocess.call(['sox', fString[0], '-r', '44100', 'flacified.flac', 'remix', '1,2'], shell=True)
    # ff = FFmpeg(
