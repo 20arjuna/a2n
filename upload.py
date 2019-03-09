@@ -30,7 +30,7 @@ from rq.job import Job
 import ffmpeg
 from pydub import AudioSegment
 app = Flask(__name__)
-q = Queue(connection=conn)
+
 
 
 #from google.cloud import resumable_media
@@ -258,6 +258,7 @@ def hello():
 @app.route('/uploaderlocal', methods=['POST'])
 def upload_file():
     print('starting python code')
+    q = Queue(connection=conn)
     #oauth2.init_app(app)
     # Explicitly use service account credentials by specifying the private key
     # file.
@@ -327,14 +328,14 @@ def upload_file():
     print('Job 4 status after ' + job4.status)
 
 
-    print('Job 2 status before ' + job2.status)
-    while(job2.status=='queued'):
-        time.sleep(1)
-    print('Job 2 status after ' + job2.status)
-    while(job3.status=='queued'):
-        time.sleep(1)
-    while(job4.status=='queued'):
-        time.sleep(1)
+    # print('Job 2 status before ' + job2.status)
+    # while(job2.status=='queued'):
+    #     time.sleep(1)
+    # print('Job 2 status after ' + job2.status)
+    # while(job3.status=='queued'):
+    #     time.sleep(1)
+    # while(job4.status=='queued'):
+    #     time.sleep(1)
     #print(result.get_id())
     #print(job4.get_id())
     #get_results(job4.get_id())
