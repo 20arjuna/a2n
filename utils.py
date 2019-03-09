@@ -18,6 +18,37 @@ from docx import Document
 matplotlib.use('Agg')
 import subprocess
 
+
+def flacify():
+    print('starting python code')
+    
+    #oauth2.init_app(app)
+    # Explicitly use service account credentials by specifying the private key
+    # file.
+
+    f = request.files['gcloudfile']
+
+    #print('uploading to google cloud servers')
+
+    f.save(f.filename)
+    fString = str(f.filename)
+    fString = fString.split("'")
+
+   #output = subprocess.call(['sox', fString[0], '-r', '44100', 'flacified.flac', 'remix', '1,2'], shell=True)
+   # ff = FFmpeg(
+   #      #executable = '/ffmpeg-20190304-db33283-macos64-static/bin/ffmpeg',
+   #      inputs = {fString[0]: None},
+   #      outputs = {'flacified.flac': ['-ac 1']}
+   # )
+   # ff.run()
+   #subprocess.Popen('ffmpeg -i '+fString[0] + ' -ac 1 flacified.flac')
+    filepath = fString[0]
+    formatType = filepath[filepath.index('.')+1:]
+    output = AudioSegment.from_file(fString[0], formatType)
+    output.export('flacified.flac', format="flac", parameters=["-ac", "1"])
+    print('able to take from file' + fString[0])
+    print('sox is a go!')
+    os.remove(fString[0])
 def upload_to_google():
     print('uploading to google')
     storage_client = storage.Client.from_service_account_json(

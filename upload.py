@@ -257,35 +257,7 @@ def hello():
 
 @app.route('/uploaderlocal', methods=['POST'])
 def upload_file():
-    print('starting python code')
     q = Queue(connection=conn)
-    #oauth2.init_app(app)
-    # Explicitly use service account credentials by specifying the private key
-    # file.
-
-    f = request.files['gcloudfile']
-
-    #print('uploading to google cloud servers')
-
-    f.save(f.filename)
-    fString = str(f.filename)
-    fString = fString.split("'")
-
-   #output = subprocess.call(['sox', fString[0], '-r', '44100', 'flacified.flac', 'remix', '1,2'], shell=True)
-   # ff = FFmpeg(
-   #      #executable = '/ffmpeg-20190304-db33283-macos64-static/bin/ffmpeg',
-   #      inputs = {fString[0]: None},
-   #      outputs = {'flacified.flac': ['-ac 1']}
-   # )
-   # ff.run()
-   #subprocess.Popen('ffmpeg -i '+fString[0] + ' -ac 1 flacified.flac')
-    filepath = fString[0]
-    formatType = filepath[filepath.index('.')+1:]
-    output = AudioSegment.from_file(fString[0], formatType)
-    output.export('flacified.flac', format="flac", parameters=["-ac", "1"])
-    print('able to take from file' + fString[0])
-    print('sox is a go!')
-    os.remove(fString[0])
     #for i in range(4):
         #subprocess.call("python3 "+ methodlist[i], shell=True)
     # utils.upload_to_google()
@@ -297,6 +269,13 @@ def upload_file():
     # utils.create_wordcloud()
     # print('finished! made the wordcloud')
    # # extra argument: result_ttl=5000
+
+    job0 = q.enqueue_call(func=utils.flacify, args=(), timeout='1h')
+    print('Job 0 status before ' + job0.status)
+    while(job0.status != 'finished'):
+        time.sleep(1)
+    print('Job 0 status after ' + job0.status)
+
     job1 = q.enqueue_call(func=utils.upload_to_google, args=(), timeout='1h')
     print('Job 1 status before ' + job1.status)
     while(job1.status != 'finished'):
