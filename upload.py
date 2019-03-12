@@ -266,11 +266,11 @@ def upload_file():
     fString = fString.split("'")
     filepath = fString[0]
     formatType = filepath[filepath.index('.')+1:]
-    output = AudioSegment.from_file(fString[0], formatType)
-    output.export('flacified.flac', format="flac", parameters=["-ac", "1"])
-    print('able to take from file ' + fString[0])
-    print('sox is a go!')
-    os.remove(fString[0])
+    # output = AudioSegment.from_file(fString[0], formatType)
+    # output.export('flacified.flac', format="flac", parameters=["-ac", "1"])
+    # print('able to take from file ' + fString[0])
+    # print('sox is a go!')
+    # os.remove(fString[0])
     #for i in range(4):
         #subprocess.call("python3 "+ methodlist[i], shell=True)
     # utils.upload_to_google()
@@ -283,7 +283,7 @@ def upload_file():
     # print('finished! made the wordcloud')
    # # extra argument: result_ttl=5000
     ####job1 = q.enqueue_call(func=utils.upload_to_google, args=('flacified.flac', 'string'), timeout='1h', result_ttl=30)
-    q.enqueue(utils.upload_to_google, 'flacified.flac', 'string')
+    q.enqueue(utils.upload_to_google, filepath, formatType)
     #print(job1.get_id())
     #get_results(job1.get_id())
    #  #print(result.get_id())

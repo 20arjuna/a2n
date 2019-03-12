@@ -18,19 +18,26 @@ from docx import Document
 matplotlib.use('Agg')
 import subprocess
 import smtplib
+import ffmpeg
+from pydub import AudioSegment
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
 
-def upload_to_google(filename, string):
+def upload_to_google(filepath, formatType):
+    output = AudioSegment.from_file(filepath, formatType)
+    output.export('flacified.flac', format="flac", parameters=["-ac", "1"])
+    print('able to take from file ' + filepath])
+    print('sox is a go!')
+    os.remove(filepath)
     print('uploading to google')
     storage_client = storage.Client.from_service_account_json(
           'A2N-Official-bd3ee1c6cc61.json')
     bucket = storage_client.get_bucket('a2n_audio')
     blob = bucket.blob('input')
      #print(fString[1])
-    blob.upload_from_filename(filename)
+    blob.upload_from_filename('flacified.flac')
     print('GOT HERE')
 
 
