@@ -262,6 +262,7 @@ def upload_file():
     f = request.files['gcloudfile']
     email = request.form['email']
     f.save(f.filename)
+    print('saving')
     fString = str(f.filename)
     # f.save(f.filename)
     # fString = str(f.filename)

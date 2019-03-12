@@ -27,7 +27,7 @@ from email import encoders
 
 def upload_to_google(fString, string):
 
-    
+
     fString = fString.split("'")
     filepath = fString[0]
     formatType = filepath[filepath.index('.')+1:]
@@ -35,7 +35,7 @@ def upload_to_google(fString, string):
     output.export('flacified.flac', format="flac", parameters=["-ac", "1"])
     print('able to take from file ' + filepath)
     print('sox is a go!')
-    os.remove(filepath)
+    #os.remove(filepath)
     print('uploading to google')
     storage_client = storage.Client.from_service_account_json(
           'A2N-Official-bd3ee1c6cc61.json')
