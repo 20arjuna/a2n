@@ -33,7 +33,9 @@ def send_mail(send_from, send_to, subject, text, files=None,
 
 
     smtp = smtplib.SMTP(server)
+    print('yhhyuy')
     smtp.sendmail(send_from, send_to, msg.as_string())
+    print('email sent')
     smtp.close()
 if __name__ == '__main__':
-    send_mail('20sahilj@students.harker.org', 'a2npelican@gmail.com', 'test', 'this is a test email', None, "127.0.0.1")
+    send_mail('20sahilj@students.harker.org', 'a2npelican@gmail.com', 'test', 'this is a test email', None, "127.0.0.1:5000")

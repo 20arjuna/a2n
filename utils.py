@@ -84,7 +84,7 @@ def create_wordcloud():
      image.save('static/cloud.png', 'PNG')
 
 def send_email():
-
+    print("sent_email")
 
 ##### Watson Helper Methods #######
 
