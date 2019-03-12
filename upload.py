@@ -268,7 +268,7 @@ def upload_file():
     formatType = filepath[filepath.index('.')+1:]
     output = AudioSegment.from_file(fString[0], formatType)
     output.export('flacified.flac', format="flac", parameters=["-ac", "1"])
-    print('able to take from file' + fString[0])
+    print('able to take from file ' + fString[0])
     print('sox is a go!')
     os.remove(fString[0])
     #for i in range(4):
@@ -283,22 +283,22 @@ def upload_file():
     # print('finished! made the wordcloud')
    # # extra argument: result_ttl=5000
     ####job1 = q.enqueue_call(func=utils.upload_to_google, args=('flacified.flac', 'string'), timeout='1h', result_ttl=30)
-    result = q.enqueue(utils.upload_to_google, 'flacified.flac', 'string')
+    q.enqueue(utils.upload_to_google, 'flacified.flac', 'string')
     #print(job1.get_id())
     #get_results(job1.get_id())
    #  #print(result.get_id())
     ###job2 = q.enqueue_call(func=utils.speech_to_text, args=(), timeout='1h')
-    result = q.enqueue(utils.speech_to_text)
+    q.enqueue(utils.speech_to_text)
     #print(job2.get_id()   #  #print(result.get_id())
     ###job3 = q.enqueue_call(func=utils.convert_to_outline, args=(), timeout='1h')
-    result = q.enqueue(utils.convert_to_outline)
+    q.enqueue(utils.convert_to_outline)
     #print(job3.get_id())
     #get_results(job3.get_id())
    #  #print(result.get_id())
     ###job4 = q.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h')
-    result = q.enqueue(utils.create_wordcloud)
+    q.enqueue(utils.create_wordcloud)
     #job5 = q.enqueue_call(func=utils.send_email, args=(email, 'outline.docx', 'static/outline.docx'), timeout='1h')
-    result = q.enqueue(utils.send_email, email, 'outline.docx', 'static/outline.docx')
+    q.enqueue(utils.send_email, email, 'outline.docx', 'static/outline.docx')
 
 
     # print('Job 2 status before ' + job2.status)
