@@ -18,11 +18,12 @@ import matplotlib
 from docx import Document
 matplotlib.use('Agg')
 
-#import subprocess
+import subprocess
 from rq import Queue
 from worker import conn
 import utils
 import time
+from rq.job import Job
 #import sox
 #from ffmpy import FFmpeg
 #import ffmpy
@@ -30,8 +31,10 @@ import ffmpeg
 from pydub import AudioSegment
 app = Flask(__name__)
 
-#from google.cloud import resumable_media
 
+
+#from google.cloud import resumable_media
+methodlist = ['uploadtogoogle.py', 'speechtotext.py', 'converttooutline.py', 'createwordcloud.py']
 def findKeywords(filename):
     file = open(filename, "r")
     outputfile = open("jsonOutput.json", "w")
@@ -254,27 +257,12 @@ def hello():
 
 @app.route('/uploaderlocal', methods=['POST'])
 def upload_file():
-    print('starting python code')
-    #oauth2.init_app(app)
-    # Explicitly use service account credentials by specifying the private key
-    # file.
-    q1 = Queue(connection=conn, default_connection=3600)
+    q = Queue(connection=conn)
+    print('flacifying LOL')
     f = request.files['gcloudfile']
-
-    print('uploading to google cloud servers')
-
     f.save(f.filename)
     fString = str(f.filename)
     fString = fString.split("'")
-
-   #output = subprocess.call(['sox', fString[0], '-r', '44100', 'flacified.flac', 'remix', '1,2'], shell=True)
-   # ff = FFmpeg(
-   #      #executable = '/ffmpeg-20190304-db33283-macos64-static/bin/ffmpeg',
-   #      inputs = {fString[0]: None},
-   #      outputs = {'flacified.flac': ['-ac 1']}
-   # )
-   # ff.run()
-   #subprocess.Popen('ffmpeg -i '+fString[0] + ' -ac 1 flacified.flac')
     filepath = fString[0]
     formatType = filepath[filepath.index('.')+1:]
     output = AudioSegment.from_file(fString[0], formatType)
@@ -282,23 +270,72 @@ def upload_file():
     print('able to take from file' + fString[0])
     print('sox is a go!')
     os.remove(fString[0])
+    #for i in range(4):
+        #subprocess.call("python3 "+ methodlist[i], shell=True)
+    # utils.upload_to_google()
+    # print('uploaded to google')
+    # utils.speech_to_text()
+    # print('speech to text successful')
+    # utils.convert_to_outline()
+    # print('made the outline')
+    # utils.create_wordcloud()
+    # print('finished! made the wordcloud')
+   # # extra argument: result_ttl=5000
+    job1 = q.enqueue_call(func=utils.upload_to_google, args=(), timeout='1h')
+    print('Job 1 status before ' + job1.status)
+    while(job1.status != 'finished'):
+        time.sleep(1)
+    print('Job 1 status after ' + job1.status)
+    #print(job1.get_id())
+    #get_results(job1.get_id())
+   #  #print(result.get_id())
+    job2 = q.enqueue_call(func=utils.speech_to_text, args=(), timeout='1h')
+    print('Job 2 status before ' + job2.status)
+    while(job2.status != 'finished'):
+        time.sleep(1)
+    print('Job 2 status after ' + job2.status)
+    #print(job2.get_id())
+    #get_results(job2.get_id())
+   #  #print(result.get_id())
+    job3 = q.enqueue_call(func=utils.convert_to_outline, args=(), timeout='1h')
+    print('Job 3 status before ' + job3.status)
+    while(job3.status != 'finished'):
+        time.sleep(1)
+    print('Job 3 status after ' + job3.status)
+    #print(job3.get_id())
+    #get_results(job3.get_id())
+   #  #print(result.get_id())
+    job4 = q.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h')
+    print('Job 4 status before ' + job4.status)
+    while(job4.status != 'finished'):
+        time.sleep(1)
+    print('Job 4 status after ' + job4.status)
 
-   # extra argument: result_ttl=5000
-    result = q1.enqueue_call(func=utils.upload_to_google, args=(), timeout='1h')
-    print(result.get_id())
-    result = q1.enqueue_call(func=utils.speech_to_text, args=(), timeout='1h')
-    print(result.get_id())
-    result =q1.enqueue_call(func=utils.convert_to_outline, args=(), timeout='1h')
-    print(result.get_id())
-    result=q1.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h')
-    print(result.get_id())
 
+    # print('Job 2 status before ' + job2.status)
+    # while(job2.status=='queued'):
+    #     time.sleep(1)
+    # print('Job 2 status after ' + job2.status)
+    # while(job3.status=='queued'):
+    #     time.sleep(1)
+    # while(job4.status=='queued'):
+    #     time.sleep(1)
+    #print(result.get_id())
+    #print(job4.get_id())
+    #get_results(job4.get_id())
     #while (result.is_finished != True):
         #time.sleep(1)
     #return render_template('fileDownload.html')
-    while(len(q1)>0):
-        time.sleep(1)
+    # while(len(q1)>0):
+    #     time.sleep(1)
     return render_template('fileDownload.html')
+def get_results(job_key):
 
+    job = Job.fetch(job_key, connection=conn)
+
+    if(job.is_finished == False):
+        job = Job.fetch(job_key, connection=conn)
+    print(" finished")
+    return
 if __name__ == "__main__":
     app.run()
