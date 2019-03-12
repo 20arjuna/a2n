@@ -23,7 +23,7 @@ from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
 
-def upload_to_google(filename):
+def upload_to_google(filename, string):
     print('uploading to google')
     storage_client = storage.Client.from_service_account_json(
           'A2N-Official-bd3ee1c6cc61.json')

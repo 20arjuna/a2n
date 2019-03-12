@@ -282,7 +282,7 @@ def upload_file():
     # utils.create_wordcloud()
     # print('finished! made the wordcloud')
    # # extra argument: result_ttl=5000
-    job1 = q.enqueue_call(func=utils.upload_to_google, args=('flacified.flac'), timeout='1h')
+    job1 = q.enqueue_call(func=utils.upload_to_google, args=('flacified.flac', 'string'), timeout='1h')
     #print(job1.get_id())
     #get_results(job1.get_id())
    #  #print(result.get_id())
