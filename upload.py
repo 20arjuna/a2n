@@ -273,12 +273,13 @@ def upload_file():
     bucket = storage_client.get_bucket('a2n_audio')
     blob = bucket.blob('rawInput')
      #print(fString[1])
-    blob.upload_from_file(rawFile)
+    blob.upload_from_file(rawFile, content_type = 'audio/'+ formatType)
+
     blob.download_to_filename('rawInput.'+formatType)
     #f.save(f.filename)
     #print('saving')
     #formatType = filepath[filepath.index('.')+1:]
-    output = AudioSegment.upload_from_file('rawInput.'+formatType, formatType)
+    output = AudioSegment.from_file('rawInput.'+formatType, formatType)
     output.export('flacified.flac', format="flac", parameters=["-ac", "1"])
     print('able to take from file ' + filepath)
     print('sox is a go!')
