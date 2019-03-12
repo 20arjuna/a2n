@@ -25,16 +25,7 @@ from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
 
-def upload_to_google(fString, string):
-
-
-    fString = fString.split("'")
-    filepath = fString[0]
-    formatType = filepath[filepath.index('.')+1:]
-    output = AudioSegment.from_file(filepath, formatType)
-    output.export('flacified.flac', format="flac", parameters=["-ac", "1"])
-    print('able to take from file ' + filepath)
-    print('sox is a go!')
+def upload_to_google():
     #os.remove(filepath)
     print('uploading to google')
     storage_client = storage.Client.from_service_account_json(
