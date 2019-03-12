@@ -28,7 +28,7 @@ from email import encoders
 def upload_to_google(filepath, formatType):
     output = AudioSegment.from_file(filepath, formatType)
     output.export('flacified.flac', format="flac", parameters=["-ac", "1"])
-    print('able to take from file ' + filepath])
+    print('able to take from file ' + filepath)
     print('sox is a go!')
     os.remove(filepath)
     print('uploading to google')
