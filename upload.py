@@ -261,11 +261,11 @@ def upload_file():
     print('flacifying LOL')
     f = request.files['gcloudfile']
     email = request.form['email']
-    f.save(f.filename)
-    fString = str(f.filename)
-    fString = fString.split("'")
-    filepath = fString[0]
-    formatType = filepath[filepath.index('.')+1:]
+    # f.save(f.filename)
+    # fString = str(f.filename)
+    # fString = fString.split("'")
+    # filepath = fString[0]
+    # formatType = filepath[filepath.index('.')+1:]
     # output = AudioSegment.from_file(fString[0], formatType)
     # output.export('flacified.flac', format="flac", parameters=["-ac", "1"])
     # print('able to take from file ' + fString[0])
@@ -283,7 +283,7 @@ def upload_file():
     # print('finished! made the wordcloud')
    # # extra argument: result_ttl=5000
     ####job1 = q.enqueue_call(func=utils.upload_to_google, args=('flacified.flac', 'string'), timeout='1h', result_ttl=30)
-    q.enqueue(utils.upload_to_google, filepath, formatType)
+    q.enqueue(utils.upload_to_google, f, 'formatType')
     #print(job1.get_id())
     #get_results(job1.get_id())
    #  #print(result.get_id())
