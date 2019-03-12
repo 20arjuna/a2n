@@ -25,9 +25,9 @@ from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
 
-def upload_to_google(f, string):
-    f.save(f.filename)
-    fString = str(f.filename)
+def upload_to_google(fString, string):
+
+    
     fString = fString.split("'")
     filepath = fString[0]
     formatType = filepath[filepath.index('.')+1:]
