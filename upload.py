@@ -274,8 +274,12 @@ def upload_file():
     blob = bucket.blob('rawInput')
      #print(fString[1])
     blob.upload_from_file(rawFile, content_type = 'audio/'+ formatType)
-
+    storage_client = storage.Client.from_service_account_json(
+          'A2N-Official-bd3ee1c6cc61.json')
+    bucket = storage_client.get_bucket('a2n_audio')
+    blob = bucket.blob('rawInput')
     blob.download_to_filename('rawInput.'+formatType)
+
     #f.save(f.filename)
     #print('saving')
     #formatType = filepath[filepath.index('.')+1:]
@@ -283,6 +287,19 @@ def upload_file():
     output.export('flacified.flac', format="flac", parameters=["-ac", "1"])
     print('able to take from file ' + filepath)
     print('sox is a go!')
+
+
+
+
+
+    print('uploading to google')
+    storage_client = storage.Client.from_service_account_json(
+          'A2N-Official-bd3ee1c6cc61.json')
+    bucket = storage_client.get_bucket('a2n_audio')
+    blob = bucket.blob('input')
+     #print(fString[1])
+    blob.upload_from_filename('flacified.flac')
+    print('GOT HERE')
     # f.save(f.filename)
     # fString = str(f.filename)
     # fString = fString.split("'")
@@ -305,7 +322,7 @@ def upload_file():
     # print('finished! made the wordcloud')
    # # extra argument: result_ttl=5000
     ####job1 = q.enqueue_call(func=utils.upload_to_google, args=('flacified.flac', 'string'), timeout='1h', result_ttl=30)
-    q.enqueue(utils.upload_to_google)
+    #q.enqueue(utils.upload_to_google)
    #  #print(job1.get_id())
    #  #get_results(job1.get_id())
    # #  #print(result.get_id())
