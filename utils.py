@@ -17,7 +17,13 @@ import matplotlib
 from docx import Document
 matplotlib.use('Agg')
 import subprocess
-    
+import smtplib
+from os.path import basename
+from email.mime.application import MIMEApplication
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.utils import COMMASPACE, formatdate
+
 def upload_to_google():
     print('uploading to google')
     storage_client = storage.Client.from_service_account_json(
@@ -76,6 +82,9 @@ def create_wordcloud():
      image = wordcloud.to_image()
 
      image.save('static/cloud.png', 'PNG')
+
+def send_email():
+
 
 ##### Watson Helper Methods #######
 
