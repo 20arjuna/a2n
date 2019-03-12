@@ -320,7 +320,7 @@ def upload_file():
     #return render_template('fileDownload.html')
     # while(len(q1)>0):
     #     time.sleep(1)
-    return send_file('flacified.flac')
+    return render_template('fileDownload.html')
 def get_results(job_key):
 
     job = Job.fetch(job_key, connection=conn)
