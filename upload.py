@@ -282,18 +282,18 @@ def upload_file():
     # utils.create_wordcloud()
     # print('finished! made the wordcloud')
    # # extra argument: result_ttl=5000
-    job1 = q.enqueue_call(func=utils.upload_to_google, args=('flacified.flac', 'string'), timeout='1h', result_ttl=0)
+    job1 = q.enqueue_call(func=utils.upload_to_google, args=('flacified.flac', 'string'), timeout='1h', result_ttl=30)
     #print(job1.get_id())
     #get_results(job1.get_id())
    #  #print(result.get_id())
-    job2 = q.enqueue_call(func=utils.speech_to_text, args=(), timeout='1h', result_ttl=0)
+    job2 = q.enqueue_call(func=utils.speech_to_text, args=(), timeout='1h')
     #print(job2.get_id()   #  #print(result.get_id())
-    job3 = q.enqueue_call(func=utils.convert_to_outline, args=(), timeout='1h', result_ttl=0)
+    job3 = q.enqueue_call(func=utils.convert_to_outline, args=(), timeout='1h')
     #print(job3.get_id())
     #get_results(job3.get_id())
    #  #print(result.get_id())
-    job4 = q.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h', result_ttl=0)
-    job5 = q.enqueue_call(func=utils.send_email, args=(email, 'outline.docx', 'static/outline.docx'), timeout='1h', result_ttl=0)
+    job4 = q.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h')
+    job5 = q.enqueue_call(func=utils.send_email, args=(email, 'outline.docx', 'static/outline.docx'), timeout='1h')
 
 
     # print('Job 2 status before ' + job2.status)
