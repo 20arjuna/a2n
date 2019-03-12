@@ -260,7 +260,7 @@ def upload_file():
     q = Queue(connection=conn)
     print('flacifying LOL')
     f = request.files['gcloudfile']
-    email = request.form('email')
+    email = request.form['email']
     f.save(f.filename)
     fString = str(f.filename)
     fString = fString.split("'")
