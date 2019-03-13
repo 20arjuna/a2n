@@ -115,19 +115,21 @@ def send_email(to_address, file_name1, file_path1, file_name2, file_path2):
 
     # instance of MIMEBase and named as p
     p = MIMEBase('application', 'octet-stream')
-
+    p2 = MIMEBase('application', 'octet-stream')
     # To change the payload into encoded form
     p.set_payload((attachment1).read())
-    p.set_payload((attachment2).read())
+    p2.set_payload((attachment2).read())
 
 
     # encode into base64
     encoders.encode_base64(p)
+    encoders.encode_base64(p2)
 
-    p.add_header('Content-Disposition', "attachment; filename= %s" % filename1 +  " attachment; filename= %s" % filename2)
-
+    p.add_header('Content-Disposition', "attachment; filename= %s" % filename1)
+    p2.add_header('Content-Disposition', "attachment; filename= %s" % filename2)
     # attach the instance 'p' to instance 'msg'
     msg.attach(p)
+    msg.attach(p2)
 
     # creates SMTP session
     s = smtplib.SMTP('smtp.gmail.com', 587)
