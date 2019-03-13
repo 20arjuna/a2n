@@ -85,7 +85,7 @@ def create_wordcloud():
 
      image.save('static/cloud.png', 'PNG')
 
-def send_email(to_address, file_name, file_path):
+def send_email(to_address, file_name1, file_path1, file_name2, file_path2):
     fromaddr = 'a2npelican@gmail.com'
     toaddr = to_address
 
@@ -108,19 +108,23 @@ def send_email(to_address, file_name, file_path):
     msg.attach(MIMEText(body, 'plain'))
 
     # open the file to be sent
-    filename = file_name
-    attachment = open(file_path, "rb")
+    filename1 = file_name1
+    filename2 = file_name2
+    attachment1 = open(file_path, "rb")
+    attachment2 = open(file_path2, "rb")
 
     # instance of MIMEBase and named as p
     p = MIMEBase('application', 'octet-stream')
 
     # To change the payload into encoded form
-    p.set_payload((attachment).read())
+    p.set_payload((attachment1).read())
+    p.set_payload((attachment2).read())
+
 
     # encode into base64
     encoders.encode_base64(p)
 
-    p.add_header('Content-Disposition', "attachment; filename= %s" % filename)
+    p.add_header('Content-Disposition', "attachment; filename= %s" % filename1,  "attachment; filename= %s" % filename2)
 
     # attach the instance 'p' to instance 'msg'
     msg.attach(p)
