@@ -110,7 +110,7 @@ def send_email(to_address, file_name1, file_path1, file_name2, file_path2):
     # open the file to be sent
     filename1 = file_name1
     filename2 = file_name2
-    attachment1 = open(file_path, "rb")
+    attachment1 = open(file_path1, "rb")
     attachment2 = open(file_path2, "rb")
 
     # instance of MIMEBase and named as p
