@@ -300,7 +300,7 @@ def uploading():
 
 @app.route('/uploaderlocal', methods=['POST'])
 def upload_file():
-    # q = Queue(connection=conn)
+    q = Queue(connection=conn)
     # print('flacifying LOL')
     # rawFile = request.files['gcloudfile']
     # email = request.form['email']
