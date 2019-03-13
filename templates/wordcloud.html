@@ -110,6 +110,17 @@
       alert("Select a file type!");
       event.preventDefault();
     }
+    else
+    {
+      var file = document.getElementById("format").files[0];
+      var FileSize = file.files[0].size / 1024 / 1024; // in MB
+      if (FileSize > 12)
+      {
+            alert('File size exceeds 12 MB. Pleae try agian.');
+            event.preventDefault();
+      }
+
+    }
   }
   function loading()
   {
