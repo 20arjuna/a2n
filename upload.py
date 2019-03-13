@@ -256,9 +256,6 @@ def finaloutputoutline(inputfile, outputfile):
 def hello():
     return render_template('wordcloud.html')
 def uploading():
-    print('flacifying LOL')
-    rawFile = request.files['gcloudfile']
-    email = request.form['email']
 
     fString = str(rawFile.filename)
 
@@ -301,6 +298,9 @@ def uploading():
 @app.route('/uploaderlocal', methods=['POST'])
 def upload_file():
     q = Queue(connection=conn)
+    print('flacifying LOL')
+    rawFile = request.files['gcloudfile']
+    email = request.form['email']
     # print('flacifying LOL')
     # rawFile = request.files['gcloudfile']
     # email = request.form['email']
