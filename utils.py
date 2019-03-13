@@ -124,7 +124,7 @@ def send_email(to_address, file_name1, file_path1, file_name2, file_path2):
     # encode into base64
     encoders.encode_base64(p)
 
-    p.add_header('Content-Disposition', "attachment; filename= %s" % filename1,  "attachment; filename= %s" % filename2)
+    p.add_header('Content-Disposition', "attachment; filename= %s" % filename1 +  " attachment; filename= %s" % filename2)
 
     # attach the instance 'p' to instance 'msg'
     msg.attach(p)
