@@ -10,6 +10,7 @@ from wordcloud import WordCloud
 import json
 import re
 import operator
+import os.path as op
 import re
 from watson_developer_cloud import NaturalLanguageUnderstandingV1
 from watson_developer_cloud.natural_language_understanding_v1 import Features, KeywordsOptions
@@ -23,6 +24,7 @@ from pydub import AudioSegment
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
+from email.utils import COMMASPACE, formatdate
 from email import encoders
 
 def upload_to_google():
