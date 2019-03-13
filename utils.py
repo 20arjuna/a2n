@@ -85,7 +85,7 @@ def create_wordcloud():
 
      image.save('static/cloud.png', 'PNG')
 
-def send_email(to_address, file_name1, file_path1, file_name2, file_path2):
+def send_email(to_address, files):
     fromaddr = 'a2npelican@gmail.com'
     toaddr = to_address
 
@@ -108,29 +108,16 @@ def send_email(to_address, file_name1, file_path1, file_name2, file_path2):
     msg.attach(MIMEText(body, 'plain'))
 
     # open the file to be sent
-    filename1 = file_name1
-    filename2 = file_name2
-    attachment1 = open(file_path1, "rb")
-    attachment2 = open(file_path2, "rb")
-
-    # instance of MIMEBase and named as p
-    p = MIMEBase('application', 'octet-stream')
-    p2 = MIMEBase('application', 'octet-stream')
-    # To change the payload into encoded form
-    p.set_payload((attachment1).read())
-    p2.set_payload((attachment2).read())
-
-
-    # encode into base64
-    encoders.encode_base64(p)
-    encoders.encode_base64(p2)
-
-    p.add_header('Content-Disposition', "attachment; filename= %s" % filename1)
-    p2.add_header('Content-Disposition', "attachment; filename= %s" % filename2)
-    # attach the instance 'p' to instance 'msg'
-    msg.attach(p)
-    msg.attach(p2)
-
+    # filename1 = file_name1
+    # filename2 = file_name2
+    for path in files:
+        part = MIMEBase('application', "octet-stream")
+        with open(path, 'rb') as file:
+            part.set_payload(file.read())
+        encoders.encode_base64(part)
+        part.add_header('Content-Disposition',
+                        'attachment; filename="{}"'.format(op.basename(path)))
+        msg.attach(part)
     # creates SMTP session
     s = smtplib.SMTP('smtp.gmail.com', 587)
 

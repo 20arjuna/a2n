@@ -343,7 +343,7 @@ def upload_file():
    #  ###job4 = q.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h')
     q.enqueue(utils.create_wordcloud, timeout = '1h')
    #  #job5 = q.enqueue_call(func=utils.send_email, args=(email, 'outline.docx', 'static/outline.docx'), timeout='1h')
-    q.enqueue(utils.send_email, email, 'outline.docx', 'static/outline.docx', 'wordcloud.png', 'static/cloud.png', timeout = '1h')
+    q.enqueue(utils.send_email, email, ['static/outline.docx', 'static/cloud.png'] timeout = '1h')
 
 
     # print('Job 2 status before ' + job2.status)
