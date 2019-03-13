@@ -255,7 +255,15 @@ def finaloutputoutline(inputfile, outputfile):
 
 def hello():
     return render_template('wordcloud.html')
-def uploading():
+
+
+
+@app.route('/uploaderlocal', methods=['POST'])
+def upload_file():
+    q = Queue(connection=conn)
+    print('flacifying LOL')
+    rawFile = request.files['gcloudfile']
+    email = request.form['email']
 
     fString = str(rawFile.filename)
 
@@ -294,54 +302,6 @@ def uploading():
      #print(fString[1])
     blob.upload_from_filename('flacified.flac')
     print('GOT HERE')
-
-@app.route('/uploaderlocal', methods=['POST'])
-def upload_file():
-    q = Queue(connection=conn)
-    print('flacifying LOL')
-    rawFile = request.files['gcloudfile']
-    email = request.form['email']
-    # print('flacifying LOL')
-    # rawFile = request.files['gcloudfile']
-    # email = request.form['email']
-    #
-    # fString = str(rawFile.filename)
-    #
-    # fString = fString.split("'")
-    # filepath = fString[0]
-    # formatType = filepath[filepath.index('.')+1:]
-    # storage_client = storage.Client.from_service_account_json(
-    #       'A2N-Official-bd3ee1c6cc61.json')
-    # bucket = storage_client.get_bucket('a2n_audio')
-    # blob = bucket.blob('rawInput')
-    #  #print(fString[1])
-    # blob.upload_from_file(rawFile, content_type = 'audio/'+ formatType)
-    # storage_client = storage.Client.from_service_account_json(
-    #       'A2N-Official-bd3ee1c6cc61.json')
-    # bucket = storage_client.get_bucket('a2n_audio')
-    # blob = bucket.blob('rawInput')
-    # blob.download_to_filename('rawInput.'+formatType)
-    #
-    # #f.save(f.filename)
-    # #print('saving')
-    # #formatType = filepath[filepath.index('.')+1:]
-    # output = AudioSegment.from_file('rawInput.'+formatType, formatType)
-    # output.export('flacified.flac', format="flac", parameters=["-ac", "1"])
-    # print('able to take from file ' + filepath)
-    # print('sox is a go!')
-    #
-    #
-    #
-    #
-    #
-    # print('uploading to google')
-    # storage_client = storage.Client.from_service_account_json(
-    #       'A2N-Official-bd3ee1c6cc61.json')
-    # bucket = storage_client.get_bucket('a2n_audio')
-    # blob = bucket.blob('input')
-    #  #print(fString[1])
-    # blob.upload_from_filename('flacified.flac')
-    # print('GOT HERE')
 
 
 
