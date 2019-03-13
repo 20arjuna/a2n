@@ -333,7 +333,6 @@ def upload_file():
    #  #get_results(job1.get_id())
    # #  #print(result.get_id())
    #  ###job2 = q.enqueue_call(func=utils.speech_to_text, args=(), timeout='1h')
-    q.enqueue(uploading, timeout = '1h')
     q.enqueue(utils.speech_to_text, timeout = '1h')
    #  #print(job2.get_id()   #  #print(result.get_id())
    #  ###job3 = q.enqueue_call(func=utils.convert_to_outline, args=(), timeout='1h')
