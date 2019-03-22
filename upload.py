@@ -262,7 +262,7 @@ def hello():
 def upload_file():
     email = request.form['email']
     utils.send_email(email)
-    #return render_template()
+    return render_template('beta.html')
 #     q = Queue(connection=conn)
 #     print('flacifying LOL')
 #     rawFile = request.files['gcloudfile']
