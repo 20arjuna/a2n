@@ -263,6 +263,61 @@ def upload_file():
     email = request.form['email']
     utils.send_email(email)
     return render_template('beta.html')
+
+@app.route('/contactlocal', methods=['POST'])
+def contact_us():
+    name = request.form['name']
+    email = request.form['email']
+    message = request.form['message']
+    fromaddr = 'a2npelican@gmail.com'
+    toaddr = '20arjuna@studens.harker.org'
+
+    # instance of MIMEMultipart
+    msg = MIMEMultipart()
+
+    # storing the senders email address
+    msg['From'] = fromaddr
+
+    # storing the receivers email address
+    msg['To'] = toaddr
+
+    # storing the subject
+    msg['Subject'] = "User Message"
+
+    # string to store the body of the mail
+    body = name + "\n"+"\n" + message
+
+    # attach the body with the msg instance
+    msg.attach(MIMEText(body, 'plain'))
+    #
+    # # open the file to be sent
+    # # filename1 = file_name1
+    # # filename2 = file_name2
+    # for path in files:
+    #     part = MIMEBase('application', "octet-stream")
+    #     with open(path, 'rb') as file:
+    #         part.set_payload(file.read())
+    #     encoders.encode_base64(part)
+    #     part.add_header('Content-Disposition',
+    #                     'attachment; filename="{}"'.format(op.basename(path)))
+    #     msg.attach(part)
+    # creates SMTP session
+    s = smtplib.SMTP('smtp.gmail.com', 587)
+
+    # start TLS for security
+    s.starttls()
+
+    # Authentication
+    s.login(fromaddr, "arjunsahil123")
+
+    # Converts the Multipart msg into a string
+    text = msg.as_string()
+
+    # sending the mail
+    s.sendmail(fromaddr, toaddr, text)
+
+    # terminating the session
+    s.quit()
 #     q = Queue(connection=conn)
 #     print('flacifying LOL')
 #     rawFile = request.files['gcloudfile']
@@ -374,5 +429,7 @@ def upload_file():
 #         job = Job.fetch(job_key, connection=conn)
 #     print(" finished")
 #     return
+
+
 if __name__ == "__main__":
     app.run()
