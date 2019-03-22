@@ -254,7 +254,7 @@ def finaloutputoutline(inputfile, outputfile):
 @app.route("/")
 
 def hello():
-    return render_template('demo.html')
+    return render_template('wordcloud.html')
 
 
 
