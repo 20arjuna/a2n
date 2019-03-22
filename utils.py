@@ -104,7 +104,11 @@ def send_email(to_address):
     msg['Subject'] = "A2N Beta Registration."
 
     # string to store the body of the mail
-    body = "Hello!," + '\n' + '\t' + "Thank you for signing up for our beta! You have been added to our list and we will notify you in June when our beta is ready. Thank you for your patience and we are thrilled to have you on board!" + '\n' + "Thanks," +'\n' + "The A2N Team"
+    body = "Hello!," + "\n" +
+    "\t" + "Thank you for signing up for our beta! You have been added to our list and we will notify you in June when our beta is ready. Thank you for your patience and we are thrilled to have you on board!"
+     + "\n" +
+     "Thanks," +"\n" 
+     + "The A2N Team"
 
     # attach the body with the msg instance
     # msg.attach(MIMEText(body, 'plain'))
