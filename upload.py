@@ -323,7 +323,7 @@ def contact_us():
 
     # terminating the session
     s.quit()
-    return 'ok'
+    return render_template('wordcloud.html')
 #     q = Queue(connection=conn)
 #     print('flacifying LOL')
 #     rawFile = request.files['gcloudfile']
