@@ -9,7 +9,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>A2N - App Landing Page</title>
+    <title>A2N</title>
 
     <!-- Favicon -->
     <link rel="icon" href="img/core-img/favicon.ico">
@@ -44,7 +44,7 @@
 
         snd.currentTime=0;
       }
-
+      event.preventDefault();
 
     }
     function validateEmail(email) {
@@ -57,12 +57,10 @@
 
 <body>
     <!-- Preloader Start -->
-    <div id="preloader">
-        <div class="colorlib-load"></div>
-    </div>
+
 
     <!-- ***** Header Area Start ***** -->
-    <header class="header_area animated">
+    <header class="header_area animated sticky slideInDown">
         <div class="container-fluid">
             <div class="row align-items-center">
                 <!-- Menu Area Start -->
@@ -75,9 +73,9 @@
                             <!-- Menu Area -->
                             <div class="collapse navbar-collapse" id="ca-navbar">
                                 <ul class="navbar-nav ml-auto" id="nav">
-                                    <li class="nav-item active"><a class="nav-link" href="#home">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                                    <li class="nav-item active"><a class="nav-link" href="#features">Features</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
@@ -91,7 +89,7 @@
                     </div>
                 </div>
                 <!-- Signup btn -->
-        
+
             </div>
         </div>
     </header>
@@ -109,8 +107,8 @@
                     </div>
                     <div class="get-start-area">
                         <!-- Form Start -->
-                        <form id="myForm" action ="/uploaderlocal" method ="POST" enctype="multipart/form-data" class="form-inline">
-                            <input type="email" name ="email" class="form-control email" placeholder="name@company.com">
+                        <form id="myForm" action="/uploaderlocal" method="POST" enctype="multipart/form-data" class="form-inline">
+                            <input type="email" name="email" class="form-control email" placeholder="name@company.com">
                             <input type="submit" class="submit" value="Sign Up for Beta" onclick="loading()">
                         </form>
                         <!-- Form End -->
@@ -119,7 +117,7 @@
             </div>
         </div>
         <!-- Welcome thumb -->
-        <div class="welcome-thumb wow fadeInDown" data-wow-delay="0.5s">
+        <div class="welcome-thumb wow fadeInDown" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">
             <img src="static/img/bg-img/welcome-img.png" alt="">
         </div>
     </section>
@@ -138,11 +136,11 @@
         <div class="line-shape"></div>
         <h1></h1>
         <h5>We live in a world full of content. Yet, even in the 21st century, it is difficult to get to the meaning and crux of information.</h5>
-          <h4 style= "color: rgb(83, 57, 173)">That's why we created A2N.</h4>
+          <h4 style="color: rgb(83, 57, 173)">That's why we created A2N.</h4>
         <h5> A2N is revolutionizing the way we process content by synthesizing audio based information into
 a simple, easy to read outline. </h5>
       <h5>Gone are the days where we waste hours of time listening to audio or video, only to realize a small portion of it was relevant or important.</h5>
-      <h4 style= "color: rgb(83, 57, 173)">Welcome to A2N.</h4>
+      <h4 style="color: rgb(83, 57, 173)">Welcome to A2N.</h4>
         <!-- <h3 class="sub-header">Now Featuring PiedPierCoin</h3> -->
         <!-- <p class="sub-header-body-copy">Whether you are a developer with an app ready for market, or just an average Joe with a smartphone - you’ll love all you can do with PiedPiperCoin.</p> -->
       </div>
@@ -150,7 +148,7 @@ a simple, easy to read outline. </h5>
   </div>
 
     <!-- ***** Special Area Start ***** -->
-    <section class="special-area bg-white section_padding_50" id="about">
+    <section class="special-area bg-white section_padding_10" id="about">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -165,7 +163,7 @@ a simple, easy to read outline. </h5>
             <div class="row">
                 <!-- Single Special Area -->
                 <div class="col-12 col-md-4">
-                    <div class="single-special text-center wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="single-special text-center wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
                         <div class="single-icon">
                             <i class="ti-briefcase" aria-hidden="true"></i>
                         </div>
@@ -175,7 +173,7 @@ a simple, easy to read outline. </h5>
                 </div>
                 <!-- Single Special Area -->
                 <div class="col-12 col-md-4">
-                    <div class="single-special text-center wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="single-special text-center wow fadeInUp" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
                         <div class="single-icon">
                             <i class="ti-music" aria-hidden="true"></i>
                         </div>
@@ -185,7 +183,7 @@ a simple, easy to read outline. </h5>
                 </div>
                 <!-- Single Special Area -->
                 <div class="col-12 col-md-4">
-                    <div class="single-special text-center wow fadeInUp" data-wow-delay="0.6s">
+                    <div class="single-special text-center wow fadeInUp" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
                         <div class="single-icon">
                             <i class="ti-pencil-alt" aria-hidden="true"></i>
                         </div>
@@ -242,7 +240,11 @@ a simple, easy to read outline. </h5>
     <br>
     <br>
     <br>
-    <br>
+
+<br>
+<br>
+<br>
+<br><br>
     <!-- ***** Cool Facts Area Start ***** -->
     <section class="cool_facts_area">
         <div class="container">
@@ -257,7 +259,7 @@ a simple, easy to read outline. </h5>
                 </div>
                 <!-- Single Cool Fact-->
                 <div class="col-12 col-md-3 col-lg-3">
-                    <div class="single-cool-fact d-flex justify-content-center wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="single-cool-fact d-flex justify-content-center wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
                         <div class="counter-area">
                             <h3><span class="counter">94</span>% </h3>
                         </div>
@@ -269,7 +271,7 @@ a simple, easy to read outline. </h5>
                 </div>
                 <!-- Single Cool Fact-->
                 <div class="col-12 col-md-3 col-lg-3">
-                    <div class="single-cool-fact d-flex justify-content-center wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="single-cool-fact d-flex justify-content-center wow fadeInUp" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
                         <div class="counter-area">
                             <h3><span class="counter">88</span>% </h3>
                         </div>
@@ -281,7 +283,7 @@ a simple, easy to read outline. </h5>
                 </div>
                 <!-- Single Cool Fact-->
                 <div class="col-12 col-md-3 col-lg-3">
-                    <div class="single-cool-fact d-flex justify-content-center wow fadeInUp" data-wow-delay="0.6s">
+                    <div class="single-cool-fact d-flex justify-content-center wow fadeInUp" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
                         <div class="counter-area">
                             <h3><span class="counter">25</span></h3>
                         </div>
@@ -293,7 +295,7 @@ a simple, easy to read outline. </h5>
                 </div>
                 <!-- Single Cool Fact-->
                 <div class="col-12 col-md-3 col-lg-3">
-                    <div class="single-cool-fact d-flex justify-content-center wow fadeInUp" data-wow-delay="0.8s">
+                    <div class="single-cool-fact d-flex justify-content-center wow fadeInUp" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInUp;">
                         <div class="counter-area">
                             <h3><span class="counter">117</span></h3>
                         </div>
@@ -377,9 +379,9 @@ a simple, easy to read outline. </h5>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-10">
-                    <div class="slider slider-for">
+                    <div class="slider slider-for slick-initialized slick-slider">
                         <!-- Client Feedback Text  -->
-                        <div class="client-feedback-text text-center">
+                        <div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 1710px;"><div class="client-feedback-text text-center slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="-1" style="width: 570px; position: relative; left: 0px; top: 0px; z-index: 1000; opacity: 1; transition: opacity 500ms ease 0s;">
                             <div class="client">
                                 <i class="fa fa-quote-left" aria-hidden="true"></i>
                             </div>
@@ -397,9 +399,7 @@ a simple, easy to read outline. </h5>
                                 <h5>Poonam Singh</h5>
                                 <p>Cisco Engineer</p>
                             </div>
-                        </div>
-                        <!-- Client Feedback Text  -->
-                        <div class="client-feedback-text text-center">
+                        </div><div class="client-feedback-text text-center slick-slide" data-slick-index="1" aria-hidden="true" tabindex="-1" style="width: 570px; position: relative; left: -570px; top: 0px; z-index: 998; opacity: 0; transition: opacity 500ms ease 0s;">
                             <div class="client">
                                 <i class="fa fa-quote-left" aria-hidden="true"></i>
                             </div>
@@ -417,9 +417,7 @@ a simple, easy to read outline. </h5>
                                 <h5>Micheal Bell</h5>
                                 <p>Student</p>
                             </div>
-                        </div>
-                        <!-- Client Feedback Text  -->
-                        <div class="client-feedback-text text-center">
+                        </div><div class="client-feedback-text text-center slick-slide" data-slick-index="2" aria-hidden="true" tabindex="0" style="width: 570px; position: relative; left: -1140px; top: 0px; z-index: 998; opacity: 0; transition: opacity 500ms ease 0s;">
                             <div class="client">
                                 <i class="fa fa-quote-left" aria-hidden="true"></i>
                             </div>
@@ -437,26 +435,46 @@ a simple, easy to read outline. </h5>
                                 <h5>Rithvik Joshi</h5>
                                 <p>Student</p>
                             </div>
-                        </div>
+                        </div></div></div>
+                        <!-- Client Feedback Text  -->
+
+                        <!-- Client Feedback Text  -->
+
                         <!-- Client Feedback Text  -->
                     </div>
                 </div>
                 <!-- Client Thumbnail Area -->
                 <div class="col-12 col-md-6 col-lg-5">
-                    <div class="slider slider-nav">
-                      <div class="client-thumbnail">
+                    <div class="slider slider-nav slick-initialized slick-slider slick-dotted"><i class="fa fa-angle-left slick-arrow" style="display: block;"></i>
+                      <div class="slick-list draggable" style="padding: 0px 30px;"><div class="slick-track" style="opacity: 1; width: 1080px; transform: translate3d(-540px, 0px, 0px); transition: transform 500ms ease 0s;"><div class="client-thumbnail slick-slide slick-cloned" data-slick-index="-4" aria-hidden="true" tabindex="-1" style="width: 90px;">
 
-                        </div>
-                        <div class="client-thumbnail">
+                        </div><div class="client-thumbnail slick-slide slick-cloned" data-slick-index="-3" aria-hidden="true" tabindex="-1" style="width: 90px;">
 
-                        </div>
-                        <div class="client-thumbnail">
+                        </div><div class="client-thumbnail slick-slide slick-cloned" data-slick-index="-2" aria-hidden="true" tabindex="-1" style="width: 90px;">
 
-                        </div>
-                        <div class="client-thumbnail">
+                        </div><div class="client-thumbnail slick-slide slick-cloned slick-center" data-slick-index="-1" aria-hidden="true" tabindex="-1" style="width: 90px;">
 
-                        </div>
-                    </div>
+                        </div><div class="client-thumbnail slick-slide" data-slick-index="0" aria-hidden="true" tabindex="-1" role="tabpanel" id="slick-slide10" aria-describedby="slick-slide-control10" style="width: 90px;">
+
+                        </div><div class="client-thumbnail slick-slide" data-slick-index="1" aria-hidden="true" tabindex="-1" role="tabpanel" id="slick-slide11" aria-describedby="slick-slide-control11" style="width: 90px;">
+
+                        </div><div class="client-thumbnail slick-slide slick-active" data-slick-index="2" aria-hidden="false" tabindex="0" role="tabpanel" id="slick-slide12" aria-describedby="slick-slide-control12" style="width: 90px;">
+
+                        </div><div class="client-thumbnail slick-slide slick-current slick-active slick-center" data-slick-index="3" aria-hidden="false" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13" style="width: 90px;">
+
+                        </div><div class="client-thumbnail slick-slide slick-cloned slick-active" data-slick-index="4" aria-hidden="false" tabindex="-1" style="width: 90px;">
+
+                        </div><div class="client-thumbnail slick-slide slick-cloned" data-slick-index="5" aria-hidden="true" tabindex="-1" style="width: 90px;">
+
+                        </div><div class="client-thumbnail slick-slide slick-cloned" data-slick-index="6" aria-hidden="true" tabindex="-1" style="width: 90px;">
+
+                        </div><div class="client-thumbnail slick-slide slick-cloned" data-slick-index="7" aria-hidden="true" tabindex="-1" style="width: 90px;">
+
+                        </div></div></div>
+
+
+
+                    <i class="fa fa-angle-right slick-arrow" style="display: block;"></i><ul class="slick-dots" style="display: flex;" role="tablist"><li class="" role="presentation"><button type="button" role="tab" id="slick-slide-control10" aria-controls="slick-slide10" aria-label="1 of 2" tabindex="-1">1</button></li><li role="presentation" class=""><button type="button" role="tab" id="slick-slide-control11" aria-controls="slick-slide11" aria-label="2 of 2" tabindex="-1">2</button></li><li role="presentation" class=""><button type="button" role="tab" id="slick-slide-control12" aria-controls="slick-slide12" aria-label="3 of 2" tabindex="0" aria-selected="true">3</button></li><li role="presentation" class="slick-active"><button type="button" role="tab" id="slick-slide-control13" aria-controls="slick-slide13" aria-label="4 of 2" tabindex="-1">4</button></li></ul></div>
                 </div>
             </div>
         </div>
@@ -544,6 +562,8 @@ a simple, easy to read outline. </h5>
     <!--<script src="static/js/footer-reveal.min.js"></script> -->
     <!-- Active JS -->
     <script src="static/js/active.js"></script>
-</body>
+
+
+</section><a id="scrollUp" href="#top" style="position: fixed; z-index: 2147483647;"><i class="fa fa-angle-up"></i></a></body>
 
 </html>
