@@ -1,0 +1,176 @@
+<title>A2N</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+  body {background-color: black;}
+  h1
+  {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  h3
+  {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  h4
+  {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  h5
+  {
+    color: white;
+    display: flex;
+    text-align: center;
+  }
+  a
+  {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  code
+  {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color: black;
+  }
+  form
+  {
+    margin: 0 auto;
+    color: white;
+
+    width:100px;
+  }
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+  }
+  .footer{
+       position: fixed;
+       text-align: center;
+       bottom: 20px;
+       width: 100%;
+   }
+
+  </style>
+  <script>
+  var audioFormat = "";
+  //var input ="'text.txt', '/Users/20arjuna/Desktop/text.txt', 'a2n_audio'"
+  function setMP3 ()
+  {
+    audioFormat = ".mp3";
+    document.getElementById("format").setAttribute('accept', audioFormat)
+
+  }
+  function setWAV ()
+  {
+    audioFormat = ".wav";
+    document.getElementById("format").setAttribute('accept', audioFormat)
+
+  }
+  function setFLAC ()
+  {
+    audioFormat = ".flac";
+    document.getElementById("format").setAttribute('accept', audioFormat)
+
+  }
+  function reset()
+  {
+    audioFormat = "";
+  }
+  function validateInput()
+  {
+    console.log('validating!!!!');
+    if(audioFormat === "")
+    {
+      alert("Select a file type!");
+      event.preventDefault();
+    }
+    else
+    {
+      var file = document.getElementById("format").files[0];
+      var FileSize = file.files[0].size / 1024 / 1024; // in MB
+      if (FileSize > 12)
+      {
+            alert('File size exceeds 12 MB. Pleae try agian.');
+            event.preventDefault();
+      }
+
+    }
+  }
+  function loading()
+  {
+    var email = document.getElementById("input").value;
+    console.log("email: " + email)
+    if(email==null)
+    {
+      alert("Enter your email");
+      event.preventDefault();
+    }
+    else if(validateEmail(email)==false)
+    {
+      alert("That email is not valid");
+      event.preventDefault();
+    }
+    else
+    {
+      document.getElementById('bigh3').style.display='block';
+      document.getElementById('bigpic').style.display='block';
+      var snd = new Audio("/static/music.mp3");
+      snd.loop = "true"
+      snd.play();
+
+      snd.currentTime=0;
+    }
+
+
+  }
+  function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
+
+  </script>
+  <div class="container">
+    <h1>Audio2Notes</h2>
+      <h4>Choose your file upload type and upload your file.</h4>
+      <div class="btn-group btn-group-justified">
+        <a href="#" class="btn btn-primary" onclick="setMP3()">.mp3</a>
+        <a href="#" class="btn btn-primary" onclick="setWAV()">.wav</a>
+        <a href="#" class="btn btn-primary" onclick="setFLAC()">.flac</a>
+        <a href="#" class="btn btn-primary" onclick="reset()">reset</a>
+      </div>
+      <h1></h1>
+      <form id="myForm" action ="/uploaderlocal" method ="POST" enctype="multipart/form-data">
+        <input id ="format" name ='gcloudfile' type="file" style="width:200px" accept=".flac" onclick="validateInput()">
+        <h5 style="width:400px; display: flex; text-align: center;">Enter your email address</h5>
+        <input type ="text" style="color: black;" id="input" name="email">
+        <h5></h5>
+        <input type="Submit" style="background-color:white; color:black;"
+        value="Convert!" onclick="loading()">
+      </form>
+      <blink>
+        <h3 id ="bigh3" style="display:none;" class="center">Loading... </h3>
+      </blink>
+    <img id="bigpic" src="/static/loading.gif" style="display: none;" width="150" height="150">
