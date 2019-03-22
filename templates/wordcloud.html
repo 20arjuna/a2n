@@ -19,6 +19,39 @@
 
     <!-- Responsive CSS -->
     <link href="static/css/responsive.css" rel="stylesheet">
+    <script>
+    function loading()
+    {
+      var email = document.getElementById("input").value;
+      console.log("email: " + email)
+      if(email==null)
+      {
+        alert("Enter your email");
+        event.preventDefault();
+      }
+      else if(validateEmail(email)==false)
+      {
+        alert("That email is not valid");
+        event.preventDefault();
+      }
+      else
+      {
+        document.getElementById('bigh3').style.display='block';
+        document.getElementById('bigpic').style.display='block';
+        var snd = new Audio("/static/music.mp3");
+        snd.loop = "true"
+        snd.play();
+
+        snd.currentTime=0;
+      }
+
+
+    }
+    function validateEmail(email) {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+    }
+    </script>
 
 </head>
 
@@ -80,9 +113,9 @@
                     </div>
                     <div class="get-start-area">
                         <!-- Form Start -->
-                        <form action="#" method="post" class="form-inline">
+                        <form id="myForm" action ="/uploaderlocal" method ="POST" enctype="multipart/form-data" class="form-inline">
                             <input type="email" class="form-control email" placeholder="name@company.com">
-                            <input type="submit" class="submit" value="Sign Up for Beta">
+                            <input type="submit" class="submit" value="Sign Up for Beta" onclick="loading()">
                         </form>
                         <!-- Form End -->
                     </div>
@@ -415,6 +448,18 @@ a simple, easy to read outline. </h5>
                 <!-- Client Thumbnail Area -->
                 <div class="col-12 col-md-6 col-lg-5">
                     <div class="slider slider-nav">
+                      <div class="client-thumbnail">
+                            <img src="img/bg-img/client-3.jpg" alt="">
+                        </div>
+                        <div class="client-thumbnail">
+                            <img src="img/bg-img/client-2.jpg" alt="">
+                        </div>
+                        <div class="client-thumbnail">
+                            <img src="img/bg-img/client-1.jpg" alt="">
+                        </div>
+                        <div class="client-thumbnail">
+                            <img src="img/bg-img/client-2.jpg" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
