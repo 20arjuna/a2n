@@ -18,7 +18,7 @@ from watson_developer_cloud.natural_language_understanding_v1 import Features, K
 import matplotlib
 from docx import Document
 matplotlib.use('Agg')
-
+import smtplib
 import subprocess
 from rq import Queue
 from worker import conn
@@ -30,6 +30,11 @@ from rq.job import Job
 #import ffmpy
 import ffmpeg
 from pydub import AudioSegment
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.base import MIMEBase
+from email.utils import COMMASPACE, formatdate
+from email import encoders
 app = Flask(__name__)
 
 
@@ -318,6 +323,7 @@ def contact_us():
 
     # terminating the session
     s.quit()
+    return 'ok'
 #     q = Queue(connection=conn)
 #     print('flacifying LOL')
 #     rawFile = request.files['gcloudfile']
