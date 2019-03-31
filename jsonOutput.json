@@ -1,0 +1,85 @@
+{
+  "usage": {
+    "text_units": 1,
+    "text_characters": 638,
+    "features": 1
+  },
+  "language": "en",
+  "keywords": [
+    {
+      "text": "favorite summer vacation",
+      "relevance": 0.999392,
+      "count": 1
+    },
+    {
+      "text": "Universal Studios",
+      "relevance": 0.772916,
+      "count": 3
+    },
+    {
+      "text": "first time",
+      "relevance": 0.614123,
+      "count": 2
+    },
+    {
+      "text": "father",
+      "relevance": 0.555468,
+      "count": 3
+    },
+    {
+      "text": "memorable experiences of my life",
+      "relevance": 0.541799,
+      "count": 1
+    },
+    {
+      "text": "Trip",
+      "relevance": 0.532388,
+      "count": 1
+    },
+    {
+      "text": "fact",
+      "relevance": 0.527093,
+      "count": 1
+    },
+    {
+      "text": "Orlando",
+      "relevance": 0.51712,
+      "count": 1
+    },
+    {
+      "text": "Florida",
+      "relevance": 0.514121,
+      "count": 1
+    },
+    {
+      "text": "airplane",
+      "relevance": 0.514121,
+      "count": 1
+    },
+    {
+      "text": "Joy",
+      "relevance": 0.514121,
+      "count": 1
+    },
+    {
+      "text": "essay",
+      "relevance": 0.514121,
+      "count": 1
+    },
+    {
+      "text": "life",
+      "relevance": 0.508967,
+      "count": 1
+    },
+    {
+      "text": "plane ride",
+      "relevance": 0.402291,
+      "count": 1
+    },
+    {
+      "text": "time",
+      "relevance": 0.314165,
+      "count": 2
+    }
+  ]
+}

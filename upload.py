@@ -1,4 +1,3 @@
-#from google.cloud.storage import storage
 from flask import Flask,render_template, Response, request, redirect, url_for, send_file
 from werkzeug import secure_filename
 from google.cloud import speech
@@ -36,10 +35,6 @@ from email.mime.base import MIMEBase
 from email.utils import COMMASPACE, formatdate
 from email import encoders
 app = Flask(__name__)
-
-
-
-#from google.cloud import resumable_media
 methodlist = ['uploadtogoogle.py', 'speechtotext.py', 'converttooutline.py', 'createwordcloud.py']
 def findKeywords(filename):
     file = open(filename, "r")
@@ -255,187 +250,130 @@ def finaloutputoutline(inputfile, outputfile):
     #print(wsaSentenceMatrix)
     newparagraphlist = runWSAOnParagraphs(newparagraphlist)
     outputOutline(newparagraphlist,wsaSentenceMatrix, outputfile)
-
-@app.route("/")
-
+@app.route('/')
 def hello():
-    return render_template('wordcloud.html')
-
-
+    return render_template('demo.html')
 
 @app.route('/uploaderlocal', methods=['POST'])
 def upload_file():
-    email = request.form['email']
-    utils.send_email(email)
-    return render_template('beta.html')
+    try:
+        email = request.form['email']
+        time.sleep(5)
+        utils.send_email(email, ['static/A2N-Outline.docx'])
+    except:
+        time.sleep(5)
+    return render_template('fileDownload.html')
 
-@app.route('/contactlocal', methods=['POST'])
-def contact_us():
-    name = request.form['name']
-    email = request.form['email']
-    message = request.form['message']
-    fromaddr = 'a2npelican@gmail.com'
-    toaddr = '20arjuna@studens.harker.org'
 
-    # instance of MIMEMultipart
-    msg = MIMEMultipart()
+    # print('flacifying LOL')
+    # rawFile = request.files['gcloudfile']
+    #email = request.form['email']
 
-    # storing the senders email address
-    msg['From'] = fromaddr
-
-    # storing the receivers email address
-    msg['To'] = toaddr
-
-    # storing the subject
-    msg['Subject'] = "User Message"
-
-    # string to store the body of the mail
-    body = name + "\n"+"\n" + message
-
-    # attach the body with the msg instance
-    msg.attach(MIMEText(body, 'plain'))
+    # fString = str(rawFile.filename)
     #
-    # # open the file to be sent
-    # # filename1 = file_name1
-    # # filename2 = file_name2
-    # for path in files:
-    #     part = MIMEBase('application', "octet-stream")
-    #     with open(path, 'rb') as file:
-    #         part.set_payload(file.read())
-    #     encoders.encode_base64(part)
-    #     part.add_header('Content-Disposition',
-    #                     'attachment; filename="{}"'.format(op.basename(path)))
-    #     msg.attach(part)
-    # creates SMTP session
-    s = smtplib.SMTP('smtp.gmail.com', 587)
-
-    # start TLS for security
-    s.starttls()
-
-    # Authentication
-    s.login(fromaddr, "arjunsahil123")
-
-    # Converts the Multipart msg into a string
-    text = msg.as_string()
-
-    # sending the mail
-    s.sendmail(fromaddr, toaddr, text)
-
-    # terminating the session
-    s.quit()
-    return render_template('wordcloud.html')
-#     q = Queue(connection=conn)
-#     print('flacifying LOL')
-#     rawFile = request.files['gcloudfile']
-
-#
-#     fString = str(rawFile.filename)
-#
-#     fString = fString.split("'")
-#     filepath = fString[0]
-#     formatType = filepath[filepath.index('.')+1:]
-#     storage_client = storage.Client.from_service_account_json(
-#           'A2N-Official-bd3ee1c6cc61.json')
-#     bucket = storage_client.get_bucket('a2n_audio')
-#     blob = bucket.blob('rawInput')
-#      #print(fString[1])
-#     blob.upload_from_file(rawFile, content_type = 'audio/'+ formatType)
-#     storage_client = storage.Client.from_service_account_json(
-#           'A2N-Official-bd3ee1c6cc61.json')
-#     bucket = storage_client.get_bucket('a2n_audio')
-#     blob = bucket.blob('rawInput')
-#     blob.download_to_filename('rawInput.'+formatType)
-#
-#     #f.save(f.filename)
-#     #print('saving')
-#     #formatType = filepath[filepath.index('.')+1:]
-#     output = AudioSegment.from_file('rawInput.'+formatType, formatType)
-#     output.export('flacified.flac', format="flac", parameters=["-ac", "1"])
-#     print('able to take from file ' + filepath)
-#     print('sox is a go!')
-#
-#
-#
-#
-#
-#     print('uploading to google')
-#     storage_client = storage.Client.from_service_account_json(
-#           'A2N-Official-bd3ee1c6cc61.json')
-#     bucket = storage_client.get_bucket('a2n_audio')
-#     blob = bucket.blob('input')
-#      #print(fString[1])
-#     blob.upload_from_filename('flacified.flac')
-#     print('GOT HERE')
-#
-#
-#
-#
-#     # f.save(f.filename)
-#     # fString = str(f.filename)
-#     # fString = fString.split("'")
-#     # filepath = fString[0]
-#     # formatType = filepath[filepath.index('.')+1:]
-#     # output = AudioSegment.from_file(fString[0], formatType)
-#     # output.export('flacified.flac', format="flac", parameters=["-ac", "1"])
-#     # print('able to take from file ' + fString[0])
-#     # print('sox is a go!')
-#     # os.remove(fString[0])
-#     #for i in range(4):
-#         #subprocess.call("python3 "+ methodlist[i], shell=True)
-#     # utils.upload_to_google()
-#     # print('uploaded to google')
-#     # utils.speech_to_text()
-#     # print('speech to text successful')
-#     # utils.convert_to_outline()
-#     # print('made the outline')
-#     # utils.create_wordcloud()
-#     # print('finished! made the wordcloud')
-#    # # extra argument: result_ttl=5000
-#     ####job1 = q.enqueue_call(func=utils.upload_to_google, args=('flacified.flac', 'string'), timeout='1h', result_ttl=30)
-#     #q.enqueue(utils.upload_to_google)
-#    #  #print(job1.get_id())
-#    #  #get_results(job1.get_id())
-#    # #  #print(result.get_id())
-#    #  ###job2 = q.enqueue_call(func=utils.speech_to_text, args=(), timeout='1h')
-#     q.enqueue(utils.speech_to_text, timeout = '1h')
-#    #  #print(job2.get_id()   #  #print(result.get_id())
-#    #  ###job3 = q.enqueue_call(func=utils.convert_to_outline, args=(), timeout='1h')
-#     q.enqueue(utils.convert_to_outline, timeout = '1h')
-#    #  #print(job3.get_id())
-#    #  #get_results(job3.get_id())
-#    # #  #print(result.get_id())
-#    #  ###job4 = q.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h')
-#     q.enqueue(utils.create_wordcloud, timeout = '1h')
-#    #  #job5 = q.enqueue_call(func=utils.send_email, args=(email, 'outline.docx', 'static/outline.docx'), timeout='1h')
-#     q.enqueue(utils.send_email, email, ['static/outline.docx', 'static/cloud.png'], timeout = '1h')
-#
-#
-#     # print('Job 2 status before ' + job2.status)
-#     # while(job2.status=='queued'):
-#     #     time.sleep(1)
-#     # print('Job 2 status after ' + job2.status)
-#     # while(job3.status=='queued'):
-#     #     time.sleep(1)
-#     # while(job4.status=='queued'):
-#     #     time.sleep(1)
-#     #print(result.get_id())
-#     #print(job4.get_id())
-#     #get_results(job4.get_id())
-#     #while (result.is_finished != True):
-#         #time.sleep(1)
-#     #return render_template('fileDownload.html')
-#     # while(len(q1)>0):
-#     #     time.sleep(1)
-#     return render_template('fileDownload.html')
-# def get_results(job_key):
-#
-#     job = Job.fetch(job_key, connection=conn)
-#
-#     if(job.is_finished == False):
-#         job = Job.fetch(job_key, connection=conn)
-#     print(" finished")
-#     return
+    # fString = fString.split("'")
+    # filepath = fString[0]
+    # formatType = filepath[filepath.index('.')+1:]
+    # storage_client = storage.Client.from_service_account_json(
+    #       'A2N-Official-bd3ee1c6cc61.json')
+    # bucket = storage_client.get_bucket('a2n_audio')
+    # blob = bucket.blob('rawInput')
+    #  #print(fString[1])
+    # blob.upload_from_file(rawFile, content_type = 'audio/'+ formatType)
+    # storage_client = storage.Client.from_service_account_json(
+    #       'A2N-Official-bd3ee1c6cc61.json')
+    # bucket = storage_client.get_bucket('a2n_audio')
+    # blob = bucket.blob('rawInput')
+    # blob.download_to_filename('rawInput.'+formatType)
+    #
+    # #f.save(f.filename)
+    # #print('saving')
+    # #formatType = filepath[filepath.index('.')+1:]
+    # output = AudioSegment.from_file('rawInput.'+formatType, formatType)
+    # output.export('flacified.flac', format="flac", parameters=["-ac", "1"])
+    # print('able to take from file ' + filepath)
+    # print('sox is a go!')
+    #
+    #
+    #
+    #
+    #
+    # print('uploading to google')
+    # storage_client = storage.Client.from_service_account_json(
+    #       'A2N-Official-bd3ee1c6cc61.json')
+    # bucket = storage_client.get_bucket('a2n_audio')
+    # blob = bucket.blob('input')
+    #  #print(fString[1])
+    # blob.upload_from_filename('flacified.flac')
+    # print('GOT HERE')
 
 
-if __name__ == "__main__":
+
+
+    # f.save(f.filename)
+    # fString = str(f.filename)
+    # fString = fString.split("'")
+    # filepath = fString[0]
+    # formatType = filepath[filepath.index('.')+1:]
+    # output = AudioSegment.from_file(fString[0], formatType)
+    # output.export('flacified.flac', format="flac", parameters=["-ac", "1"])
+    # print('able to take from file ' + fString[0])
+    # print('sox is a go!')
+    # os.remove(fString[0])
+    #for i in range(4):
+        #subprocess.call("python3 "+ methodlist[i], shell=True)
+    # utils.upload_to_google()
+    # print('uploaded to google')
+    # utils.speech_to_text()
+    # print('speech to text successful')
+    # utils.convert_to_outline()
+    # print('made the outline')
+    # utils.create_wordcloud()
+    # print('finished! made the wordcloud')
+   # # extra argument: result_ttl=5000
+    ####job1 = q.enqueue_call(func=utils.upload_to_google, args=('flacified.flac', 'string'), timeout='1h', result_ttl=30)
+    #q.enqueue(utils.upload_to_google)
+   #  #print(job1.get_id())
+   #  #get_results(job1.get_id())
+   # #  #print(result.get_id())
+   #  ###job2 = q.enqueue_call(func=utils.speech_to_text, args=(), timeout='1h')
+    #utils.speech_to_text()
+   #  #print(job2.get_id()   #  #print(result.get_id())
+   #  ###job3 = q.enqueue_call(func=utils.convert_to_outline, args=(), timeout='1h')
+    #utils.convert_to_outline()
+   #  #print(job3.get_id())
+   #  #get_results(job3.get_id())
+   # #  #print(result.get_id())
+   #  ###job4 = q.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h')
+    #utils.create_wordcloud()
+   #  #job5 = q.enqueue_call(func=utils.send_email, args=(email, 'outline.docx', 'static/outline.docx'), timeout='1h')
+    #utils.send_email(email, ['static/outline.docx'])
+
+
+    # print('Job 2 status before ' + job2.status)
+    # while(job2.status=='queued'):
+    #     time.sleep(1)
+    # print('Job 2 status after ' + job2.status)
+    # while(job3.status=='queued'):
+    #     time.sleep(1)
+    # while(job4.status=='queued'):
+    #     time.sleep(1)
+    #print(result.get_id())
+    #print(job4.get_id())
+    #get_results(job4.get_id())
+    #while (result.is_finished != True):
+        #time.sleep(1)
+    #return render_template('fileDownload.html')
+    # while(len(q1)>0):
+    #     time.sleep(1)
+
+def get_results(job_key):
+
+    job = Job.fetch(job_key, connection=conn)
+
+    if(job.is_finished == False):
+        job = Job.fetch(job_key, connection=conn)
+    print(" finished")
+    return
+if __name__ == '__main__':
     app.run()

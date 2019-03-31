@@ -87,7 +87,7 @@ def create_wordcloud():
 
      image.save('static/cloud.png', 'PNG')
 
-def send_email(to_address):
+def send_email(to_address, files):
     fromaddr = 'a2npelican@gmail.com'
     toaddr = to_address
 
@@ -101,25 +101,25 @@ def send_email(to_address):
     msg['To'] = toaddr
 
     # storing the subject
-    msg['Subject'] = "A2N Beta Registration."
+    msg['Subject'] = "Your Outline, courtesy of A2N"
 
     # string to store the body of the mail
-    body = "Hello!" + "\n" + "\n" + "Thank you for signing up for our beta! You have been added to our list and we will notify you in June when our beta is ready. Thank you for your patience and we are thrilled to have you on board!" + "\n" +"\n"+ "Thanks," +"\n" + "The A2N Team"
+    body = "Enjoy."
 
     # attach the body with the msg instance
     msg.attach(MIMEText(body, 'plain'))
-    #
-    # # open the file to be sent
-    # # filename1 = file_name1
-    # # filename2 = file_name2
-    # for path in files:
-    #     part = MIMEBase('application', "octet-stream")
-    #     with open(path, 'rb') as file:
-    #         part.set_payload(file.read())
-    #     encoders.encode_base64(part)
-    #     part.add_header('Content-Disposition',
-    #                     'attachment; filename="{}"'.format(op.basename(path)))
-    #     msg.attach(part)
+
+    # open the file to be sent
+    # filename1 = file_name1
+    # filename2 = file_name2
+    for path in files:
+        part = MIMEBase('application', "octet-stream")
+        with open(path, 'rb') as file:
+            part.set_payload(file.read())
+        encoders.encode_base64(part)
+        part.add_header('Content-Disposition',
+                        'attachment; filename="{}"'.format(op.basename(path)))
+        msg.attach(part)
     # creates SMTP session
     s = smtplib.SMTP('smtp.gmail.com', 587)
 

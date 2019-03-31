@@ -58,7 +58,7 @@
     margin: 0 auto;
     color: white;
 
-    width:100px;
+    width:200px;
   }
   img {
     display: block;
@@ -91,7 +91,7 @@
   }
   function setFLAC ()
   {
-    audioFormat = ".flac";
+    audioFormat = ".m4a";
     document.getElementById("format").setAttribute('accept', audioFormat)
 
   }
@@ -107,28 +107,17 @@
       alert("Select a file type!");
       event.preventDefault();
     }
-    else
-    {
-      var file = document.getElementById("format").files[0];
-      var FileSize = file.files[0].size / 1024 / 1024; // in MB
-      if (FileSize > 12)
-      {
-            alert('File size exceeds 12 MB. Pleae try agian.');
-            event.preventDefault();
-      }
-
-    }
   }
   function loading()
   {
-    var email = document.getElementById("input").value;
+    var email = document.getElementById("email");
     console.log("email: " + email)
-    if(email==null)
+    if(email==null && document.getElementById("myCheck").checked == true)
     {
       alert("Enter your email");
       event.preventDefault();
     }
-    else if(validateEmail(email)==false)
+    else if(validateEmail(email.value)==false && document.getElementById("myCheck").checked == true)
     {
       alert("That email is not valid");
       event.preventDefault();
@@ -150,22 +139,44 @@
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
   }
+  function displayEmail()
+  {
+    var checkBox = document.getElementById("myCheck");
+    var email = document.getElementById("email");
+    var h5 = document.getElementById("h5")
+    if (checkBox.checked == true)
+    {
+      email.style.display = "block";
+      h5.style.display = "block";
+      h5.style.display = "flex";
+    }
+    else
+    {
+      email.style.display = "none";
+      h5.style.display = "none";
+      //h5.style.display = "flex";
+    }
+  }
 
   </script>
   <div class="container">
-    <h1>Audio2Notes</h2>
+    <h1>Audio2Notes</h1>
       <h4>Choose your file upload type and upload your file.</h4>
       <div class="btn-group btn-group-justified">
         <a href="#" class="btn btn-primary" onclick="setMP3()">.mp3</a>
         <a href="#" class="btn btn-primary" onclick="setWAV()">.wav</a>
-        <a href="#" class="btn btn-primary" onclick="setFLAC()">.flac</a>
+        <a href="#" class="btn btn-primary" onclick="setFLAC()">.m4a</a>
         <a href="#" class="btn btn-primary" onclick="reset()">reset</a>
       </div>
       <h1></h1>
       <form id="myForm" action ="/uploaderlocal" method ="POST" enctype="multipart/form-data">
-        <input id ="format" name ='gcloudfile' type="file" style="width:200px" accept=".flac" onclick="validateInput()">
-        <h5 style="width:400px; display: flex; text-align: center;">Enter your email address</h5>
-        <input type ="text" style="color: black;" id="input" name="email">
+        <input id ="format" name ='gcloudfile' type="file" style="width:200px" accept=".m4a" onclick="validateInput()">
+        <h5></h5>
+        <input type="checkbox" id="myCheck" onclick="displayEmail()">
+
+        <label for="myCheck" style="color: white;">Want it emailed to you?</label>
+        <h5 style="width:400px; display: none; text-align: center;" id="h5">Enter your email address</h5>
+        <input type ="text" style="color: black; display: none;" id="email" name="email">
         <h5></h5>
         <input type="Submit" style="background-color:white; color:black;"
         value="Convert!" onclick="loading()">
