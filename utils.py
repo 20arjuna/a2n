@@ -40,6 +40,7 @@ def upload_to_google():
 
 
 def speech_to_text():
+    print('starting speech2text')
     client = speech.SpeechClient()
     text_file = open("wordcloud.txt", "w")
 
@@ -66,6 +67,7 @@ def speech_to_text():
     text_file.close()
 
 def convert_to_outline():
+    print('making outline')
     finaloutputoutline('wordcloud.txt', 'notes.txt')
     path_notes = 'notes.txt'
     document = Document()
@@ -75,6 +77,7 @@ def convert_to_outline():
     document.save('static/outline'+ '.docx')
 
 def create_wordcloud():
+    print('making wordcloud')
      d =  path.dirname(__file__) if "__file__" in locals() else os.getcwd()
 
          # Read the whole text.
@@ -88,6 +91,7 @@ def create_wordcloud():
      image.save('static/cloud.png', 'PNG')
 
 def send_email(to_address, files):
+    print('sending email')
     fromaddr = 'a2npelican@gmail.com'
     toaddr = to_address
 

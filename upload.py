@@ -360,12 +360,13 @@ def upload_file():
         #return render_template('fileDownload.html')
         # while(len(q1)>0):
         #     time.sleep(1)
-        return render_template('fileDownload.html')
+        return render_template('email.html')
 
     except:
+        q = Queue(connection=conn)
         print('flacifying LOL')
         rawFile = request.files['gcloudfile']
-
+        #email = request.form['email']
 
         fString = str(rawFile.filename)
 
@@ -391,6 +392,11 @@ def upload_file():
         output.export('flacified.flac', format="flac", parameters=["-ac", "1"])
         print('able to take from file ' + filepath)
         print('sox is a go!')
+
+
+
+
+
         print('uploading to google')
         storage_client = storage.Client.from_service_account_json(
               'A2N-Official-bd3ee1c6cc61.json')
@@ -400,11 +406,16 @@ def upload_file():
         blob.upload_from_filename('flacified.flac')
         print('GOT HERE')
 
-        job1 = q.enqueue_call(func=utils.upload_to_google, args=('flacified.flac', 'string'), timeout='1h', result_ttl=30)
-        job2 = q.enqueue_call(func=utils.speech_to_text, args=(), timeout='1h')
-        job3 = q.enqueue_call(func=utils.convert_to_outline, args=(), timeout='1h')
-        job4 = q.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h')
-    return render_template('fileDownload.html')
+        q.enqueue(utils.speech_to_text, timeout = '1h')
+       #  #print(job2.get_id()   #  #print(result.get_id())
+       #  ###job3 = q.enqueue_call(func=utils.convert_to_outline, args=(), timeout='1h')
+        q.enqueue(utils.convert_to_outline, timeout = '1h')
+       #  #print(job3.get_id())
+       #  #get_results(job3.get_id())
+       # #  #print(result.get_id())
+       #  ###job4 = q.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h')
+        q.enqueue(utils.create_wordcloud, timeout = '1h')
+        return render_template('fileDownload.html')
 
 
 
