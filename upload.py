@@ -256,6 +256,7 @@ def hello():
 
 @app.route('/uploaderlocal', methods=['POST'])
 def upload_file():
+    q = Queue(connection=Redis())
     try:
         email = request.form['email']
         print('flacifying LOL')
