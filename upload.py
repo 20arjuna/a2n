@@ -24,6 +24,7 @@ from worker import conn
 import utils
 import time
 from rq.job import Job
+from redis import Redis
 #import sox
 #from ffmpy import FFmpeg
 #import ffmpy
