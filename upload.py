@@ -258,54 +258,101 @@ def hello():
 def upload_file():
     try:
         email = request.form['email']
-        time.sleep(5)
-        utils.send_email(email, ['static/A2N-Outline.docx'])
+        print('flacifying LOL')
+        rawFile = request.files['gcloudfile']
+
+
+        fString = str(rawFile.filename)
+
+        fString = fString.split("'")
+        filepath = fString[0]
+        formatType = filepath[filepath.index('.')+1:]
+        storage_client = storage.Client.from_service_account_json(
+              'A2N-Official-bd3ee1c6cc61.json')
+        bucket = storage_client.get_bucket('a2n_audio')
+        blob = bucket.blob('rawInput')
+         #print(fString[1])
+        blob.upload_from_file(rawFile, content_type = 'audio/'+ formatType)
+        storage_client = storage.Client.from_service_account_json(
+              'A2N-Official-bd3ee1c6cc61.json')
+        bucket = storage_client.get_bucket('a2n_audio')
+        blob = bucket.blob('rawInput')
+        blob.download_to_filename('rawInput.'+formatType)
+
+        #f.save(f.filename)
+        #print('saving')
+        #formatType = filepath[filepath.index('.')+1:]
+        output = AudioSegment.from_file('rawInput.'+formatType, formatType)
+        output.export('flacified.flac', format="flac", parameters=["-ac", "1"])
+        print('able to take from file ' + filepath)
+        print('sox is a go!')
+        print('uploading to google')
+        storage_client = storage.Client.from_service_account_json(
+              'A2N-Official-bd3ee1c6cc61.json')
+        bucket = storage_client.get_bucket('a2n_audio')
+        blob = bucket.blob('input')
+         #print(fString[1])
+        blob.upload_from_filename('flacified.flac')
+        print('GOT HERE')
+
+        job1 = q.enqueue_call(func=utils.upload_to_google, args=('flacified.flac', 'string'), timeout='1h', result_ttl=30)
+        job2 = q.enqueue_call(func=utils.speech_to_text, args=(), timeout='1h')
+        job3 = q.enqueue_call(func=utils.convert_to_outline, args=(), timeout='1h')
+        job4 = q.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h')
+        job5 = q.enqueue_call(func=utils.send_email, args=(email, 'outline.docx', 'static/outline.docx'), timeout='1h')
+
     except:
-        time.sleep(5)
+        print('flacifying LOL')
+        rawFile = request.files['gcloudfile']
+
+
+        fString = str(rawFile.filename)
+
+        fString = fString.split("'")
+        filepath = fString[0]
+        formatType = filepath[filepath.index('.')+1:]
+        storage_client = storage.Client.from_service_account_json(
+              'A2N-Official-bd3ee1c6cc61.json')
+        bucket = storage_client.get_bucket('a2n_audio')
+        blob = bucket.blob('rawInput')
+         #print(fString[1])
+        blob.upload_from_file(rawFile, content_type = 'audio/'+ formatType)
+        storage_client = storage.Client.from_service_account_json(
+              'A2N-Official-bd3ee1c6cc61.json')
+        bucket = storage_client.get_bucket('a2n_audio')
+        blob = bucket.blob('rawInput')
+        blob.download_to_filename('rawInput.'+formatType)
+
+        #f.save(f.filename)
+        #print('saving')
+        #formatType = filepath[filepath.index('.')+1:]
+        output = AudioSegment.from_file('rawInput.'+formatType, formatType)
+        output.export('flacified.flac', format="flac", parameters=["-ac", "1"])
+        print('able to take from file ' + filepath)
+        print('sox is a go!')
+        print('uploading to google')
+        storage_client = storage.Client.from_service_account_json(
+              'A2N-Official-bd3ee1c6cc61.json')
+        bucket = storage_client.get_bucket('a2n_audio')
+        blob = bucket.blob('input')
+         #print(fString[1])
+        blob.upload_from_filename('flacified.flac')
+        print('GOT HERE')
+
+        job1 = q.enqueue_call(func=utils.upload_to_google, args=('flacified.flac', 'string'), timeout='1h', result_ttl=30)
+        job2 = q.enqueue_call(func=utils.speech_to_text, args=(), timeout='1h')
+        job3 = q.enqueue_call(func=utils.convert_to_outline, args=(), timeout='1h')
+        job4 = q.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h')
     return render_template('fileDownload.html')
 
 
-    # print('flacifying LOL')
-    # rawFile = request.files['gcloudfile']
-    #email = request.form['email']
 
-    # fString = str(rawFile.filename)
-    #
-    # fString = fString.split("'")
-    # filepath = fString[0]
-    # formatType = filepath[filepath.index('.')+1:]
-    # storage_client = storage.Client.from_service_account_json(
-    #       'A2N-Official-bd3ee1c6cc61.json')
-    # bucket = storage_client.get_bucket('a2n_audio')
-    # blob = bucket.blob('rawInput')
-    #  #print(fString[1])
-    # blob.upload_from_file(rawFile, content_type = 'audio/'+ formatType)
-    # storage_client = storage.Client.from_service_account_json(
-    #       'A2N-Official-bd3ee1c6cc61.json')
-    # bucket = storage_client.get_bucket('a2n_audio')
-    # blob = bucket.blob('rawInput')
-    # blob.download_to_filename('rawInput.'+formatType)
-    #
-    # #f.save(f.filename)
-    # #print('saving')
-    # #formatType = filepath[filepath.index('.')+1:]
-    # output = AudioSegment.from_file('rawInput.'+formatType, formatType)
-    # output.export('flacified.flac', format="flac", parameters=["-ac", "1"])
-    # print('able to take from file ' + filepath)
-    # print('sox is a go!')
     #
     #
     #
     #
     #
-    # print('uploading to google')
-    # storage_client = storage.Client.from_service_account_json(
-    #       'A2N-Official-bd3ee1c6cc61.json')
-    # bucket = storage_client.get_bucket('a2n_audio')
-    # blob = bucket.blob('input')
-    #  #print(fString[1])
-    # blob.upload_from_filename('flacified.flac')
-    # print('GOT HERE')
+
 
 
 
@@ -331,7 +378,7 @@ def upload_file():
     # utils.create_wordcloud()
     # print('finished! made the wordcloud')
    # # extra argument: result_ttl=5000
-    ####job1 = q.enqueue_call(func=utils.upload_to_google, args=('flacified.flac', 'string'), timeout='1h', result_ttl=30)
+    #job1 = q.enqueue_call(func=utils.upload_to_google, args=('flacified.flac', 'string'), timeout='1h', result_ttl=30)
     #q.enqueue(utils.upload_to_google)
    #  #print(job1.get_id())
    #  #get_results(job1.get_id())
