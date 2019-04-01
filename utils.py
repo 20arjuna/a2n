@@ -77,7 +77,7 @@ def convert_to_outline():
     document.save('static/outline'+ '.docx')
 
 def create_wordcloud():
-    print('making wordcloud')
+     print('making wordcloud')
      d =  path.dirname(__file__) if "__file__" in locals() else os.getcwd()
 
          # Read the whole text.
