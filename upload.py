@@ -258,7 +258,7 @@ def hello():
 @app.route('/uploaderlocal', methods=['POST'])
 def upload_file():
     try:
-        q = Queue(connection=Redis())
+        q = Queue(connection=conn)
         print('flacifying LOL')
         rawFile = request.files['gcloudfile']
         email = request.form['email']
@@ -363,7 +363,7 @@ def upload_file():
         return render_template('email.html')
 
     except:
-        q = Queue(connection=Redis())
+        q = Queue(connection=conn)
         print('flacifying LOL')
         rawFile = request.files['gcloudfile']
         #email = request.form['email']
