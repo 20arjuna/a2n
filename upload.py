@@ -258,11 +258,10 @@ def hello():
 @app.route('/uploaderlocal', methods=['POST'])
 def upload_file():
     try:
-        q = Queue(connection=Redis())
-        email = request.form['email']
+        q = Queue(connection=conn)
         print('flacifying LOL')
         rawFile = request.files['gcloudfile']
-
+        email = request.form['email']
 
         fString = str(rawFile.filename)
 
@@ -288,6 +287,11 @@ def upload_file():
         output.export('flacified.flac', format="flac", parameters=["-ac", "1"])
         print('able to take from file ' + filepath)
         print('sox is a go!')
+
+
+
+
+
         print('uploading to google')
         storage_client = storage.Client.from_service_account_json(
               'A2N-Official-bd3ee1c6cc61.json')
@@ -297,11 +301,66 @@ def upload_file():
         blob.upload_from_filename('flacified.flac')
         print('GOT HERE')
 
-        job1 = q.enqueue_call(func=utils.upload_to_google, args=('flacified.flac', 'string'), timeout='1h', result_ttl=30)
-        job2 = q.enqueue_call(func=utils.speech_to_text, args=(), timeout='1h')
-        job3 = q.enqueue_call(func=utils.convert_to_outline, args=(), timeout='1h')
-        job4 = q.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h')
-        job5 = q.enqueue_call(func=utils.send_email, args=(email, 'outline.docx', 'static/outline.docx'), timeout='1h')
+
+
+
+        # f.save(f.filename)
+        # fString = str(f.filename)
+        # fString = fString.split("'")
+        # filepath = fString[0]
+        # formatType = filepath[filepath.index('.')+1:]
+        # output = AudioSegment.from_file(fString[0], formatType)
+        # output.export('flacified.flac', format="flac", parameters=["-ac", "1"])
+        # print('able to take from file ' + fString[0])
+        # print('sox is a go!')
+        # os.remove(fString[0])
+        #for i in range(4):
+            #subprocess.call("python3 "+ methodlist[i], shell=True)
+        # utils.upload_to_google()
+        # print('uploaded to google')
+        # utils.speech_to_text()
+        # print('speech to text successful')
+        # utils.convert_to_outline()
+        # print('made the outline')
+        # utils.create_wordcloud()
+        # print('finished! made the wordcloud')
+       # # extra argument: result_ttl=5000
+        ####job1 = q.enqueue_call(func=utils.upload_to_google, args=('flacified.flac', 'string'), timeout='1h', result_ttl=30)
+        #q.enqueue(utils.upload_to_google)
+       #  #print(job1.get_id())
+       #  #get_results(job1.get_id())
+       # #  #print(result.get_id())
+       #  ###job2 = q.enqueue_call(func=utils.speech_to_text, args=(), timeout='1h')
+        q.enqueue(utils.speech_to_text, timeout = '1h')
+       #  #print(job2.get_id()   #  #print(result.get_id())
+       #  ###job3 = q.enqueue_call(func=utils.convert_to_outline, args=(), timeout='1h')
+        q.enqueue(utils.convert_to_outline, timeout = '1h')
+       #  #print(job3.get_id())
+       #  #get_results(job3.get_id())
+       # #  #print(result.get_id())
+       #  ###job4 = q.enqueue_call(func=utils.create_wordcloud, args=(), timeout='1h')
+        q.enqueue(utils.create_wordcloud, timeout = '1h')
+       #  #job5 = q.enqueue_call(func=utils.send_email, args=(email, 'outline.docx', 'static/outline.docx'), timeout='1h')
+        q.enqueue(utils.send_email, email, ['static/outline.docx', 'static/cloud.png'], timeout = '1h')
+
+
+        # print('Job 2 status before ' + job2.status)
+        # while(job2.status=='queued'):
+        #     time.sleep(1)
+        # print('Job 2 status after ' + job2.status)
+        # while(job3.status=='queued'):
+        #     time.sleep(1)
+        # while(job4.status=='queued'):
+        #     time.sleep(1)
+        #print(result.get_id())
+        #print(job4.get_id())
+        #get_results(job4.get_id())
+        #while (result.is_finished != True):
+            #time.sleep(1)
+        #return render_template('fileDownload.html')
+        # while(len(q1)>0):
+        #     time.sleep(1)
+        return render_template('fileDownload.html')
 
     except:
         print('flacifying LOL')
